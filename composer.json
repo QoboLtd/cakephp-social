@@ -1,0 +1,63 @@
+{
+    "name": "qobo/cakephp-social",
+    "description": "CakePHP Social Plugin",
+    "keywords": ["cakephp", "social", "facebook", "twitter"],
+    "type": "cakephp-plugin",
+    "license": "MIT",
+    "homepage": "https://www.qobo.biz",
+    "authors": [
+        {
+            "name": "Qobo Ltd",
+            "email": "support@qobo.biz",
+            "homepage": "https://www.qobo.biz",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/QoboLtd/cakephp-social/issues",
+        "source": "https://github.com/QoboLtd/cakephp-social"
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.1"
+        }
+    },
+    "require": {
+        "cakephp/cakephp": "^3.5 <3.7",
+        "cakephp/migrations": "^1.7",
+        "myclabs/php-enum": "^1.5",
+        "pyrech/composer-changelogs": "^1.4"
+    },
+    "require-dev": {
+        "qobo/cakephp-composer-dev": "^v1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Qobo\\Social\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Qobo\\Social\\Test\\": "tests/",
+            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "phpcs",
+            "phpunit --no-coverage"
+        ],
+        "test-coverage": [
+            "phpcs",
+            "phpunit"
+        ],
+        "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
+    },
+    "scripts-descriptions": {
+        "test": "Runs phpcs and phpunit without coverage",
+        "test-coverage": "Runs phpcs and phpunit with coverage enabled"
+    },
+    "prefer-stable": true
+}
