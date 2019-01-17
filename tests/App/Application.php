@@ -12,7 +12,7 @@
  * @since     3.3.0
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
-namespace Foobar\Test\App;
+namespace Qobo\Social\Test\App;
 
 use Cake\Core\Configure;
 use Cake\Error\Middleware\ErrorHandlerMiddleware;
