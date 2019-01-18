@@ -9,6 +9,10 @@ use Cake\TestSuite\Fixture\TestFixture;
  */
 class NetworksFixture extends TestFixture
 {
+    /**
+     * {@inheritDoc}
+     */
+    public $table = 'qobo_social_networks';
 
     /**
      * Fields

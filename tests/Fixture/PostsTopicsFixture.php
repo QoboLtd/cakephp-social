@@ -9,6 +9,10 @@ use Cake\TestSuite\Fixture\TestFixture;
  */
 class PostsTopicsFixture extends TestFixture
 {
+    /**
+     * {@inheritDoc}
+     */
+    public $table = 'qobo_social_posts_topics';
 
     /**
      * Fields
@@ -23,10 +27,10 @@ class PostsTopicsFixture extends TestFixture
         'post_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'topic_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'trashed' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
-        // '_indexes' => [
-        //     'lookup_post_id' => ['type' => 'index', 'columns' => ['post_id'], 'length' => []],
-        //     'lookup_topic_id' => ['type' => 'index', 'columns' => ['topic_id'], 'length' => []],
-        // ],
+        '_indexes' => [
+            'posts_topics_lookup_post_id' => ['type' => 'index', 'columns' => ['post_id'], 'length' => []],
+            'posts_topics_lookup_topic_id' => ['type' => 'index', 'columns' => ['topic_id'], 'length' => []],
+        ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
