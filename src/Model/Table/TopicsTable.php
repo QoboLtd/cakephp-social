@@ -36,7 +36,7 @@ class TopicsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('topics');
+        $this->setTable('qobo_social_topics');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 

@@ -38,7 +38,7 @@ class PostsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('posts');
+        $this->setTable('qobo_social_posts');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 

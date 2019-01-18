@@ -35,7 +35,7 @@ class KeywordsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('keywords');
+        $this->setTable('qobo_social_keywords');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 

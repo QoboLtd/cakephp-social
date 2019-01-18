@@ -35,7 +35,7 @@ class NetworksTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('networks');
+        $this->setTable('qobo_social_networks');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 

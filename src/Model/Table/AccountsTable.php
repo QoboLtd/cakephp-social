@@ -36,7 +36,7 @@ class AccountsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('accounts');
+        $this->setTable('qobo_social_accounts');
         $this->setDisplayField('handle');
         $this->setPrimaryKey('id');
 
