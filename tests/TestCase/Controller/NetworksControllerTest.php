@@ -16,7 +16,8 @@ class NetworksControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/social.networks'
+        'plugin.qobo/social.networks',
+        'plugin.qobo/social.accounts',
     ];
 
     /**
@@ -24,9 +25,10 @@ class NetworksControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testIndex()
+    public function testIndex(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/networks/index');
+        $this->assertResponseOk();
     }
 
     /**
@@ -34,9 +36,10 @@ class NetworksControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testView()
+    public function testView(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/networks/view/5c8574e7-fd4f-4be9-84e0-52c3db259a1e');
+        $this->assertResponseOk();
     }
 
     /**
@@ -44,9 +47,10 @@ class NetworksControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testAdd()
+    public function testAdd(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/networks/add');
+        $this->assertResponseOk();
     }
 
     /**
@@ -54,9 +58,10 @@ class NetworksControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testEdit()
+    public function testEdit(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/networks/edit/5c8574e7-fd4f-4be9-84e0-52c3db259a1e');
+        $this->assertResponseOk();
     }
 
     /**
@@ -64,8 +69,9 @@ class NetworksControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testDelete()
+    public function testDelete(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->post('/social/networks/delete/5c8574e7-fd4f-4be9-84e0-52c3db259a1e');
+        $this->assertRedirect('/social/networks');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace Qobo\Social\Controller;
 
-use Qobo\Social\Controller\AppController;
+use App\Controller\AppController;
 
 /**
  * Networks Controller
@@ -32,7 +32,7 @@ class NetworksController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view(?string $id = null)
     {
         $network = $this->Networks->get($id, [
             'contain' => ['Accounts']
@@ -44,7 +44,7 @@ class NetworksController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -52,11 +52,11 @@ class NetworksController extends AppController
         if ($this->request->is('post')) {
             $network = $this->Networks->patchEntity($network, $this->request->getData());
             if ($this->Networks->save($network)) {
-                $this->Flash->success(__('The network has been saved.'));
+                $this->Flash->success((string)__('The network has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The network could not be saved. Please, try again.'));
+            $this->Flash->error((string)__('The network could not be saved. Please, try again.'));
         }
         $this->set(compact('network'));
     }
@@ -65,10 +65,10 @@ class NetworksController extends AppController
      * Edit method
      *
      * @param string|null $id Network id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit(?string $id = null)
     {
         $network = $this->Networks->get($id, [
             'contain' => []
@@ -76,11 +76,11 @@ class NetworksController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $network = $this->Networks->patchEntity($network, $this->request->getData());
             if ($this->Networks->save($network)) {
-                $this->Flash->success(__('The network has been saved.'));
+                $this->Flash->success((string)__('The network has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The network could not be saved. Please, try again.'));
+            $this->Flash->error((string)__('The network could not be saved. Please, try again.'));
         }
         $this->set(compact('network'));
     }
@@ -89,17 +89,17 @@ class NetworksController extends AppController
      * Delete method
      *
      * @param string|null $id Network id.
-     * @return \Cake\Http\Response|null Redirects to index.
+     * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    public function delete(?string $id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $network = $this->Networks->get($id);
         if ($this->Networks->delete($network)) {
-            $this->Flash->success(__('The network has been deleted.'));
+            $this->Flash->success((string)__('The network has been deleted.'));
         } else {
-            $this->Flash->error(__('The network could not be deleted. Please, try again.'));
+            $this->Flash->error((string)__('The network could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
