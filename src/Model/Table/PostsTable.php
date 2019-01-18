@@ -60,7 +60,7 @@ class PostsTable extends Table
         $this->belongsToMany('Topics', [
             'foreignKey' => 'post_id',
             'targetForeignKey' => 'topic_id',
-            'joinTable' => 'posts_topics',
+            'through' => 'Qobo/Social.PostsTopics',
             'className' => 'Qobo/Social.Topics'
         ]);
     }
