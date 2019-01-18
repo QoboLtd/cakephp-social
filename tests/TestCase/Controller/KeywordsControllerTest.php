@@ -16,7 +16,8 @@ class KeywordsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/social.keywords'
+        'plugin.qobo/social.keywords',
+        'plugin.qobo/social.topics',
     ];
 
     /**
@@ -24,9 +25,10 @@ class KeywordsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testIndex()
+    public function testIndex(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/keywords/index');
+        $this->assertResponseOk();
     }
 
     /**
@@ -34,9 +36,10 @@ class KeywordsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testView()
+    public function testView(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/keywords/view/32591665-5810-4257-bc3c-e9c987dc784a');
+        $this->assertResponseOk();
     }
 
     /**
@@ -44,9 +47,10 @@ class KeywordsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testAdd()
+    public function testAdd(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/keywords/add');
+        $this->assertResponseOk();
     }
 
     /**
@@ -54,9 +58,10 @@ class KeywordsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testEdit()
+    public function testEdit(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/keywords/edit/32591665-5810-4257-bc3c-e9c987dc784a');
+        $this->assertResponseOk();
     }
 
     /**
@@ -64,8 +69,9 @@ class KeywordsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testDelete()
+    public function testDelete(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->post('/social/keywords/delete/32591665-5810-4257-bc3c-e9c987dc784a');
+        $this->assertRedirect('/social/keywords');
     }
 }
