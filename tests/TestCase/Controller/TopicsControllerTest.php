@@ -16,7 +16,10 @@ class TopicsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/social.topics'
+        'plugin.qobo/social.topics',
+        'plugin.qobo/social.keywords',
+        'plugin.qobo/social.posts',
+        'plugin.qobo/social.posts_topics',
     ];
 
     /**
@@ -24,9 +27,10 @@ class TopicsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testIndex()
+    public function testIndex(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/topics/index');
+        $this->assertResponseOk();
     }
 
     /**
@@ -34,9 +38,10 @@ class TopicsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testView()
+    public function testView(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/topics/view/7aa61c8b-c28a-463d-bb69-df35ab268960');
+        $this->assertResponseOk();
     }
 
     /**
@@ -44,9 +49,10 @@ class TopicsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testAdd()
+    public function testAdd(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/topics/add');
+        $this->assertResponseOk();
     }
 
     /**
@@ -54,9 +60,10 @@ class TopicsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testEdit()
+    public function testEdit(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/topics/edit/7aa61c8b-c28a-463d-bb69-df35ab268960');
+        $this->assertResponseOk();
     }
 
     /**
@@ -64,8 +71,9 @@ class TopicsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testDelete()
+    public function testDelete(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->post('/social/topics/delete/7aa61c8b-c28a-463d-bb69-df35ab268960');
+        $this->assertRedirect('/social/topics');
     }
 }

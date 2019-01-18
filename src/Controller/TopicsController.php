@@ -32,7 +32,7 @@ class TopicsController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null)
+    public function view(?string $id = null)
     {
         $topic = $this->Topics->get($id, [
             'contain' => ['Posts', 'Keywords']
@@ -44,7 +44,7 @@ class TopicsController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -52,11 +52,11 @@ class TopicsController extends AppController
         if ($this->request->is('post')) {
             $topic = $this->Topics->patchEntity($topic, $this->request->getData());
             if ($this->Topics->save($topic)) {
-                $this->Flash->success(__('The topic has been saved.'));
+                $this->Flash->success((string)__('The topic has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The topic could not be saved. Please, try again.'));
+            $this->Flash->error((string)__('The topic could not be saved. Please, try again.'));
         }
         $posts = $this->Topics->Posts->find('list', ['limit' => 200]);
         $this->set(compact('topic', 'posts'));
@@ -66,10 +66,10 @@ class TopicsController extends AppController
      * Edit method
      *
      * @param string|null $id Topic id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit(?string $id = null)
     {
         $topic = $this->Topics->get($id, [
             'contain' => ['Posts']
@@ -77,11 +77,11 @@ class TopicsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $topic = $this->Topics->patchEntity($topic, $this->request->getData());
             if ($this->Topics->save($topic)) {
-                $this->Flash->success(__('The topic has been saved.'));
+                $this->Flash->success((string)__('The topic has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The topic could not be saved. Please, try again.'));
+            $this->Flash->error((string)__('The topic could not be saved. Please, try again.'));
         }
         $posts = $this->Topics->Posts->find('list', ['limit' => 200]);
         $this->set(compact('topic', 'posts'));
@@ -91,17 +91,17 @@ class TopicsController extends AppController
      * Delete method
      *
      * @param string|null $id Topic id.
-     * @return \Cake\Http\Response|null Redirects to index.
+     * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    public function delete(?string $id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $topic = $this->Topics->get($id);
         if ($this->Topics->delete($topic)) {
-            $this->Flash->success(__('The topic has been deleted.'));
+            $this->Flash->success((string)__('The topic has been deleted.'));
         } else {
-            $this->Flash->error(__('The topic could not be deleted. Please, try again.'));
+            $this->Flash->error((string)__('The topic could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
