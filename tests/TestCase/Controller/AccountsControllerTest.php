@@ -2,7 +2,6 @@
 namespace Qobo\Social\Test\TestCase\Controller;
 
 use Cake\TestSuite\IntegrationTestCase;
-use Qobo\Social\Controller\AccountsController;
 
 /**
  * Qobo\Social\Controller\AccountsController Test Case
@@ -16,7 +15,9 @@ class AccountsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/social.accounts'
+        'plugin.qobo/social.accounts',
+        'plugin.qobo/social.networks',
+        'plugin.qobo/social.posts',
     ];
 
     /**
@@ -24,9 +25,10 @@ class AccountsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testIndex()
+    public function testIndex(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/accounts/index');
+        $this->assertResponseOk();
     }
 
     /**
@@ -34,9 +36,10 @@ class AccountsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testView()
+    public function testView(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/accounts/view/2026a2f4-292e-4992-a562-fbff90ce86cc');
+        $this->assertResponseOk();
     }
 
     /**
@@ -44,9 +47,10 @@ class AccountsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testAdd()
+    public function testAdd(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/accounts/add');
+        $this->assertResponseOk();
     }
 
     /**
@@ -54,9 +58,10 @@ class AccountsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testEdit()
+    public function testEdit(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->get('/social/accounts/edit/2026a2f4-292e-4992-a562-fbff90ce86cc');
+        $this->assertResponseOk();
     }
 
     /**
@@ -64,8 +69,9 @@ class AccountsControllerTest extends IntegrationTestCase
      *
      * @return void
      */
-    public function testDelete()
+    public function testDelete(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->post('/social/accounts/delete/2026a2f4-292e-4992-a562-fbff90ce86cc');
+        $this->assertRedirect('/social/accounts');
     }
 }
