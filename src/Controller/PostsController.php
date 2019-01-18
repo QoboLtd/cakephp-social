@@ -1,7 +1,7 @@
 <?php
 namespace Qobo\Social\Controller;
 
-use App\Controller\AppController;
+use Qobo\Social\Controller\AppController;
 
 /**
  * Posts Controller
