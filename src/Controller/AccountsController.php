@@ -47,7 +47,7 @@ class AccountsController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Http\Response|void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|void|null Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -55,11 +55,11 @@ class AccountsController extends AppController
         if ($this->request->is('post')) {
             $account = $this->Accounts->patchEntity($account, $this->request->getData());
             if ($this->Accounts->save($account)) {
-                $this->Flash->success(__('The account has been saved.'));
+                $this->Flash->success((string)__('The account has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The account could not be saved. Please, try again.'));
+            $this->Flash->error((string)__('The account could not be saved. Please, try again.'));
         }
         $networks = $this->Accounts->Networks->find('list', ['limit' => 200]);
         $this->set(compact('account', 'networks'));
@@ -69,7 +69,7 @@ class AccountsController extends AppController
      * Edit method
      *
      * @param string|null $id Account id.
-     * @return \Cake\Http\Response|void Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function edit(?string $id = null)
@@ -80,11 +80,11 @@ class AccountsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $account = $this->Accounts->patchEntity($account, $this->request->getData());
             if ($this->Accounts->save($account)) {
-                $this->Flash->success(__('The account has been saved.'));
+                $this->Flash->success((string)__('The account has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The account could not be saved. Please, try again.'));
+            $this->Flash->error((string)__('The account could not be saved. Please, try again.'));
         }
         $networks = $this->Accounts->Networks->find('list', ['limit' => 200]);
         $this->set(compact('account', 'networks'));
@@ -94,7 +94,7 @@ class AccountsController extends AppController
      * Delete method
      *
      * @param string|null $id Account id.
-     * @return \Cake\Http\Response|void Redirects to index.
+     * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete(?string $id = null)
@@ -102,9 +102,9 @@ class AccountsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $account = $this->Accounts->get($id);
         if ($this->Accounts->delete($account)) {
-            $this->Flash->success(__('The account has been deleted.'));
+            $this->Flash->success((string)__('The account has been deleted.'));
         } else {
-            $this->Flash->error(__('The account could not be deleted. Please, try again.'));
+            $this->Flash->error((string)__('The account could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
