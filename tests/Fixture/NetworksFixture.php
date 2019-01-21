@@ -47,7 +47,7 @@ class NetworksFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '5c8574e7-fd4f-4be9-84e0-52c3db259a1e',
+                'id' => '00000000-0000-0000-0000-000000000001',
                 'created' => '2019-01-17 12:39:14',
                 'modified' => '2019-01-17 12:39:14',
                 'name' => 'Lorem ipsum dolor sit amet',

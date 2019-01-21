@@ -50,7 +50,7 @@ class PostsTopicsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '1f4ccfb2-ad7e-437e-9580-9196281c38bf',
+                'id' => '00000000-0000-0000-0000-000000000001',
                 'created' => '2019-01-17 12:39:15',
                 'modified' => '2019-01-17 12:39:15',
                 'post_id' => '17dcb0b0-46aa-4ec8-91a1-74ec48b1d5e6',

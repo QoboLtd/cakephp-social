@@ -51,10 +51,10 @@ class KeywordsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '32591665-5810-4257-bc3c-e9c987dc784a',
+                'id' => '00000000-0000-0000-0000-000000000001',
                 'name' => 'Lorem ipsum dolor sit amet',
                 'type' => 'Lorem ipsum dolor sit amet',
-                'topic_id' => '7aa61c8b-c28a-463d-bb69-df35ab268960',
+                'topic_id' => '00000000-0000-0000-0000-000000000001',
                 'priority' => 'Lorem ipsum dolor sit amet',
                 'trashed' => null,
                 'created' => '2019-01-17 12:39:13',
