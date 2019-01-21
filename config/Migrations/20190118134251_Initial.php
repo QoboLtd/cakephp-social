@@ -18,9 +18,8 @@ class Initial extends AbstractMigration
                 'null' => false,
             ])
             ->addColumn('handle', 'string', [
-                'default' => null,
                 'limit' => 255,
-                'null' => true,
+                'null' => false,
             ])
             ->addColumn('active', 'boolean', [
                 'default' => null,

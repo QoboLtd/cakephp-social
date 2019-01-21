@@ -68,7 +68,7 @@ class AccountsTable extends Table
         $validator
             ->scalar('handle')
             ->maxLength('handle', 255)
-            ->allowEmpty('handle');
+            ->notEmpty('handle');
 
         $validator
             ->boolean('active')
