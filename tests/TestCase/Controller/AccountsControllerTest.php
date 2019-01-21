@@ -38,7 +38,7 @@ class AccountsControllerTest extends IntegrationTestCase
      */
     public function testView(): void
     {
-        $this->get('/social/accounts/view/2026a2f4-292e-4992-a562-fbff90ce86cc');
+        $this->get('/social/accounts/view/00000000-0000-0000-0000-000000000001');
         $this->assertResponseOk();
     }
 
@@ -60,7 +60,7 @@ class AccountsControllerTest extends IntegrationTestCase
      */
     public function testEdit(): void
     {
-        $this->get('/social/accounts/edit/2026a2f4-292e-4992-a562-fbff90ce86cc');
+        $this->get('/social/accounts/edit/00000000-0000-0000-0000-000000000001');
         $this->assertResponseOk();
     }
 
@@ -71,7 +71,7 @@ class AccountsControllerTest extends IntegrationTestCase
      */
     public function testDelete(): void
     {
-        $this->post('/social/accounts/delete/2026a2f4-292e-4992-a562-fbff90ce86cc');
+        $this->post('/social/accounts/delete/00000000-0000-0000-0000-000000000001');
         $this->assertRedirect('/social/accounts');
     }
 }

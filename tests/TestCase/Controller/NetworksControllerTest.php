@@ -38,7 +38,7 @@ class NetworksControllerTest extends IntegrationTestCase
      */
     public function testView(): void
     {
-        $this->get('/social/networks/view/5c8574e7-fd4f-4be9-84e0-52c3db259a1e');
+        $this->get('/social/networks/view/00000000-0000-0000-0000-000000000001');
         $this->assertResponseOk();
     }
 
@@ -60,7 +60,7 @@ class NetworksControllerTest extends IntegrationTestCase
      */
     public function testEdit(): void
     {
-        $this->get('/social/networks/edit/5c8574e7-fd4f-4be9-84e0-52c3db259a1e');
+        $this->get('/social/networks/edit/00000000-0000-0000-0000-000000000001');
         $this->assertResponseOk();
     }
 
@@ -71,7 +71,7 @@ class NetworksControllerTest extends IntegrationTestCase
      */
     public function testDelete(): void
     {
-        $this->post('/social/networks/delete/5c8574e7-fd4f-4be9-84e0-52c3db259a1e');
+        $this->post('/social/networks/delete/00000000-0000-0000-0000-000000000001');
         $this->assertRedirect('/social/networks');
     }
 }

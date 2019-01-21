@@ -40,7 +40,7 @@ class PostsControllerTest extends IntegrationTestCase
      */
     public function testView(): void
     {
-        $this->get('/social/posts/view/17dcb0b0-46aa-4ec8-91a1-74ec48b1d5e6');
+        $this->get('/social/posts/view/00000000-0000-0000-0000-000000000001');
         $this->assertResponseOk();
     }
 
@@ -51,7 +51,7 @@ class PostsControllerTest extends IntegrationTestCase
      */
     public function testAdd(): void
     {
-        $this->get('/social/posts/add/17dcb0b0-46aa-4ec8-91a1-74ec48b1d5e6');
+        $this->get('/social/posts/add');
         $this->assertResponseOk();
     }
 
@@ -62,7 +62,7 @@ class PostsControllerTest extends IntegrationTestCase
      */
     public function testEdit(): void
     {
-        $this->get('/social/posts/edit/17dcb0b0-46aa-4ec8-91a1-74ec48b1d5e6');
+        $this->get('/social/posts/edit/00000000-0000-0000-0000-000000000001');
         $this->assertResponseOk();
     }
 
@@ -73,7 +73,7 @@ class PostsControllerTest extends IntegrationTestCase
      */
     public function testDelete(): void
     {
-        $this->post('/social/posts/delete/17dcb0b0-46aa-4ec8-91a1-74ec48b1d5e6');
+        $this->post('/social/posts/delete/00000000-0000-0000-0000-000000000001');
         $this->assertRedirect('/social/posts');
     }
 }

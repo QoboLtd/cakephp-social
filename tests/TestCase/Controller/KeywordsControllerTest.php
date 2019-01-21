@@ -38,7 +38,7 @@ class KeywordsControllerTest extends IntegrationTestCase
      */
     public function testView(): void
     {
-        $this->get('/social/keywords/view/32591665-5810-4257-bc3c-e9c987dc784a');
+        $this->get('/social/keywords/view/00000000-0000-0000-0000-000000000001');
         $this->assertResponseOk();
     }
 
@@ -60,7 +60,7 @@ class KeywordsControllerTest extends IntegrationTestCase
      */
     public function testEdit(): void
     {
-        $this->get('/social/keywords/edit/32591665-5810-4257-bc3c-e9c987dc784a');
+        $this->get('/social/keywords/edit/00000000-0000-0000-0000-000000000001');
         $this->assertResponseOk();
     }
 
@@ -71,7 +71,7 @@ class KeywordsControllerTest extends IntegrationTestCase
      */
     public function testDelete(): void
     {
-        $this->post('/social/keywords/delete/32591665-5810-4257-bc3c-e9c987dc784a');
+        $this->post('/social/keywords/delete/00000000-0000-0000-0000-000000000001');
         $this->assertRedirect('/social/keywords');
     }
 }

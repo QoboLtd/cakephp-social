@@ -40,7 +40,7 @@ class TopicsControllerTest extends IntegrationTestCase
      */
     public function testView(): void
     {
-        $this->get('/social/topics/view/7aa61c8b-c28a-463d-bb69-df35ab268960');
+        $this->get('/social/topics/view/00000000-0000-0000-0000-000000000001');
         $this->assertResponseOk();
     }
 
@@ -62,7 +62,7 @@ class TopicsControllerTest extends IntegrationTestCase
      */
     public function testEdit(): void
     {
-        $this->get('/social/topics/edit/7aa61c8b-c28a-463d-bb69-df35ab268960');
+        $this->get('/social/topics/edit/00000000-0000-0000-0000-000000000001');
         $this->assertResponseOk();
     }
 
@@ -73,7 +73,7 @@ class TopicsControllerTest extends IntegrationTestCase
      */
     public function testDelete(): void
     {
-        $this->post('/social/topics/delete/7aa61c8b-c28a-463d-bb69-df35ab268960');
+        $this->post('/social/topics/delete/00000000-0000-0000-0000-000000000001');
         $this->assertRedirect('/social/topics');
     }
 }
