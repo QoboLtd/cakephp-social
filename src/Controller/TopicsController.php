@@ -32,7 +32,7 @@ class TopicsController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view(?string $id = null)
+    public function view(?string $id)
     {
         $topic = $this->Topics->get($id, [
             'contain' => ['Posts', 'Keywords']
@@ -69,7 +69,7 @@ class TopicsController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit(?string $id = null)
+    public function edit(?string $id)
     {
         $topic = $this->Topics->get($id, [
             'contain' => ['Posts']
@@ -94,7 +94,7 @@ class TopicsController extends AppController
      * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete(?string $id = null)
+    public function delete(?string $id)
     {
         $this->request->allowMethod(['post', 'delete']);
         $topic = $this->Topics->get($id);

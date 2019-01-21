@@ -32,7 +32,7 @@ class NetworksController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view(?string $id = null)
+    public function view(?string $id)
     {
         $network = $this->Networks->get($id, [
             'contain' => ['Accounts']
@@ -68,7 +68,7 @@ class NetworksController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit(?string $id = null)
+    public function edit(?string $id)
     {
         $network = $this->Networks->get($id, [
             'contain' => []
@@ -92,7 +92,7 @@ class NetworksController extends AppController
      * @return \Cake\Http\Response|null|void Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete(?string $id = null)
+    public function delete(?string $id)
     {
         $this->request->allowMethod(['post', 'delete']);
         $network = $this->Networks->get($id);
