@@ -32,15 +32,7 @@ class Account extends Entity
      * @var array
      */
     protected $_accessible = [
-        'network_id' => true,
-        'handle' => true,
-        'active' => true,
-        'is_ours' => true,
-        'credentials' => true,
-        'trashed' => true,
-        'created' => true,
-        'modified' => true,
-        'network' => true,
-        'posts' => true
+        '*' => true,
+        'id' => false,
     ];
 }

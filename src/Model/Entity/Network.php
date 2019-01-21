@@ -29,12 +29,7 @@ class Network extends Entity
      * @var array
      */
     protected $_accessible = [
-        'created' => true,
-        'modified' => true,
-        'name' => true,
-        'url' => true,
-        'active' => true,
-        'trashed' => true,
-        'accounts' => true
+        '*' => true,
+        'id' => false,
     ];
 }

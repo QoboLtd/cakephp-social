@@ -30,13 +30,7 @@ class Topic extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
-        'description' => true,
-        'active' => true,
-        'trashed' => true,
-        'created' => true,
-        'modified' => true,
-        'keywords' => true,
-        'posts' => true
+        '*' => true,
+        'id' => false,
     ];
 }

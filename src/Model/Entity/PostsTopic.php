@@ -29,12 +29,7 @@ class PostsTopic extends Entity
      * @var array
      */
     protected $_accessible = [
-        'created' => true,
-        'modified' => true,
-        'post_id' => true,
-        'topic_id' => true,
-        'trashed' => true,
-        'post' => true,
-        'topic' => true
+        '*' => true,
+        'id' => false,
     ];
 }

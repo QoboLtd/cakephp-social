@@ -36,19 +36,7 @@ class Post extends Entity
      * @var array
      */
     protected $_accessible = [
-        'account_id' => true,
-        'post_id' => true,
-        'type' => true,
-        'url' => true,
-        'subject' => true,
-        'content' => true,
-        'publish_date' => true,
-        'extra' => true,
-        'trashed' => true,
-        'created' => true,
-        'modified' => true,
-        'account' => true,
-        'posts' => true,
-        'topics' => true
+        '*' => true,
+        'id' => false,
     ];
 }

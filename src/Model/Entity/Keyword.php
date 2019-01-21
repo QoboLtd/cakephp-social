@@ -30,13 +30,7 @@ class Keyword extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
-        'type' => true,
-        'topic_id' => true,
-        'priority' => true,
-        'trashed' => true,
-        'created' => true,
-        'modified' => true,
-        'topic' => true
+        '*' => true,
+        'id' => false,
     ];
 }
