@@ -66,6 +66,10 @@ class AccountsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->uuid('network_id')
+            ->notEmpty('network_id');
+
+        $validator
             ->scalar('handle')
             ->maxLength('handle', 255)
             ->notEmpty('handle');
