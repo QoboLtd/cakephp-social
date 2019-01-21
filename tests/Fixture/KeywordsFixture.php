@@ -56,7 +56,7 @@ class KeywordsFixture extends TestFixture
                 'type' => 'Lorem ipsum dolor sit amet',
                 'topic_id' => '7aa61c8b-c28a-463d-bb69-df35ab268960',
                 'priority' => 'Lorem ipsum dolor sit amet',
-                'trashed' => '2019-01-17 12:39:13',
+                'trashed' => null,
                 'created' => '2019-01-17 12:39:13',
                 'modified' => '2019-01-17 12:39:13'
             ],

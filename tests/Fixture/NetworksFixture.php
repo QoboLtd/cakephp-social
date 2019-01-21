@@ -53,7 +53,7 @@ class NetworksFixture extends TestFixture
                 'name' => 'Lorem ipsum dolor sit amet',
                 'url' => 'Lorem ipsum dolor sit amet',
                 'active' => 1,
-                'trashed' => '2019-01-17 12:39:14'
+                'trashed' => null
             ],
         ];
         parent::init();
