@@ -136,7 +136,7 @@ class AccountsTableTest extends TestCase
         // Check decryption
         $key = (string)Configure::read('Qobo/Social.encrypt.credentials.encryptionKey');
         $encoded = (string)$actual->get('credentials');
-        $encrypted = base64_decode($encoded);
+        $encrypted = (string)base64_decode($encoded);
         $decrypted = Security::decrypt($encrypted, $key);
         $this->assertEquals($credentials, $decrypted);
     }

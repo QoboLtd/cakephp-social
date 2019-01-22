@@ -138,9 +138,10 @@ class AccountsTable extends Table
     {
         if ($entity->is_ours === true) {
             $salt = Configure::readOrFail('Qobo/Social.encrypt.credentials.encryptionKey');
-            $credentials = Security::encrypt($entity->credentials, $salt);
+            $credentials = (string)$entity->get('credentials');
+            $encrypted = Security::encrypt($credentials, $salt);
             $data = [
-                'credentials' => base64_encode($credentials),
+                'credentials' => base64_encode($encrypted),
             ];
             $entity = $this->patchEntity($entity, $data, [
                 'accessibleFields' => [
@@ -157,9 +158,9 @@ class AccountsTable extends Table
      *
      * @param \Cake\ORM\Query $query Query object.
      * @param mixed[] $options Options array.
-     * @return \Cake\ORM\Query Query object.
+     * @return \Cake\ORM\Query|array Query object.
      */
-    public function findDecryptCredentials(Query $query, array $options = []): Query
+    public function findDecryptCredentials(Query $query, array $options = [])
     {
         $mapper = function (Account $entity, $key, MapReduce $mapReduce) {
             if ($entity->is_ours === true) {
