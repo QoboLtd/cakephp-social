@@ -1,6 +1,7 @@
 <?php
 namespace Qobo\Social\Model\Table;
 
+use Cake\Collection\Iterator\MapReduce;
 use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\ORM\Query;
@@ -149,5 +150,32 @@ class AccountsTable extends Table
         }
 
         return $entity;
+    }
+
+    /**
+     * Customer finder method which decrypts the stored credentials using map/reduce.
+     *
+     * @param \Cake\ORM\Query $query Query object.
+     * @param mixed[] $options Options array.
+     * @return \Cake\ORM\Query Query object.
+     */
+    public function findDecryptCredentials(Query $query, array $options = []): Query
+    {
+        $mapper = function (Account $entity, $key, MapReduce $mapReduce) {
+            if ($entity->is_ours === true) {
+                $credentials = $entity->decryptCredentials();
+                if ($credentials !== null) {
+                    $entity->set(['credentials' => $credentials], ['guard' => false]);
+                    $entity->setDirty('credentials', false);
+                }
+            }
+            $mapReduce->emitIntermediate($entity, $key);
+        };
+
+        $reducer = function ($accounts, $key, MapReduce $mapReduce) {
+            $mapReduce->emit($accounts, $key);
+        };
+
+        return $query->mapReduce($mapper, $reducer);
     }
 }
