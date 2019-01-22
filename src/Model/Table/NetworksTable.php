@@ -60,6 +60,12 @@ class NetworksTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->scalar('title')
+            ->maxLength('title', 255)
+            ->requirePresence('title', 'create')
+            ->notEmpty('title');
+
+        $validator
             ->scalar('name')
             ->maxLength('name', 255)
             ->requirePresence('name', 'create')
