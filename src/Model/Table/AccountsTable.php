@@ -139,7 +139,7 @@ class AccountsTable extends Table
             $salt = Configure::readOrFail('Qobo/Social.encrypt.credentials.encryptionKey');
             $credentials = Security::encrypt($entity->credentials, $salt);
             $data = [
-                'credentials' => $credentials,
+                'credentials' => base64_encode($credentials),
             ];
             $entity = $this->patchEntity($entity, $data, [
                 'accessibleFields' => [
