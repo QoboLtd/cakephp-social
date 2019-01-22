@@ -121,7 +121,10 @@ class AccountsTable extends Table
      */
     public function beforeSave(Event $event, Account $entity): void
     {
-        $this->encryptCredentials($entity);
+        $canEncrypt = Configure::read('Qobo/Social.encrypt.credentials.enabled', false);
+        if ($canEncrypt) {
+            $entity = $this->encryptCredentials($entity);
+        }
     }
 
     /**
