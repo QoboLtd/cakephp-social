@@ -23,6 +23,10 @@
             <td><?= h($network->id) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Title') ?></th>
+            <td><?= h($network->title) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Name') ?></th>
             <td><?= h($network->name) ?></td>
         </tr>
