@@ -40,7 +40,9 @@ class AccountsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::getTableLocator()->exists('Accounts') ? [] : ['className' => AccountsTable::class];
-        $this->Accounts = TableRegistry::getTableLocator()->get('Accounts', $config);
+        /** @var \Qobo\Social\Model\Table\AccountsTable $table */
+        $table = TableRegistry::getTableLocator()->get('Accounts', $config);
+        $this->Accounts = $table;
     }
 
     /**
