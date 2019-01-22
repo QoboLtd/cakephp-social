@@ -3,7 +3,9 @@ namespace Qobo\Social\Test\TestCase\Model\Table;
 
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Qobo\Social\Model\Entity\Account;
 use Qobo\Social\Model\Table\AccountsTable;
+use Webmozart\Assert\Assert;
 
 /**
  * Qobo\Social\Model\Table\AccountsTable Test Case
@@ -81,5 +83,23 @@ class AccountsTableTest extends TestCase
     public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test encryption of credentials doesn't run when the account is not ours.
+     *
+     * @return void
+     */
+    public function testEncryptCredentialsIgnoreNotOurs(): void
+    {
+        $account = $this->Accounts->newEntity([
+            'is_ours' => false,
+            'handle' => 'test',
+        ]);
+
+        $actual = $this->Accounts->encryptCredentials($account);
+        Assert::isInstanceOf($actual, Account::class);
+        $this->assertSame($account, $actual);
+        $this->assertFalse($actual->isDirty('credentials'));
     }
 }
