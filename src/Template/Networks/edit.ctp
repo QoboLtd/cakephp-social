@@ -23,6 +23,7 @@
     <fieldset>
         <legend><?= __('Edit Network') ?></legend>
         <?php
+            echo $this->Form->control('title');
             echo $this->Form->control('name');
             echo $this->Form->control('url');
             echo $this->Form->control('active');

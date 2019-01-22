@@ -20,6 +20,7 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('title') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('url') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('active') ?></th>
@@ -33,6 +34,7 @@
                 <td><?= h($network->id) ?></td>
                 <td><?= h($network->created) ?></td>
                 <td><?= h($network->modified) ?></td>
+                <td><?= h($network->title) ?></td>
                 <td><?= h($network->name) ?></td>
                 <td><?= h($network->url) ?></td>
                 <td><?= h($network->active) ?></td>

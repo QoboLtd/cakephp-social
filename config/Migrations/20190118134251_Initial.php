@@ -122,6 +122,11 @@ class Initial extends AbstractMigration
                 'limit' => null,
                 'null' => true,
             ])
+            ->addColumn('title', 'string', [
+                'default' => null,
+                'limit' => 255,
+                'null' => false,
+            ])
             ->addColumn('name', 'string', [
                 'default' => null,
                 'limit' => 255,
@@ -142,6 +147,14 @@ class Initial extends AbstractMigration
                 'limit' => null,
                 'null' => true,
             ])
+            ->addIndex(
+                [
+                    'name',
+                ],
+                [
+                    'unique' => true,
+                ]
+            )
             ->create();
 
         $this->table('qobo_social_posts', ['id' => false, 'primary_key' => ['id']])
