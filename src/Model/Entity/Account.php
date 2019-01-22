@@ -34,5 +34,6 @@ class Account extends Entity
     protected $_accessible = [
         '*' => true,
         'id' => false,
+        'credentials' => false,
     ];
 }
