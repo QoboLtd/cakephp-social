@@ -1,10 +1,14 @@
 <?php
 namespace Qobo\Social\Model\Table;
 
+use Cake\Core\Configure;
+use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\Utility\Security;
 use Cake\Validation\Validator;
+use Qobo\Social\Model\Entity\Account;
 
 /**
  * Accounts Model
@@ -106,5 +110,36 @@ class AccountsTable extends Table
         $rules->add($rules->existsIn(['network_id'], 'Networks'));
 
         return $rules;
+    }
+
+    /**
+     * Before save event.
+     *
+     * @param \Cake\Event\Event $event Event object.
+     * @param \Qobo\Social\Model\Entity\Account $entity Entity.
+     * @return void
+     */
+    public function beforeSave(Event $event, Account $entity): void
+    {
+        $this->encryptCredentials($entity);
+    }
+
+    /**
+     * Encrypts the stored credentials if the account is marked as `ours`.
+     *
+     * @param \Qobo\Social\Model\Entity\Account $entity Entity.
+     * @return \Qobo\Social\Model\Entity\Account Entity.
+     */
+    public function encryptCredentials(Account $entity): Account
+    {
+        if ($entity->is_ours === true) {
+            $salt = Configure::readOrFail('Qobo/Social.encrypt.credentials.encryptionKey');
+            $credentials = Security::encrypt($entity->credentials, $salt);
+            $entity = $this->patchEntity($entity, [
+                'credentials' => $credentials,
+            ]);
+        }
+
+        return $entity;
     }
 }
