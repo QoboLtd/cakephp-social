@@ -135,8 +135,13 @@ class AccountsTable extends Table
         if ($entity->is_ours === true) {
             $salt = Configure::readOrFail('Qobo/Social.encrypt.credentials.encryptionKey');
             $credentials = Security::encrypt($entity->credentials, $salt);
-            $entity = $this->patchEntity($entity, [
+            $data = [
                 'credentials' => $credentials,
+            ];
+            $entity = $this->patchEntity($entity, $data, [
+                'accessibleFields' => [
+                    'credentials' => true,
+                ]
             ]);
         }
 
