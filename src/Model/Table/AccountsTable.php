@@ -160,7 +160,7 @@ class AccountsTable extends Table
      * @param mixed[] $options Options array.
      * @return \Cake\ORM\Query|array Query object.
      */
-    public function findDecryptCredentials(Query $query, array $options = [])
+    public function findWithCredentials(Query $query, array $options = [])
     {
         $mapper = function (Account $entity, $key, MapReduce $mapReduce) {
             if ($entity->is_ours === true) {
