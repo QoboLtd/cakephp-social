@@ -66,7 +66,7 @@ class AccountsTableTest extends TestCase
      */
     public function testInitialize(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $this->assertTrue($this->Accounts->hasBehavior('EncryptedFields'));
     }
 
     /**
