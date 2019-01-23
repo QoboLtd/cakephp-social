@@ -1,13 +1,9 @@
 <?php
 namespace Qobo\Social\Model\Table;
 
-use Cake\Collection\Iterator\MapReduce;
 use Cake\Core\Configure;
-use Cake\Event\Event;
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
-use Cake\Utility\Security;
 use Cake\Validation\Validator;
 use Qobo\Social\Model\Entity\Account;
 

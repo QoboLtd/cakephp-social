@@ -1,13 +1,9 @@
 <?php
 namespace Qobo\Social\Test\TestCase\Model\Table;
 
-use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
-use Cake\Utility\Security;
-use Qobo\Social\Model\Entity\Account;
 use Qobo\Social\Model\Table\AccountsTable;
-use Webmozart\Assert\Assert;
 
 /**
  * Qobo\Social\Model\Table\AccountsTable Test Case

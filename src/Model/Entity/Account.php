@@ -1,10 +1,7 @@
 <?php
 namespace Qobo\Social\Model\Entity;
 
-use Cake\Core\Configure;
 use Cake\ORM\Entity;
-use Cake\Utility\Security;
-use RuntimeException;
 
 /**
  * Account Entity
