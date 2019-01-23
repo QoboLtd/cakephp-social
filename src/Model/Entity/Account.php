@@ -39,26 +39,4 @@ class Account extends Entity
         'id' => false,
         'credentials' => false,
     ];
-
-    /**
-     * Returns the decrypted credentials.
-     *
-     * @return string|null Credentials or null when empty.
-     */
-    public function decryptCredentials(): ?string
-    {
-        $salt = Configure::readOrFail('Qobo/Social.encrypt.credentials.encryptionKey');
-        $credentials = $this->get('credentials');
-        if (!empty($credentials)) {
-            $decoded = base64_decode($credentials);
-            $decrypted = Security::decrypt($decoded, $salt);
-            if ($decrypted === false) {
-                throw new RuntimeException('Unable to decypher credentials. Check your enryption key.');
-            }
-
-            return $decrypted;
-        }
-
-        return null;
-    }
 }
