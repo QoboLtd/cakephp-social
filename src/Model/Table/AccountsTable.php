@@ -45,11 +45,11 @@ class AccountsTable extends Table
         $this->addBehavior('Timestamp');
         $this->addBehavior('Qobo/Utils.EncryptedFields', [
             'enabled' => function (Account $entity) {
-                $enabled = Configure::read('Qobo/Social.encrypt.credentials.enabled', true);
+                $enabled = Configure::read('Qobo/Social.encrypt.enabled', true);
 
                 return ($enabled === false)? $enabled : $entity->is_ours;
             },
-            'encryptionKey' => Configure::readOrFail('Qobo/Social.encrypt.credentials.encryptionKey'),
+            'encryptionKey' => Configure::readOrFail('Qobo/Social.encrypt.key'),
             'fields' => [
                 'credentials',
             ],

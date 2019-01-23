@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'Qobo/Social.encrypt.credentials' => [
+    'Qobo/Social.encrypt' => [
         'enabled' => false,
-        'encryptionKey' => '',
+        'key' => '',
     ]
 ];
