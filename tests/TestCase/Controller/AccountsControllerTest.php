@@ -114,4 +114,17 @@ class AccountsControllerTest extends IntegrationTestCase
         $this->post('/social/accounts/delete/00000000-0000-0000-0000-000000000001');
         $this->assertRedirect('/social/accounts');
     }
+
+    /**
+     * Helper function to generate an account entity.
+     *
+     * @return \Qobo\Social\Model\Entity\Account Account entity.
+     */
+    protected function getAccountEntity(): Account
+    {
+        return $this->Accounts->newEntity([
+            'handle' => 'foobar',
+            'network_id' => '00000000-0000-0000-0000-000000000001',
+        ]);
+    }
 }
