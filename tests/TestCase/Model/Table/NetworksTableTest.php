@@ -37,7 +37,9 @@ class NetworksTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::getTableLocator()->exists('Networks') ? [] : ['className' => NetworksTable::class];
-        $this->Networks = TableRegistry::getTableLocator()->get('Networks', $config);
+        /** @var \Qobo\Social\Model\Table\NetworksTable $table */
+        $table = TableRegistry::getTableLocator()->get('Networks', $config);
+        $this->Networks = $table;
     }
 
     /**

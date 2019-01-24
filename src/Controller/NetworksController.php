@@ -35,6 +35,7 @@ class NetworksController extends AppController
     public function view(?string $id)
     {
         $network = $this->Networks->get($id, [
+            'finder' => 'decrypt',
             'contain' => ['Accounts']
         ]);
 
@@ -71,6 +72,7 @@ class NetworksController extends AppController
     public function edit(?string $id)
     {
         $network = $this->Networks->get($id, [
+            'finder' => 'decrypt',
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {

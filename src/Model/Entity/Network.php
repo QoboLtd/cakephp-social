@@ -7,13 +7,15 @@ use Cake\ORM\Entity;
  * Network Entity
  *
  * @property string $id
- * @property \Cake\I18n\FrozenTime|null $created
- * @property \Cake\I18n\FrozenTime|null $modified
  * @property string $title
  * @property string $name
  * @property string $url
+ * @property string $oauth_consumer_key
+ * @property string $oauth_consumer_secret
  * @property bool|null $active
  * @property \Cake\I18n\FrozenTime|null $trashed
+ * @property \Cake\I18n\FrozenTime|null $created
+ * @property \Cake\I18n\FrozenTime|null $modified
  *
  * @property \Qobo\Social\Model\Entity\Account[] $accounts
  */

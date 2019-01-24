@@ -35,6 +35,10 @@
             <td><?= h($network->url) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Trashed') ?></th>
+            <td><?= h($network->trashed) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Created') ?></th>
             <td><?= h($network->created) ?></td>
         </tr>
@@ -43,14 +47,18 @@
             <td><?= h($network->modified) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Trashed') ?></th>
-            <td><?= h($network->trashed) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Active') ?></th>
             <td><?= $network->active ? __('Yes') : __('No'); ?></td>
         </tr>
     </table>
+    <div class="row">
+        <h4><?= __('Oauth Consumer Key') ?></h4>
+        <?= $this->Text->autoParagraph(h($network->oauth_consumer_key)); ?>
+    </div>
+    <div class="row">
+        <h4><?= __('Oauth Consumer Secret') ?></h4>
+        <?= $this->Text->autoParagraph(h($network->oauth_consumer_secret)); ?>
+    </div>
     <div class="related">
         <h4><?= __('Related Accounts') ?></h4>
         <?php if (!empty($network->accounts)): ?>
