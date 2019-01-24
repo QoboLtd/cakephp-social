@@ -112,16 +112,6 @@ class Initial extends AbstractMigration
                 'limit' => null,
                 'null' => false,
             ])
-            ->addColumn('created', 'datetime', [
-                'default' => null,
-                'limit' => null,
-                'null' => true,
-            ])
-            ->addColumn('modified', 'datetime', [
-                'default' => null,
-                'limit' => null,
-                'null' => true,
-            ])
             ->addColumn('title', 'string', [
                 'default' => null,
                 'limit' => 255,
@@ -137,12 +127,32 @@ class Initial extends AbstractMigration
                 'limit' => 255,
                 'null' => false,
             ])
+            ->addColumn('oauth_consumer_key', 'text', [
+                'default' => null,
+                'limit' => 4294967295,
+                'null' => false,
+            ])
+            ->addColumn('oauth_consumer_secret', 'text', [
+                'default' => null,
+                'limit' => 4294967295,
+                'null' => false,
+            ])
             ->addColumn('active', 'boolean', [
                 'default' => null,
                 'limit' => null,
                 'null' => true,
             ])
             ->addColumn('trashed', 'datetime', [
+                'default' => null,
+                'limit' => null,
+                'null' => true,
+            ])
+            ->addColumn('created', 'datetime', [
+                'default' => null,
+                'limit' => null,
+                'null' => true,
+            ])
+            ->addColumn('modified', 'datetime', [
                 'default' => null,
                 'limit' => null,
                 'null' => true,
