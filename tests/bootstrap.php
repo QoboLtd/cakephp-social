@@ -102,6 +102,10 @@ Cake\Datasource\ConnectionManager::setConfig('test', [
     'timezone' => 'UTC'
 ]);
 
+// Setup a sample encryption key for credentials
+// @link https://book.cakephp.org/3.0/en/core-libraries/security.html#encrypting-and-decrypting-data
+Configure::write('Qobo/Social.encrypt.key', 'wt1U5MACWJFTXGenFoZoiLwQGrLgdbHA1');
+
 // Alias AppController to the test App
 class_alias('Qobo\\' . $pluginName . '\Test\App\Controller\AppController', 'App\Controller\AppController');
 // If plugin has routes.php/bootstrap.php then load them, otherwise don't.

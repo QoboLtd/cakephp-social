@@ -1,10 +1,11 @@
 <?php
 namespace Qobo\Social\Model\Table;
 
-use Cake\ORM\Query;
+use Cake\Core\Configure;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Qobo\Social\Model\Entity\Account;
 
 /**
  * Accounts Model
@@ -21,6 +22,7 @@ use Cake\Validation\Validator;
  * @method \Qobo\Social\Model\Entity\Account[] patchEntities($entities, array $data, array $options = [])
  * @method \Qobo\Social\Model\Entity\Account findOrCreate($search, callable $callback = null, $options = [])
  *
+ * @mixin \Qobo\Utils\Model\Behavior\EncryptedFieldsBehavior
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class AccountsTable extends Table
@@ -41,6 +43,17 @@ class AccountsTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Qobo/Utils.EncryptedFields', [
+            'enabled' => function (Account $entity) {
+                $enabled = Configure::read('Qobo/Social.encrypt.enabled', true);
+
+                return ($enabled === false)? $enabled : $entity->is_ours;
+            },
+            'encryptionKey' => Configure::readOrFail('Qobo/Social.encrypt.key'),
+            'fields' => [
+                'credentials',
+            ],
+        ]);
 
         $this->belongsTo('Networks', [
             'foreignKey' => 'network_id',
