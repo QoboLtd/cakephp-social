@@ -20,6 +20,8 @@
             echo $this->Form->control('title');
             echo $this->Form->control('name');
             echo $this->Form->control('url');
+            echo $this->Form->control('oauth_consumer_key');
+            echo $this->Form->control('oauth_consumer_secret');
             echo $this->Form->control('active');
             echo $this->Form->control('trashed', ['empty' => true]);
         ?>

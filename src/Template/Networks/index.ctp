@@ -18,13 +18,13 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('title') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('url') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('active') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('trashed') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -32,13 +32,13 @@
             <?php foreach ($networks as $network): ?>
             <tr>
                 <td><?= h($network->id) ?></td>
-                <td><?= h($network->created) ?></td>
-                <td><?= h($network->modified) ?></td>
                 <td><?= h($network->title) ?></td>
                 <td><?= h($network->name) ?></td>
                 <td><?= h($network->url) ?></td>
                 <td><?= h($network->active) ?></td>
                 <td><?= h($network->trashed) ?></td>
+                <td><?= h($network->created) ?></td>
+                <td><?= h($network->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $network->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $network->id]) ?>
