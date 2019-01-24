@@ -3,9 +3,11 @@ namespace Qobo\Social\Test\TestCase\Controller;
 
 use Cake\Event\EventList;
 use Cake\Event\EventManager;
+use Cake\Http\Response;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\IntegrationTestCase;
 use Qobo\Social\Model\Entity\Account;
+use stdClass;
 
 /**
  * Qobo\Social\Controller\AccountsController Test Case
@@ -113,6 +115,91 @@ class AccountsControllerTest extends IntegrationTestCase
     {
         $this->post('/social/accounts/delete/00000000-0000-0000-0000-000000000001');
         $this->assertRedirect('/social/accounts');
+    }
+
+    /**
+     * Test connect method when no event listeners are defined for the given type
+     *
+     * @return void
+     */
+    public function testConnectNoDefinedEventListeners(): void
+    {
+        $this->eventManager->off('Qobo/Social.providers.twitter');
+        $this->get('/social/accounts/connect/twitter');
+        $this->assertResponseError();
+    }
+
+    /**
+     * Test connect method when no event listeners are defined for the given type
+     *
+     * @return void
+     */
+    public function testConnectProviderEventFired(): void
+    {
+        $this->eventManager->on('Qobo/Social.connectAccount.twitter', function ($event) {
+            return false; // stop event propagation
+        });
+
+        $this->get('/social/accounts/connect/twitter');
+        $this->assertEventFired('Qobo/Social.connectAccount.twitter');
+    }
+
+    /**
+     * Test connect method when no event listeners are defined for the given type
+     *
+     * @return void
+     */
+    public function testConnectResponseReturned(): void
+    {
+        $location = 'https://google.com';
+        $response = new Response();
+        $response = $response->withLocation($location);
+
+        $this->eventManager->on('Qobo/Social.connectAccount.twitter', function ($event) use ($response) {
+            return $response;
+        });
+
+        $this->get('/social/accounts/connect/twitter');
+        $this->assertEventFired('Qobo/Social.connectAccount.twitter');
+        $this->assertRedirect($location);
+    }
+
+    /**
+     * Test connect method when enclosed event doesn't return an Account entity.
+     *
+     * @return void
+     */
+    public function testConnectEventReturnsInvalidClass(): void
+    {
+        $this->eventManager->on('Qobo/Social.connectAccount.twitter', function ($event) {
+            return new stdClass();
+        });
+
+        $this->get('/social/accounts/connect/twitter');
+        $this->assertEventFired('Qobo/Social.connectAccount.twitter');
+        $this->assertResponseFailure();
+        $this->assertResponseContains('Event must return an instance of Account');
+    }
+
+    /**
+     * Test connect method
+     *
+     * @return void
+     */
+    public function testConnectSuccessful(): void
+    {
+        $entity = $this->getAccountEntity();
+        $this->eventManager->on('Qobo/Social.connectAccount.twitter', function ($event) use ($entity) {
+            return $entity;
+        });
+
+        $this->enableRetainFlashMessages();
+        $this->get('/social/accounts/connect/twitter');
+        $this->assertEventFired('Qobo/Social.connectAccount.twitter');
+
+        $id = $entity->get('id');
+        $this->assertNotEmpty($id);
+        $this->assertRedirect('/social/accounts/view/' . $id);
     }
 
     /**
