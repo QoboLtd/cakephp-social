@@ -1,7 +1,13 @@
 <?php
 namespace Qobo\Social\Controller;
 
+use Cake\Core\Configure;
+use Cake\Event\Event;
+use Cake\Http\Exception\NotFoundException;
+use Cake\Http\Response;
 use Qobo\Social\Controller\AppController;
+use Qobo\Social\Model\Entity\Account;
+use RuntimeException;
 
 /**
  * Accounts Controller
@@ -108,5 +114,56 @@ class AccountsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * Connect our own social network account.
+     *
+     * @param string $type Event name
+     * @return \Cake\Http\Response|null
+     */
+    public function connect(string $type): ?Response
+    {
+        $eventManager = $this->getEventManager();
+        $eventName = sprintf('Qobo/Social.connectAccount.%s', mb_strtolower($type));
+        $listeners = $eventManager->listeners($eventName);
+        if (empty($listeners)) {
+            throw new NotFoundException();
+        }
+
+        $event = new Event($eventName, $this, ['request' => $this->getRequest()]);
+        $eventManager->dispatch($event);
+        if ($event->isStopped()) {
+            throw new RuntimeException();
+        }
+
+        $result = $event->getResult();
+        if ($result instanceof Response) {
+            return $result;
+        }
+        if (!($result instanceof Account)) {
+            throw new RuntimeException('Event must return an instance of Account model.');
+        }
+
+        return $this->connectAccount($result);
+    }
+
+    /**
+     * Processes the result from {@link self::connect()} method and returns
+     * the appropriate response.
+     *
+     * @param \Qobo\Social\Model\Entity\Account $result Result.
+     * @return \Cake\Http\Response|null
+     */
+    protected function connectAccount(Account $result): ?Response
+    {
+        if (!$this->Accounts->save($result)) {
+            $this->Flash->error((string)__('Could not connect account.'));
+
+            return $this->redirect(['action' => 'index']);
+        }
+        $this->Flash->success((string)__('The account has been saved.'));
+
+        return $this->redirect(['action' => 'view', $result->get('id')]);
     }
 }
