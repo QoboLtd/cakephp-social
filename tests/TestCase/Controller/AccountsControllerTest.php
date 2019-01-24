@@ -1,7 +1,11 @@
 <?php
 namespace Qobo\Social\Test\TestCase\Controller;
 
+use Cake\Event\EventList;
+use Cake\Event\EventManager;
+use Cake\ORM\TableRegistry;
 use Cake\TestSuite\IntegrationTestCase;
+use Qobo\Social\Model\Entity\Account;
 
 /**
  * Qobo\Social\Controller\AccountsController Test Case
@@ -19,6 +23,42 @@ class AccountsControllerTest extends IntegrationTestCase
         'plugin.qobo/social.networks',
         'plugin.qobo/social.posts',
     ];
+
+    /**
+     * Event manager.
+     *
+     * @var \Cake\Event\EventManager;
+     */
+    protected $eventManager;
+
+    /**
+     * Accounts table
+     *
+     * @var \Qobo\Social\Model\Table\AccountsTable
+     */
+    protected $Accounts;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        /** @var \Qobo\Social\Model\Table\AccountsTable $table */
+        $table = TableRegistry::getTableLocator()->get('Qobo/Social.Accounts');
+        $this->Accounts = $table;
+        $this->eventManager = EventManager::instance()->setEventList(new EventList());
+        $this->eventManager->trackEvents(true);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function tearDown(): void
+    {
+        unset($this->eventManager);
+    }
 
     /**
      * Test index method
