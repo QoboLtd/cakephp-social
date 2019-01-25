@@ -6,7 +6,9 @@ use Cake\Event\EventManager;
 use Cake\Http\Response;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\IntegrationTestCase;
+use Qobo\Social\Event\EventName;
 use Qobo\Social\Model\Entity\Account;
+use Qobo\Social\Model\Table\AccountsTable;
 use stdClass;
 
 /**
@@ -48,10 +50,12 @@ class AccountsControllerTest extends IntegrationTestCase
         parent::setUp();
 
         /** @var \Qobo\Social\Model\Table\AccountsTable $table */
-        $table = TableRegistry::getTableLocator()->get('Qobo/Social.Accounts');
+        $table = TableRegistry::getTableLocator()->get('Qobo/Social.Accounts', ['className' => AccountsTable::class]);
         $this->Accounts = $table;
         $this->eventManager = EventManager::instance()->setEventList(new EventList());
         $this->eventManager->trackEvents(true);
+
+        $this->eventManager->off((string)EventName::QOBO_SOCIAL_CONNECT_TWITTER());
     }
 
     /**
@@ -124,7 +128,6 @@ class AccountsControllerTest extends IntegrationTestCase
      */
     public function testConnectNoDefinedEventListeners(): void
     {
-        $this->eventManager->off('Qobo/Social.providers.twitter');
         $this->get('/social/accounts/connect/twitter');
         $this->assertResponseError();
     }
@@ -136,12 +139,12 @@ class AccountsControllerTest extends IntegrationTestCase
      */
     public function testConnectProviderEventFired(): void
     {
-        $this->eventManager->on('Qobo/Social.connectAccount.twitter', function ($event) {
+        $this->eventManager->on((string)EventName::QOBO_SOCIAL_CONNECT_TWITTER(), function ($event) {
             return false; // stop event propagation
         });
 
         $this->get('/social/accounts/connect/twitter');
-        $this->assertEventFired('Qobo/Social.connectAccount.twitter');
+        $this->assertEventFired((string)EventName::QOBO_SOCIAL_CONNECT_TWITTER());
     }
 
     /**
@@ -155,12 +158,12 @@ class AccountsControllerTest extends IntegrationTestCase
         $response = new Response();
         $response = $response->withLocation($location);
 
-        $this->eventManager->on('Qobo/Social.connectAccount.twitter', function ($event) use ($response) {
+        $this->eventManager->on((string)EventName::QOBO_SOCIAL_CONNECT_TWITTER(), function ($event) use ($response) {
             return $response;
         });
 
         $this->get('/social/accounts/connect/twitter');
-        $this->assertEventFired('Qobo/Social.connectAccount.twitter');
+        $this->assertEventFired((string)EventName::QOBO_SOCIAL_CONNECT_TWITTER());
         $this->assertRedirect($location);
     }
 
@@ -171,12 +174,12 @@ class AccountsControllerTest extends IntegrationTestCase
      */
     public function testConnectEventReturnsInvalidClass(): void
     {
-        $this->eventManager->on('Qobo/Social.connectAccount.twitter', function ($event) {
+        $this->eventManager->on((string)EventName::QOBO_SOCIAL_CONNECT_TWITTER(), function ($event) {
             return new stdClass();
         });
 
         $this->get('/social/accounts/connect/twitter');
-        $this->assertEventFired('Qobo/Social.connectAccount.twitter');
+        $this->assertEventFired((string)EventName::QOBO_SOCIAL_CONNECT_TWITTER());
         $this->assertResponseFailure();
         $this->assertResponseContains('Event must return an instance of Account');
     }
@@ -189,13 +192,13 @@ class AccountsControllerTest extends IntegrationTestCase
     public function testConnectSuccessful(): void
     {
         $entity = $this->getAccountEntity();
-        $this->eventManager->on('Qobo/Social.connectAccount.twitter', function ($event) use ($entity) {
+        $this->eventManager->on((string)EventName::QOBO_SOCIAL_CONNECT_TWITTER(), function ($event) use ($entity) {
             return $entity;
         });
 
         $this->enableRetainFlashMessages();
         $this->get('/social/accounts/connect/twitter');
-        $this->assertEventFired('Qobo/Social.connectAccount.twitter');
+        $this->assertEventFired((string)EventName::QOBO_SOCIAL_CONNECT_TWITTER());
 
         $id = $entity->get('id');
         $this->assertNotEmpty($id);
