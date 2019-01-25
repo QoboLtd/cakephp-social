@@ -2,11 +2,16 @@
 namespace Qobo\Social\Test\TestCase\Event\Twitter;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
-
+use Cake\Event\Event;
+use Cake\Http\ServerRequest;
+use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Qobo\Social\Event\EventName;
+use Qobo\Social\Event\Twitter\ConnectTwitterAccountListener;
+use RuntimeException;
 
 /**
- * Qobo\Social\Event\Twitter\ConnectTwitterAccountListenerTest Test Case
+ * Qobo\Social\Event\Twitter\ConnectTwitterAccountListener Test Case
  */
 class ConnectTwitterAccountListenerTest extends TestCase
 {
@@ -16,7 +21,7 @@ class ConnectTwitterAccountListenerTest extends TestCase
      *
      * @var string
      */
-    const MOCK_URL = 'https://google.com';
+    const MOCK_URL = 'https://api.twitter.com/some/endpoint';
 
     /**
      * Fixtures
@@ -29,11 +34,20 @@ class ConnectTwitterAccountListenerTest extends TestCase
     ];
 
     /**
+     * Listener
+     *
+     * @var \Qobo\Social\Event\Twitter\ConnectTwitterAccountListener
+     */
+    protected $Listener;
+
+    /**
      * {@inheritDoc}
      */
     public function setUp(): void
     {
         parent::setUp();
+
+        $this->Listener = new ConnectTwitterAccountListener();
     }
 
     /**
@@ -41,7 +55,45 @@ class ConnectTwitterAccountListenerTest extends TestCase
      */
     public function tearDown(): void
     {
+        unset($this->Listener);
+
         parent::tearDown();
+    }
+
+    /**
+     * Test twitter connection setter/getter
+     *
+     * @return void
+     */
+    public function testSetGetTwitterConnection(): void
+    {
+        $connection = $this->getConnectionMock();
+        $this->Listener->setConnection($connection);
+        $this->assertSame($connection, $this->Listener->getConnection());
+    }
+
+    /**
+     * Test twitter connection getter returns new instance
+     *
+     * @return void
+     */
+    public function testGetTwitterConnectionWhenNotSet(): void
+    {
+        $connection = $this->Listener->getConnection();
+        $this->assertInstanceOf('Abraham\TwitterOAuth\TwitterOAuth', $connection);
+    }
+
+    /**
+     * Test twitter network getter fails when network cannot be found
+     *
+     * @return void
+     */
+    public function testGetTwitterNetworkGetterFail(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $networks = TableRegistry::getTableLocator()->get('Networks');
+        $networks->deleteAll(['name' => ConnectTwitterAccountListener::NETWORK_NAME]);
+        $network = $this->Listener->getNetwork();
     }
 
     /**
