@@ -152,7 +152,36 @@ class ConnectTwitterAccountListenerTest extends TestCase
     }
 
     /**
-     * Test get request token
+     * Test when oauth token from query params doesn't match oauth token in session
+     *
+     * @return void
+     */
+    public function testOAuthTokenDoesntMatchSession(): void
+    {
+        $request = new ServerRequest();
+        $event = $this->getEvent($request);
+        /** @var \PHPUnit\Framework\MockObject\MockObject&\Abraham\TwitterOAuth\TwitterOAuth $connection */
+        $connection = $this->getConnectionMock();
+        $session = [
+            'oauthToken' => 'bad token',
+        ];
+        $request->getSession()->write('Twitter.connectAccount', $session);
+        $request = $request->withQueryParams([
+            'oauth_token' => self::OAUTH_TOKEN,
+        ]);
+
+        $connection->expects($this->never())
+            ->method('oauth');
+
+        $this->Listener->setConnection($connection);
+
+        /** @var false $response */
+        $response = $this->Listener->connect($event, $request);
+        $this->assertFalse($response);
+    }
+
+    /**
+     * Test get access token
      *
      * @return void
      */
