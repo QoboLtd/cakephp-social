@@ -10,6 +10,8 @@ use Qobo\Social\Event\EventName;
 use Qobo\Social\Event\Twitter\ConnectTwitterAccountListener;
 use RuntimeException;
 
+use Qobo\Social\Model\Table\NetworksTable;
+
 /**
  * Qobo\Social\Event\Twitter\ConnectTwitterAccountListener Test Case
  */
@@ -82,6 +84,20 @@ class ConnectTwitterAccountListenerTest extends TestCase
     }
 
     /**
+     * Test which events are implemented
+     *
+     * @return void
+     */
+    public function testImplementedEvents(): void
+    {
+        $expected = [
+            (string)EventName::QOBO_SOCIAL_CONNECT_TWITTER()
+        ];
+        $actual = $this->Listener->implementedEvents();
+        $this->assertEquals($expected, array_keys($actual));
+    }
+
+    /**
      * Test twitter connection setter/getter
      *
      * @return void
@@ -113,7 +129,7 @@ class ConnectTwitterAccountListenerTest extends TestCase
     public function testGetTwitterNetworkGetterFail(): void
     {
         $this->expectException(RuntimeException::class);
-        $networks = TableRegistry::getTableLocator()->get('Networks');
+        $networks = TableRegistry::getTableLocator()->get('Networks', ['className' => NetworksTable::class]);
         $networks->deleteAll(['name' => ConnectTwitterAccountListener::NETWORK_NAME]);
         $network = $this->Listener->getNetwork();
     }
