@@ -76,17 +76,15 @@ class ConnectTwitterAccountListener implements EventListenerInterface
 
         // Step 2: Authorize with oauth token
         $data = $session->consume('Twitter.connectAccount');
-        if ($oauthToken === $data['oauthToken']) {
-            $oauthVerifier = $request->getQuery('oauth_verifier');
-
-            // Step 3: Get the access token
-            $accessToken = $this->getAccessToken($data['oauthToken'], $data['oauthTokenSecret'], $oauthVerifier);
-            $session->write('Twitter.accessToken', $accessToken);
-
-            return $this->registerAccount($accessToken);
+        if ($oauthToken !== $data['oauthToken'] || empty($data['oauthTokenSecret'])) {
+            return false;
         }
 
-        return false;
+        // Step 3: Get the access token
+        $oauthVerifier = $request->getQuery('oauth_verifier') ?? '';
+        $accessToken = $this->getAccessToken($data['oauthToken'], $data['oauthTokenSecret'], $oauthVerifier);
+
+        return $this->registerAccount($accessToken);
     }
 
     /**
