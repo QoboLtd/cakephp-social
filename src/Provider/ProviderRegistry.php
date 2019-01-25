@@ -17,9 +17,15 @@ class ProviderRegistry
 
     /**
      * Registered providers
-     * @var \Qobo\Social\Provider\ProviderInterface[]
+     * @var mixed[]
      */
     protected $providers = [];
+
+    /**
+     * Registered provider instances
+     * @var \Qobo\Social\Provider\ProviderInterface[]
+     */
+    protected $providerInstances = [];
 
     /**
      * Private constructor.
@@ -55,18 +61,52 @@ class ProviderRegistry
      * Registers a provider.
      *
      * @param string $name Provider's name
-     * @param ProviderInterface $provider Provider object.
+     * @param string|array $provider Provider class name, or array of class name and config.
      * @param bool $overwrite True to overwrite
      * @return void
      * @throws \InvalidArgumentException When `overwrite` flag set to false, and provider already registered.
      */
-    public function set(string $name, ProviderInterface $provider, bool $overwrite = false): void
+    public function set(string $name, $provider, bool $overwrite = false): void
     {
-        if ($overwrite === false && $this->exists($name)) {
+        if ($overwrite === false && isset($this->providers[$name])) {
             throw new InvalidArgumentException("Provider `{$name}` has already been registered. Set `overwrite` to ignore.");
         }
 
-        $this->providers[$name] = $provider;
+        $definition = $this->getProviderConfig($provider);
+        $this->providers[$name] = $definition;
+    }
+
+    /**
+     * Returns the full provider config.
+     *
+     * @param string|array $provider Provider class name, or array of class name and config.
+     * @return mixed[] Provider config.
+     */
+    protected function getProviderConfig($provider): array
+    {
+        $providerConfig = [
+            'className' => '',
+            'config' => [],
+        ];
+
+        if (!is_string($provider) && !is_array($provider)) {
+            throw new InvalidArgumentException('Provider must be a string class name, or array of class name and config.');
+        }
+
+        $className = $provider;
+        if (is_array($provider)) {
+            $className = $provider['className'] ?? '';
+        }
+        if (!class_exists($className)) {
+            throw new InvalidArgumentException("Provider class `$className` does not exist.");
+        }
+        $providerConfig['className'] = $className;
+
+        if (!empty($provider['config'])) {
+            $providerConfig['config'] = $provider['config'];
+        }
+
+        return $providerConfig;
     }
 
     /**
@@ -78,11 +118,23 @@ class ProviderRegistry
      */
     public function get(string $name): ProviderInterface
     {
-        if (!$this->exists($name)) {
+        if (!isset($this->providers[$name])) {
             throw new InvalidArgumentException("Provider `{$name}` is not registered.");
         }
 
-        return $this->providers[$name];
+        if (!isset($this->providerInstances[$name])) {
+            $className = $this->providers[$name]['className'];
+            $providerConfig = $this->providers[$name]['config'];
+            $class = new $className($providerConfig);
+
+            $uses = class_uses($class);
+            if (in_array('Cake\Core\InstanceConfigTrait', $uses)) {
+                $class->setConfig($providerConfig);
+            }
+            $this->providerInstances[$name] = $class;
+        }
+
+        return $this->providerInstances[$name];
     }
 
     /**
