@@ -8,9 +8,8 @@ use Cake\TestSuite\TestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Qobo\Social\Event\EventName;
 use Qobo\Social\Event\Twitter\ConnectTwitterAccountListener;
-use RuntimeException;
-
 use Qobo\Social\Model\Table\NetworksTable;
+use RuntimeException;
 
 /**
  * Qobo\Social\Event\Twitter\ConnectTwitterAccountListener Test Case
