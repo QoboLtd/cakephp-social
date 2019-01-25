@@ -97,6 +97,28 @@ class ConnectTwitterAccountListenerTest extends TestCase
     }
 
     /**
+     * Test get request token
+     *
+     * @return void
+     */
+    public function testGetRequestToken(): void
+    {
+        $request = new ServerRequest();
+        $event = $this->getEvent($request);
+        $connection = $this->getConnectionMock();
+        $token = [
+            'oauth_token' => 'token',
+            'oauth_token_secret' => 'secret',
+        ];
+        $conection->expects($this->once())
+            ->method('oauth')
+            ->will($this->returnValue($token));
+
+        $this->Listener->setConnection($connection);
+        $response = $this->Listener->connect($event, $request);
+    }
+
+    /**
      * Returns a twitter connection mock object.
      *
      * @return \Abraham\TwitterOAuth\TwitterOAuth
@@ -113,5 +135,18 @@ class ConnectTwitterAccountListenerTest extends TestCase
             ->will($this->returnValue(self::MOCK_URL));
 
         return $connection;
+    }
+
+    /**
+     * Returns an event object.
+     *
+     * @param \Cake\Http\ServerRequest $request Request object.
+     * @return \Cake\Event\Event
+     */
+    protected function getEvent(ServerRequest $request): Event
+    {
+        $event = new Event((string)EventName::QOBO_SOCIAL_CONNECT_TWITTER(), $this, [$request]);
+
+        return $event;
     }
 }
