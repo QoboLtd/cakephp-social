@@ -95,7 +95,7 @@ class ConnectTwitterAccountListener implements EventListenerInterface
      * @throws \RuntimeException When twitter network cannot be found.
      * @return \Qobo\Social\Model\Entity\Network Network entity.
      */
-    protected function getNetwork(): Network
+    public function getNetwork(): Network
     {
         if (!($this->network instanceof Network)) {
             // Find network and create a new entity
@@ -116,7 +116,7 @@ class ConnectTwitterAccountListener implements EventListenerInterface
      *
      * @return \Abraham\TwitterOAuth\TwitterOAuth Twitter connection object.
      */
-    protected function getConnection(): TwitterOAuth
+    public function getConnection(): TwitterOAuth
     {
         if (!($this->connection instanceof TwitterOAuth)) {
             $this->setConnection();
@@ -131,7 +131,7 @@ class ConnectTwitterAccountListener implements EventListenerInterface
      * @param \Abraham\TwitterOAuth\TwitterOAuth|null $connection Optional connection object.
      * @return void
      */
-    protected function setConnection(?TwitterOAuth $connection = null): void
+    public function setConnection(?TwitterOAuth $connection = null): void
     {
         if ($connection === null) {
             $consumerKey = $this->getNetwork()->oauth_consumer_key;
