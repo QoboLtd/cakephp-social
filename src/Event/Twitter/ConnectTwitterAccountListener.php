@@ -37,16 +37,6 @@ class ConnectTwitterAccountListener implements EventListenerInterface
     protected $connection;
 
     /**
-     * Class constructor
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->network = $this->getNetwork();
-    }
-
-    /**
      * {@inheritDoc}
      */
     public function implementedEvents()
@@ -107,14 +97,18 @@ class ConnectTwitterAccountListener implements EventListenerInterface
      */
     protected function getNetwork(): Network
     {
-        // Find network and create a new entity
-        $networks = TableRegistry::getTableLocator()->get('Qobo/Social.Networks');
-        $network = $networks->find('all', ['name' => self::NETWORK_NAME])->find('decrypt');
-        if ($network->count() === 0) {
-            throw new RuntimeException('Twitter network is not defined in the system.');
+        if (!($this->network instanceof Network)) {
+            // Find network and create a new entity
+            $networks = TableRegistry::getTableLocator()->get('Qobo/Social.Networks');
+            $network = $networks->find('all', ['name' => self::NETWORK_NAME])->find('decrypt');
+            if ($network->count() === 0) {
+                throw new RuntimeException('Twitter network is not defined in the system.');
+            }
+
+            $this->network = $network->first();
         }
 
-        return $network->first();
+        return $this->network;
     }
 
     /**
@@ -140,8 +134,8 @@ class ConnectTwitterAccountListener implements EventListenerInterface
     protected function setConnection(?TwitterOAuth $connection = null): void
     {
         if ($connection === null) {
-            $consumerKey = $this->network->oauth_consumer_key;
-            $consumerSecret = $this->network->oauth_consumer_secret;
+            $consumerKey = $this->getNetwork()->oauth_consumer_key;
+            $consumerSecret = $this->getNetwork()->oauth_consumer_secret;
             $connection = new TwitterOAuth($consumerKey, $consumerSecret);
         }
 
@@ -156,8 +150,8 @@ class ConnectTwitterAccountListener implements EventListenerInterface
      */
     protected function getRequestToken(): array
     {
-        $consumerKey = $this->network->oauth_consumer_key;
-        $consumerSecret = $this->network->oauth_consumer_secret;
+        $consumerKey = $this->getNetwork()->oauth_consumer_key;
+        $consumerSecret = $this->getNetwork()->oauth_consumer_secret;
         $connection = new TwitterOAuth($consumerKey, $consumerSecret);
         $callbackUrl = Router::url(
             [
@@ -204,7 +198,7 @@ class ConnectTwitterAccountListener implements EventListenerInterface
             'handle' => $accessToken['screen_name'],
             'is_ours' => true,
             'credentials' => json_encode($accessToken),
-            'network_id' => $this->network->id,
+            'network_id' => $this->getNetwork()->id,
         ];
         $accounts = TableRegistry::getTableLocator()->get('Qobo/Social.Accounts');
         $entity = $accounts->patchEntity($entity, $data, [
