@@ -50,7 +50,7 @@ class ProviderRegistry
      */
     public static function getInstance(): ProviderRegistry
     {
-        if (!static::$instance) {
+        if (!(static::$instance instanceof self)) {
             static::$instance = new static();
         }
 
@@ -129,6 +129,7 @@ class ProviderRegistry
 
             $uses = class_uses($class);
             if (in_array('Cake\Core\InstanceConfigTrait', $uses)) {
+                /** @var \Cake\Core\InstanceConfigTrait $class */
                 $class->setConfig($providerConfig);
             }
             $this->providerInstances[$name] = $class;
