@@ -76,13 +76,17 @@ class ConnectTwitterAccountListener implements EventListenerInterface
 
         // Step 2: Authorize with oauth token
         $data = $session->consume('Twitter.connectAccount');
-        if ($oauthToken !== $data['oauthToken'] || empty($data['oauthTokenSecret'])) {
+        $sessionOauthToken = (string)$data['oauthToken'] ?? '';
+        $sessionOauthTokenSecret = (string)$data['oauthTokenSecret'] ?? '';
+        if ($oauthToken !== $sessionOauthToken || empty($sessionOauthTokenSecret)) {
             return false;
         }
 
         // Step 3: Get the access token
+        /** @var string $oauthVerifier */
         $oauthVerifier = $request->getQuery('oauth_verifier') ?? '';
-        $accessToken = $this->getAccessToken($data['oauthToken'], $data['oauthTokenSecret'], $oauthVerifier);
+        $accessToken = $this->getAccessToken($sessionOauthToken, $sessionOauthTokenSecret, $oauthVerifier);
+        $session->write('Twitter.token', $accessToken);
 
         return $this->registerAccount($accessToken);
     }
@@ -98,12 +102,13 @@ class ConnectTwitterAccountListener implements EventListenerInterface
         if (!($this->network instanceof Network)) {
             // Find network and create a new entity
             $networks = TableRegistry::getTableLocator()->get('Qobo/Social.Networks');
-            $network = $networks->find('all', ['name' => self::NETWORK_NAME])->find('decrypt');
-            if ($network->count() === 0) {
+            $query = $networks->find('all', ['name' => self::NETWORK_NAME])->find('decrypt');
+            if ($query->count() === 0) {
                 throw new RuntimeException('Twitter network is not defined in the system.');
             }
-
-            $this->network = $network->first();
+            /** @var \Qobo\Social\Model\Entity\Network $network */
+            $network = $query->first();
+            $this->network = $network;
         }
 
         return $this->network;
@@ -199,6 +204,7 @@ class ConnectTwitterAccountListener implements EventListenerInterface
             'network_id' => $this->getNetwork()->id,
         ];
         $accounts = TableRegistry::getTableLocator()->get('Qobo/Social.Accounts');
+        /** @var \Qobo\Social\Model\Entity\Account */
         $entity = $accounts->patchEntity($entity, $data, [
             'accessibleFields' => [
                 'credentials' => true,
@@ -218,14 +224,18 @@ class ConnectTwitterAccountListener implements EventListenerInterface
     {
         // Check whether account already exists
         $accounts = TableRegistry::getTableLocator()->get('Qobo/Social.Accounts');
-        $existingAccount = $accounts->query()->where(['handle' => $handle])->matching('Networks', function ($q) {
+        $query = $accounts->query()->where(['handle' => $handle])->matching('Networks', function ($q) {
             return $q->where(['Networks.name' => self::NETWORK_NAME]);
         });
 
-        if ($existingAccount->count() > 0) {
-            return $existingAccount->first();
+        /** @var \Qobo\Social\Model\Entity\Account $account */
+        $account = $accounts->newEntity();
+
+        if ($query->count() > 0) {
+            /** @var \Qobo\Social\Model\Entity\Account $account */
+            $account = $query->first();
         }
 
-        return $accounts->newEntity();
+        return $account;
     }
 }
