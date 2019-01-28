@@ -75,11 +75,11 @@ class TwitterPremiumSearchProviderTest extends TestCase
     }
 
     /**
-     * Test initialize method
+     * Test read tweets
      *
      * @return void
      */
-    public function testInstance(): void
+    public function testRead(): void
     {
         /** @var \Qobo\Social\Model\Entity\Network $network */
         $network = $this->Networks->find('all')->where(['name' => 'twitter'])->first();
