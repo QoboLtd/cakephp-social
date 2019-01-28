@@ -6,6 +6,7 @@ use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\ORM\TableRegistry;
 use InvalidArgumentException;
 use Qobo\Social\Model\Entity\Network;
+use Qobo\Social\Utility\ClassUtility;
 
 /**
  * Provider Registry singleton class
@@ -208,7 +209,8 @@ class ProviderRegistry
         $providerConfig = $this->providers[$network][$name]['config'];
         $class = new $className($providerConfig);
 
-        $uses = class_uses($class);
+        /** @var array $uses */
+        $uses = ClassUtility::classUses($class, true);
         if (in_array('Cake\Core\InstanceConfigTrait', $uses)) {
             /** @var \Cake\Core\InstanceConfigTrait $class */
             $class->setConfig($providerConfig);
