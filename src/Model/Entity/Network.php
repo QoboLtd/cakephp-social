@@ -40,13 +40,6 @@ class Network extends Entity
     ];
 
     /**
-     * Provider
-     * @todo change signature
-     * @var mixed
-     */
-    protected $provider;
-
-    /**
      * Returns a social provider.
      *
      * @param string $providerName Provider name.
