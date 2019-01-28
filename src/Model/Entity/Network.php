@@ -2,6 +2,9 @@
 namespace Qobo\Social\Model\Entity;
 
 use Cake\ORM\Entity;
+use InvalidArgumentException;
+use Qobo\Social\Provider\ProviderInterface;
+use Qobo\Social\Provider\ProviderRegistry;
 
 /**
  * Network Entity
@@ -35,4 +38,23 @@ class Network extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    /**
+     * Returns a social provider.
+     *
+     * @param string $providerName Provider name.
+     * @return \Qobo\Social\Provider\ProviderInterface Provider object.
+     */
+    public function getSocialProvider(string $providerName): ProviderInterface
+    {
+        $registry = ProviderRegistry::getInstance();
+        if (!$registry->exists($this->name, $providerName)) {
+            throw new InvalidArgumentException("`{$providerName}` is not a valid social provider.");
+        }
+
+        $provider = $registry->get($this->name, $providerName);
+        $provider->setCredentials($this->oauth_consumer_key, $this->oauth_consumer_secret);
+
+        return $provider;
+    }
 }
