@@ -102,6 +102,8 @@ class NetworksTableTest extends TestCase
      */
     public function testEntityGetSocialProvider(): void
     {
+        ProviderRegistry::resetInstance();
+
         // Add test provider to the registry.
         $registry = ProviderRegistry::getInstance();
         $registry->set('twitter', 'test', TestProvider::class);
@@ -123,6 +125,8 @@ class NetworksTableTest extends TestCase
      */
     public function testEntityGetInvalidSocialProvider(): void
     {
+        ProviderRegistry::resetInstance();
+
         $this->expectException(InvalidArgumentException::class);
 
         /** @var \Qobo\Social\Model\Entity\Network $network */
