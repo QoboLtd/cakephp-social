@@ -82,9 +82,21 @@ class ProviderRegistry
      *
      * @return void
      */
-    public static function resetInstance(): void
+    public static function clearRegistry(): void
     {
-        static::$instance = null;
+        self::getInstance()->clear();
+    }
+
+    /**
+     * Resets the instance.
+     *
+     * @return void
+     */
+    public function clear(): void
+    {
+        $this->networks = [];
+        $this->providers = [];
+        $this->providerInstances = [];
     }
 
     /**

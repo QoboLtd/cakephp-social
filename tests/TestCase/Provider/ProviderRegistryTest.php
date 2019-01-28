@@ -64,7 +64,7 @@ class ProviderRegistryTest extends TestCase
      */
     public function tearDown(): void
     {
-        $this->Registry::resetInstance();
+        $this->Registry->clear();
         unset($this->Networks);
         unset($this->Registry);
 

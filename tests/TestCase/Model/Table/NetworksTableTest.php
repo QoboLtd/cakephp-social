@@ -101,7 +101,7 @@ class NetworksTableTest extends TestCase
      */
     public function testEntityGetSocialProvider(): void
     {
-        ProviderRegistry::resetInstance();
+        ProviderRegistry::clearRegistry();
 
         // Add test provider to the registry.
         $registry = ProviderRegistry::getInstance();
@@ -124,7 +124,7 @@ class NetworksTableTest extends TestCase
      */
     public function testEntityGetInvalidSocialProvider(): void
     {
-        ProviderRegistry::resetInstance();
+        ProviderRegistry::clearRegistry();
 
         $this->expectException(InvalidArgumentException::class);
 
