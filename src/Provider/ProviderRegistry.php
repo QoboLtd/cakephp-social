@@ -16,7 +16,7 @@ class ProviderRegistry
      * Singleton instance.
      * @var \Qobo\Social\Provider\ProviderRegistry
      */
-    protected static $instance;
+    private static $instance;
 
     /**
      * Networks
@@ -53,6 +53,15 @@ class ProviderRegistry
     }
 
     /**
+     * Protect from serialization.
+     *
+     * @return void
+     */
+    private function __wakeup()
+    {
+    }
+
+    /**
      * Returns a singleton instance of ProviderRegistry.
      *
      * @return \Qobo\Social\Provider\ProviderRegistry
@@ -64,6 +73,16 @@ class ProviderRegistry
         }
 
         return static::$instance;
+    }
+
+    /**
+     * Resets the instance.
+     *
+     * @return void
+     */
+    public static function resetInstance(): void
+    {
+        static::$instance = null;
     }
 
     /**
