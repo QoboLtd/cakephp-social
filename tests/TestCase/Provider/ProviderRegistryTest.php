@@ -84,7 +84,6 @@ class ProviderRegistryTest extends TestCase
     /**
      * Test initialize method
      *
-     * @covers ProviderRegistry::getInstance
      * @return void
      */
     public function testInstance(): void
