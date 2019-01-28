@@ -32,7 +32,7 @@ class ProviderRegistry
 
     /**
      * Registered provider instances
-     * @var \Qobo\Social\Provider\ProviderInterface[]
+     * @var mixed[]
      */
     protected $providerInstances = [];
 
@@ -97,11 +97,11 @@ class ProviderRegistry
      */
     public function set($network, string $name, $provider, bool $overwrite = false): void
     {
-        if ($overwrite === false && isset($this->providers[$name])) {
-            throw new InvalidArgumentException("Provider `{$name}` has already been registered. Set `overwrite` to ignore.");
+        $network = $this->getNetwork($network);
+        if ($overwrite === false && isset($this->providers[$network->name][$name])) {
+            throw new InvalidArgumentException("Provider `{$name}` for network `{$network->name}` has already been registered. Set `overwrite` to ignore.");
         }
 
-        $network = $this->getNetwork($network);
         $definition = $this->getProviderConfig($provider);
         $this->providers[$network->name][$name] = $definition;
     }
