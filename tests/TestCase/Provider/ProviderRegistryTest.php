@@ -150,6 +150,7 @@ class ProviderRegistryTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         try {
+            /** @var string $badType */
             $badType = 123;
             $this->Registry->set('twitter', 'test', $badType);
         } catch (InvalidArgumentException $e) {
@@ -165,9 +166,9 @@ class ProviderRegistryTest extends TestCase
     public function testProviderConfigArrayWithoutClassName(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        $class = '';
 
         try {
-            $class = '';
             $this->Registry->set('twitter', 'test', ['clsName' => TestProvider::class]);
         } catch (InvalidArgumentException $e) {
             $this->assertContains("Provider class `$class` does not exist.", $e->getMessage());
@@ -182,9 +183,9 @@ class ProviderRegistryTest extends TestCase
     public function testProviderConfigInvalidClass(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        $class = 'SomeBadClass';
 
         try {
-            $class = 'SomeBadClass';
             $this->Registry->set('twitter', 'test', $class);
         } catch (InvalidArgumentException $e) {
             $this->assertContains("Provider class `$class` does not exist.", $e->getMessage());
@@ -214,6 +215,7 @@ class ProviderRegistryTest extends TestCase
      */
     public function testPassNetworkEntity(): void
     {
+        /** @var \Qobo\Social\Model\Entity\Network $network */
         $network = $this->Networks->find('all')->where(['name' => 'twitter'])->first();
         $this->assertNotNull($network);
 
@@ -228,6 +230,7 @@ class ProviderRegistryTest extends TestCase
     public function testPassInvalidNetworkType(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        /** @var \Qobo\Social\Model\Entity\Network $network */
         $network = 123;
 
         try {

@@ -14,7 +14,7 @@ class ProviderRegistry
 {
     /**
      * Singleton instance.
-     * @var \Qobo\Social\Provider\ProviderRegistry
+     * @var \Qobo\Social\Provider\ProviderRegistry|null
      */
     private static $instance;
 
