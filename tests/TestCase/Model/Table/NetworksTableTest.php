@@ -1,15 +1,14 @@
 <?php
 namespace Qobo\Social\Test\TestCase\Model\Table;
 
-use InvalidArgumentException;
-
 use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
+use InvalidArgumentException;
 use Qobo\Social\Model\Table\NetworksTable;
-use Qobo\Social\Provider\ProviderRegistry;
 use Qobo\Social\Provider\ProviderInterface;
+use Qobo\Social\Provider\ProviderRegistry;
 use Qobo\Social\Test\App\Provider\TestProvider;
 
 /**
