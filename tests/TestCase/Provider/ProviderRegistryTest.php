@@ -248,4 +248,32 @@ class ProviderRegistryTest extends TestCase
         $networkName = 'bad-network';
         $this->Registry->set($networkName, 'test', TestProvider::class);
     }
+
+    /**
+     * Test remove provider
+     */
+    public function testRemoveProvider(): void
+    {
+        $this->Registry->set('twitter', 'test', TestProvider::class);
+        $exists = $this->Registry->exists('twitter', 'test');
+        $this->assertTrue($exists);
+
+        $this->Registry->remove('twitter', 'test');
+        $exists = $this->Registry->exists('twitter', 'test');
+        $this->assertFalse($exists);
+    }
+
+    /**
+     * Test collection helper method
+     */
+    public function testGetCollection(): void
+    {
+        $this->Registry->set('twitter', 'foo', TestProvider::class);
+        $this->Registry->set('twitter', 'bar', TestProvider::class);
+        $collection = $this->Registry->getCollection();
+
+        $this->assertInstanceOf('Cake\Collection\Collection', $collection);
+        $this->assertCount(1, $collection);
+        $this->assertCount(2, $collection->first());
+    }
 }
