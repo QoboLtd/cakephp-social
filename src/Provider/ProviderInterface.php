@@ -7,10 +7,18 @@ namespace Qobo\Social\Provider;
 interface ProviderInterface
 {
     /**
-     * Sets which network this provider belongs to.
+     * Sets the provider consumer credentials.
      *
-     * @param mixed $network Network.
+     * @param string $key Consumer key.
+     * @param string $secret Consumer secret.
      * @return void
      */
-    public function setNetwork($network): void;
+    public function setCredentials(string $key, string $secret): void;
+
+    /**
+     * Reads the provider endpoint data.
+     *
+     * @return mixed
+     */
+    public function read();
 }
