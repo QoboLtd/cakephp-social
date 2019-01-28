@@ -4,7 +4,7 @@ namespace Qobo\Social\Provider\Twitter;
 /**
  * Twitter 30day search premium API
  *
- * @see https://developer.twitter.com/en/docs/tweets/search/quick-start/premium-30-day.html
+ * @see https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search.html
  */
 class TwitterPremiumSearchProvider extends AbstractTwitterPremiumProvider
 {

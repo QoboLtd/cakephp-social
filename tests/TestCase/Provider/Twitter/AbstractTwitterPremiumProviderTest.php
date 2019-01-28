@@ -2,10 +2,8 @@
 namespace Qobo\Social\Test\TestCase\Provider\Twitter;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
-use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use InvalidArgumentException;
-use Qobo\Social\Model\Table\NetworksTable;
 use Qobo\Social\Provider\Twitter\AbstractTwitterPremiumProvider;
 
 /**

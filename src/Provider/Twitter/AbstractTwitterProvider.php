@@ -7,7 +7,7 @@ use Qobo\Social\Provider\ProviderInterface;
 /**
  * Twitter 30day search premium API
  *
- * @see https://developer.twitter.com/en/docs/tweets/search/quick-start/premium-30-day.html
+ * @see https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search.html
  */
 abstract class AbstractTwitterProvider implements ProviderInterface
 {

@@ -3,7 +3,6 @@ namespace Qobo\Social\Test\TestCase\Provider\Twitter;
 
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
-use InvalidArgumentException;
 use Qobo\Social\Model\Table\NetworksTable;
 use Qobo\Social\Provider\ProviderRegistry;
 use Qobo\Social\Test\App\Provider\Twitter\TwitterPremiumSearchProvider;
