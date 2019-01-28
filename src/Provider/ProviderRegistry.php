@@ -164,7 +164,7 @@ class ProviderRegistry
         }
 
         $networks = TableRegistry::getTableLocator()->get('Qobo/Social.Networks');
-        $query = $networks->find('all')->where(['name' => $network]);
+        $query = $networks->find('decrypt')->where(['name' => $network]);
         if ($query->count() === 0) {
             throw new RecordNotFoundException("Network `$network` is not present in the database.");
         }
