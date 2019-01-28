@@ -19,12 +19,6 @@ class ProviderRegistry
     private static $instance;
 
     /**
-     * Networks
-     * @var \Qobo\Social\Model\Entity\Network[]
-     */
-    protected $networks = [];
-
-    /**
      * Registered providers
      * @var mixed[]
      */
@@ -94,7 +88,6 @@ class ProviderRegistry
      */
     public function clear(): void
     {
-        $this->networks = [];
         $this->providers = [];
         $this->providerInstances = [];
     }
