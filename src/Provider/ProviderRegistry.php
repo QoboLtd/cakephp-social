@@ -36,6 +36,7 @@ class ProviderRegistry
      */
     protected $providerInstances = [];
 
+    // @codeCoverageIgnoreStart
     /**
      * Private constructor.
      */
@@ -60,6 +61,7 @@ class ProviderRegistry
     private function __wakeup()
     {
     }
+    // @codeCoverageIgnoreEnd
 
     /**
      * Returns a singleton instance of ProviderRegistry.
