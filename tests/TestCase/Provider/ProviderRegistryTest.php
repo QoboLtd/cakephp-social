@@ -76,16 +76,6 @@ class ProviderRegistryTest extends TestCase
      *
      * @return void
      */
-    public function testInitialize(): void
-    {
-        $this->markTestIncomplete();
-    }
-
-    /**
-     * Test initialize method
-     *
-     * @return void
-     */
     public function testInstance(): void
     {
         $firstCall = ProviderRegistry::getInstance();
