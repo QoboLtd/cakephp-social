@@ -7,7 +7,7 @@ use InvalidArgumentException;
 use Qobo\Social\Provider\Twitter\AbstractTwitterPremiumProvider;
 
 /**
- * Qobo\Social\Provider\Twitter\TwitterPremiumSearchProvider Test Case
+ * Qobo\Social\Provider\Twitter\AbstractTwitterPremiumProvider Test Case
  */
 class AbstractTwitterPremiumProviderTest extends TestCase
 {

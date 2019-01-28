@@ -5,7 +5,7 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 use Qobo\Social\Provider\ProviderInterface;
 
 /**
- * Twitter 30day search premium API
+ * Abstract Twitter Provider
  *
  * @see https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search.html
  */

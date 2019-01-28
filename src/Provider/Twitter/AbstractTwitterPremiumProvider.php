@@ -5,7 +5,7 @@ use Cake\Core\InstanceConfigTrait;
 use InvalidArgumentException;
 
 /**
- * Twitter 30day search premium API
+ * Abstract Twitter Premium Provider
  *
  * @see https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search.html
  */
