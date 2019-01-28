@@ -1,6 +1,7 @@
 <?php
 namespace Qobo\Social\Test\TestCase\Provider;
 
+use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use InvalidArgumentException;
@@ -190,5 +191,61 @@ class ProviderRegistryTest extends TestCase
 
             throw $e;
         }
+    }
+
+    /**
+     * Test get invalid provider name
+     */
+    public function testGetInvalidProviderName(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        try {
+            $this->Registry->get('twitter', 'test');
+        } catch (InvalidArgumentException $e) {
+            $this->assertContains("Provider `test` for network `twitter` is not registered.", $e->getMessage());
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Test passing network entity
+     */
+    public function testPassNetworkEntity(): void
+    {
+        $network = $this->Networks->find('all')->where(['name' => 'twitter'])->first();
+        $this->assertNotNull($network);
+
+        $this->Registry->set($network, 'test', TestProvider::class);
+        $provider = $this->Registry->get('twitter', 'test');
+        $this->assertInstanceOf(ProviderInterface::class, $provider);
+    }
+
+    /**
+     * Test invalid type as network entity
+     */
+    public function testPassInvalidNetworkType(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $network = 123;
+
+        try {
+            $this->Registry->set($network, 'test', TestProvider::class);
+        } catch (InvalidArgumentException $e) {
+            $this->assertContains("Network must be a string or", $e->getMessage());
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Test pass missing network name
+     */
+    public function testPassMissingNetworkName(): void
+    {
+        $this->expectException(RecordNotFoundException::class);
+        $networkName = 'bad-network';
+        $this->Registry->set($networkName, 'test', TestProvider::class);
     }
 }
