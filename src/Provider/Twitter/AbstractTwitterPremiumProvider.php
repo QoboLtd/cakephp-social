@@ -96,9 +96,4 @@ abstract class AbstractTwitterPremiumProvider extends AbstractTwitterProvider
 
         return $result;
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    abstract public function read(array $options = []);
 }
