@@ -3,8 +3,11 @@ namespace Qobo\Social\Test\TestCase\Provider;
 
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use InvalidArgumentException;
 use Qobo\Social\Model\Table\NetworksTable;
+use Qobo\Social\Provider\ProviderInterface;
 use Qobo\Social\Provider\ProviderRegistry;
+use Qobo\Social\Test\App\Provider\TestProvider;
 
 /**
  * Qobo\Social\Provider\ProvderRegistry Test Case
@@ -60,6 +63,7 @@ class ProviderRegistryTest extends TestCase
      */
     public function tearDown(): void
     {
+        $this->Registry::resetInstance();
         unset($this->Networks);
         unset($this->Registry);
 
@@ -74,5 +78,117 @@ class ProviderRegistryTest extends TestCase
     public function testInitialize(): void
     {
         $this->markTestIncomplete();
+    }
+
+    /**
+     * Test initialize method
+     *
+     * @covers ProviderRegistry::getInstance
+     * @return void
+     */
+    public function testInstance(): void
+    {
+        $firstCall = ProviderRegistry::getInstance();
+        $secondCall = ProviderRegistry::getInstance();
+
+        $this->assertInstanceOf(ProviderRegistry::class, $firstCall);
+        $this->assertSame($firstCall, $secondCall);
+    }
+
+    /**
+     * Test a successful set and get
+     */
+    public function testSetGetSuccess(): void
+    {
+        $this->Registry->set('twitter', 'test', TestProvider::class);
+        $provider = $this->Registry->get('twitter', 'test');
+        $this->assertInstanceOf(ProviderInterface::class, $provider);
+    }
+
+    /**
+     * Test provider config
+     */
+    public function testProviderWithConfig(): void
+    {
+        $expected = 'baz';
+        $this->Registry->set('twitter', 'test', [
+            'className' => TestProvider::class,
+            'config' => [
+                'foo' => $expected,
+            ],
+        ]);
+
+        /** @var \Qobo\Social\Test\App\Provider\TestProvider $provider */
+        $provider = $this->Registry->get('twitter', 'test');
+        $actual = $provider->getConfig('foo');
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * Test when a duplicate provider name for a given network is passed
+     */
+    public function testAlreadySetNoOverwrite(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        try {
+            $this->Registry->set('twitter', 'test', TestProvider::class);
+            $this->Registry->set('twitter', 'test', TestProvider::class);
+        } catch (InvalidArgumentException $e) {
+            $this->assertContains('Provider `test` for network `twitter` has already been registered', $e->getMessage());
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Test when a provider parameter is of invalid type
+     */
+    public function testProviderConfigInvalidType(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        try {
+            $badType = 123;
+            $this->Registry->set('twitter', 'test', $badType);
+        } catch (InvalidArgumentException $e) {
+            $this->assertContains('Provider must be a string class name, or array of class name and config', $e->getMessage());
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Test provider array passed without class name
+     */
+    public function testProviderConfigArrayWithoutClassName(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        try {
+            $class = '';
+            $this->Registry->set('twitter', 'test', ['clsName' => TestProvider::class]);
+        } catch (InvalidArgumentException $e) {
+            $this->assertContains("Provider class `$class` does not exist.", $e->getMessage());
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Test an invalid class name passed
+     */
+    public function testProviderConfigInvalidClass(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        try {
+            $class = 'SomeBadClass';
+            $this->Registry->set('twitter', 'test', $class);
+        } catch (InvalidArgumentException $e) {
+            $this->assertContains("Provider class `$class` does not exist.", $e->getMessage());
+
+            throw $e;
+        }
     }
 }
