@@ -178,6 +178,11 @@ class Initial extends AbstractMigration
                 'limit' => null,
                 'null' => false,
             ])
+            ->addColumn('external_post_id', 'string', [
+                'default' => null,
+                'limit' => 255,
+                'null' => true,
+            ])
             ->addColumn('post_id', 'uuid', [
                 'default' => null,
                 'limit' => null,

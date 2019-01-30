@@ -78,6 +78,11 @@ class PostsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->scalar('external_post_id')
+            ->maxLength('external_post_id', 255)
+            ->allowEmpty('external_post_id');
+
+        $validator
             ->scalar('type')
             ->maxLength('type', 255)
             ->requirePresence('type', 'create')

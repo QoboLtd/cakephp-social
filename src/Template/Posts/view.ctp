@@ -31,6 +31,10 @@
             <td><?= $post->has('account') ? $this->Html->link($post->account->handle, ['controller' => 'Accounts', 'action' => 'view', $post->account->id]) : '' ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('External Post Id') ?></th>
+            <td><?= h($post->external_post_id) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Post Id') ?></th>
             <td><?= h($post->post_id) ?></td>
         </tr>
@@ -111,6 +115,7 @@
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
                 <th scope="col"><?= __('Account Id') ?></th>
+                <th scope="col"><?= __('External Post Id') ?></th>
                 <th scope="col"><?= __('Post Id') ?></th>
                 <th scope="col"><?= __('Type') ?></th>
                 <th scope="col"><?= __('Url') ?></th>
@@ -127,6 +132,7 @@
             <tr>
                 <td><?= h($posts->id) ?></td>
                 <td><?= h($posts->account_id) ?></td>
+                <td><?= h($posts->external_post_id) ?></td>
                 <td><?= h($posts->post_id) ?></td>
                 <td><?= h($posts->type) ?></td>
                 <td><?= h($posts->url) ?></td>

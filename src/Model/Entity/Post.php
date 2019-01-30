@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property string $id
  * @property string $account_id
+ * @property string $external_post_id
  * @property string|null $post_id
  * @property string $type
  * @property string $url

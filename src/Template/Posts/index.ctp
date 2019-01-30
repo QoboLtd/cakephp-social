@@ -21,6 +21,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('account_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('external_post_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('post_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('type') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('url') ?></th>
@@ -37,6 +38,7 @@
             <tr>
                 <td><?= h($post->id) ?></td>
                 <td><?= $post->has('account') ? $this->Html->link($post->account->handle, ['controller' => 'Accounts', 'action' => 'view', $post->account->id]) : '' ?></td>
+                <td><?= h($post->external_post_id) ?></td>
                 <td><?= h($post->post_id) ?></td>
                 <td><?= h($post->type) ?></td>
                 <td><?= h($post->url) ?></td>
