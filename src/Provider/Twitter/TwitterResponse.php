@@ -28,7 +28,7 @@ class TwitterResponse extends AbstractResponse
         $accounts = TableRegistry::getTableLocator()->get('Qobo/Social.Accounts');
         $networks = TableRegistry::getTableLocator()->get('Qobo/Social.Networks');
 
-        foreach (array_slice($this->payload->results, 0, 100) as $result) {
+        foreach ($this->payload->results as $result) {
             $post = $this->getPostEntity($result->id_str);
 
             if (!$post->isNew()) {
