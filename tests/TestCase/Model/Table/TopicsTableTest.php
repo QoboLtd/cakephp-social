@@ -38,7 +38,9 @@ class TopicsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::getTableLocator()->exists('Topics') ? [] : ['className' => TopicsTable::class];
-        $this->Topics = TableRegistry::getTableLocator()->get('Topics', $config);
+        /** @var \Qobo\Social\Model\Table\TopicsTable $table */
+        $table = TableRegistry::getTableLocator()->get('Topics', $config);
+        $this->Topics = $table;
     }
 
     /**

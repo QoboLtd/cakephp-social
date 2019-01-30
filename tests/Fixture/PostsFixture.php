@@ -23,6 +23,7 @@ class PostsFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         'account_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'external_post_id' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'post_id' => ['type' => 'uuid', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'type' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'url' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
@@ -58,6 +59,7 @@ class PostsFixture extends TestFixture
             [
                 'id' => '00000000-0000-0000-0000-000000000001',
                 'account_id' => '00000000-0000-0000-0000-000000000001',
+                'external_post_id' => null,
                 'post_id' => null,
                 'type' => 'Lorem ipsum dolor sit amet',
                 'url' => 'Lorem ipsum dolor sit amet',
@@ -72,6 +74,7 @@ class PostsFixture extends TestFixture
             [
                 'id' => '00000000-0000-0000-0000-000000000002',
                 'account_id' => '00000000-0000-0000-0000-000000000001',
+                'external_post_id' => null,
                 'post_id' => '00000000-0000-0000-0000-000000000001',
                 'type' => 'Lorem ipsum dolor sit amet',
                 'url' => 'Lorem ipsum dolor sit amet',

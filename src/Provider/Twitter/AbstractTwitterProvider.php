@@ -2,15 +2,25 @@
 namespace Qobo\Social\Provider\Twitter;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
+use Qobo\Social\Model\Entity\Network;
+use Qobo\Social\Model\Entity\Topic;
 use Qobo\Social\Provider\ProviderInterface;
+use Qobo\Social\Provider\ResponseInterface;
+use Qobo\Social\Provider\TopicProviderInterface;
 
 /**
  * Abstract Twitter Provider
  *
  * @see https://developer.twitter.com/en/docs/tweets/search/api-reference/premium-search.html
  */
-abstract class AbstractTwitterProvider implements ProviderInterface
+abstract class AbstractTwitterProvider implements ProviderInterface, TopicProviderInterface
 {
+    /**
+     * Network entity.
+     * @var \Qobo\Social\Model\Entity\Network
+     */
+    protected $network;
+
     /**
      * Consumer key.
      * @var string
@@ -28,6 +38,20 @@ abstract class AbstractTwitterProvider implements ProviderInterface
      * @var \Abraham\TwitterOAuth\TwitterOAuth
      */
     protected $client;
+
+    /**
+     * Topic entity
+     * @var \Qobo\Social\Model\Entity\Topic
+     */
+    protected $topic;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setNetwork(Network $network): void
+    {
+        $this->network = $network;
+    }
 
     /**
      * {@inheritDoc}
@@ -55,5 +79,21 @@ abstract class AbstractTwitterProvider implements ProviderInterface
     /**
      * {@inheritDoc}
      */
-    abstract public function read(array $options = []);
+    public function setTopic(Topic $topic): void
+    {
+        $this->topic = $topic;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTopic(): Topic
+    {
+        return $this->topic;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    abstract public function read(array $options = []): ResponseInterface;
 }

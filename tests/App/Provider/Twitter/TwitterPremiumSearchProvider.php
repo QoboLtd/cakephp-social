@@ -13,6 +13,10 @@ class TwitterPremiumSearchProvider extends BaseProvider
      */
     protected function callApi(string $archiveType, string $env, array $options)
     {
-        return true;
+        $filename = $this->getConfig('filename');
+        $file = TESTS . 'data' . DS . $filename . '.json';
+        $data = (string)file_get_contents($file);
+
+        return json_decode($data);
     }
 }

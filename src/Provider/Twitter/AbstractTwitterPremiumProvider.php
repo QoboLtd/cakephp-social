@@ -1,8 +1,10 @@
 <?php
 namespace Qobo\Social\Provider\Twitter;
 
+use Abraham\TwitterOAuth\TwitterOAuthException;
 use Cake\Core\InstanceConfigTrait;
 use InvalidArgumentException;
+use Qobo\Social\Provider\ProviderException;
 
 /**
  * Abstract Twitter Premium Provider
@@ -47,6 +49,7 @@ abstract class AbstractTwitterPremiumProvider extends AbstractTwitterProvider
         if (!in_array($archiveType, self::VALID_ARCHIVE_TYPES)) {
             throw new InvalidArgumentException("The archive type `{$archiveType}` is not valid.");
         }
+
         if (empty($env)) {
             throw new InvalidArgumentException("The environment parameter is mandatory.");
         }
@@ -61,11 +64,16 @@ abstract class AbstractTwitterPremiumProvider extends AbstractTwitterProvider
      * @param string $env Environment name.
      * @param mixed[] $options Options.
      * @return mixed
+     * @throws \Qobo\Social\Provider\ProviderException
      */
     protected function callApi(string $archiveType, string $env, array $options)
     {
         // @codeCoverageIgnoreStart
-        return $this->getClient()->get("tweets/search/{$archiveType}/{$env}", $options);
+        try {
+            return $this->getClient()->get("tweets/search/{$archiveType}/{$env}", $options);
+        } catch (TwitterOAuthException $e) {
+            throw new ProviderException($e->getMessage(), $e->getCode(), $e);
+        }
         // @codeCoverageIgnoreEnd
     }
 
@@ -93,6 +101,11 @@ abstract class AbstractTwitterPremiumProvider extends AbstractTwitterProvider
         // Apply defaults
         $result = $options + $defaults;
         $result = array_intersect_key($result, $defaults);
+        foreach (['fromDate', 'toDate'] as $key) {
+            if (empty($result[$key])) {
+                unset($result[$key]);
+            }
+        }
 
         return $result;
     }

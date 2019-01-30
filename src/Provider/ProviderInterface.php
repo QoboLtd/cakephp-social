@@ -1,6 +1,8 @@
 <?php
 namespace Qobo\Social\Provider;
 
+use Qobo\Social\Model\Entity\Network;
+
 /**
  * Generic Provider Interface
  */
@@ -16,9 +18,18 @@ interface ProviderInterface
     public function setCredentials(string $key, string $secret): void;
 
     /**
+     * Sets the network entity.
+     *
+     * @param \Qobo\Social\Model\Entity\Network $network Network entity.
+     * @return void
+     */
+    public function setNetwork(Network $network): void;
+
+    /**
      * Reads the provider endpoint data.
      *
-     * @return mixed
+     * @param mixed[] $options Options array.
+     * @return ResponseInterface
      */
-    public function read();
+    public function read(array $options = []): ResponseInterface;
 }

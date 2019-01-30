@@ -54,6 +54,7 @@ class Network extends Entity
 
         $provider = $registry->get($this->name, $providerName);
         $provider->setCredentials($this->oauth_consumer_key, $this->oauth_consumer_secret);
+        $provider->setNetwork($this);
 
         return $provider;
     }
