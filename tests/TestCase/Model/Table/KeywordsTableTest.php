@@ -37,7 +37,9 @@ class KeywordsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::getTableLocator()->exists('Keywords') ? [] : ['className' => KeywordsTable::class];
-        $this->Keywords = TableRegistry::getTableLocator()->get('Keywords', $config);
+        /** @var \Qobo\Social\Model\Table\KeywordsTable $table */
+        $table = TableRegistry::getTableLocator()->get('Keywords', $config);
+        $this->Keywords = $table;
     }
 
     /**
