@@ -28,7 +28,8 @@ interface ProviderInterface
     /**
      * Reads the provider endpoint data.
      *
-     * @return mixed
+     * @param mixed[] $options Options array.
+     * @return ResponseInterface
      */
-    public function read();
+    public function read(array $options = []): ResponseInterface;
 }
