@@ -20,7 +20,7 @@ class TwitterResponse extends AbstractResponse
     public function getPosts(): array
     {
         $results = [];
-        if (empty($this->payload->results)) {
+        if (empty($this->payload->results) || !is_array($this->payload->results)) {
             return $results;
         }
 
