@@ -20,7 +20,7 @@ class TwitterResponse extends AbstractResponse
     public function getPosts(): array
     {
         $results = [];
-        if (empty($this->payload->results)) {
+        if (empty($this->payload->results) || !is_array($this->payload->results)) {
             return $results;
         }
 
@@ -32,6 +32,12 @@ class TwitterResponse extends AbstractResponse
             $post = $this->getPostEntity($result->id_str);
 
             if (!$post->isNew()) {
+                $post = $posts->patchEntity($post, [
+                    'content' => $result->text,
+                    'extra' => json_encode($result),
+                ], ['validate' => false]);
+                $results[] = $post;
+
                 continue;
             }
 

@@ -208,10 +208,10 @@ class TwitterPremiumSearchProviderTest extends TestCase
         $savePosts = $posts;
         $this->Posts->saveMany($savePosts);
 
-        // The second call to `ResponseInterface::getPosts` should return no rows
-        // since they were already saved
+        // The second call to `ResponseInterface::getPosts` will update existing posts
         $posts = $results->getPosts();
-        $this->assertEmpty($posts);
+        $this->assertCount(3, $posts);
+        $this->assertAllInstanceOf(Post::class, $posts);
     }
 
     /**
