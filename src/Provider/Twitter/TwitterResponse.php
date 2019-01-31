@@ -32,6 +32,12 @@ class TwitterResponse extends AbstractResponse
             $post = $this->getPostEntity($result->id_str);
 
             if (!$post->isNew()) {
+                $post = $posts->patchEntity($post, [
+                    'content' => $result->text,
+                    'extra' => json_encode($result),
+                ], ['validate' => false]);
+                $results[] = $post;
+
                 continue;
             }
 

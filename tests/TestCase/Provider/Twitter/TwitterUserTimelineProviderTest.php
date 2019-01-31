@@ -277,6 +277,7 @@ class TwitterUserTimelineProviderTest extends TestCase
         $this->assertInstanceOf(TwitterResponse::class, $results);
 
         $posts = $results->getPosts();
+        $this->assertCount(1, $posts);
         $this->assertAllInstanceOf(Post::class, $posts);
     }
 
