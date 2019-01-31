@@ -103,11 +103,7 @@ class TwitterUserTimelineProvider extends AbstractTwitterProvider
     /**
      * Parses options for searching tweets.
      *
-     * Valid options are:
-     *      query - Query string
-     *      maxResults - Limit the number of returned results
-     *      fromDate - From date
-     *      toDate - To date
+     * See valid options {@link https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline.html}
      *
      * @param mixed[] $options Options.
      * @return mixed[] Formatted options array
