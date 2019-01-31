@@ -9,9 +9,6 @@ use InvalidArgumentException;
 use Qobo\Social\Model\Entity\Post;
 use Qobo\Social\Model\Table\AccountsTable;
 use Qobo\Social\Model\Table\NetworksTable;
-use Qobo\Social\Model\Table\PostsTable;
-use Qobo\Social\Model\Table\TopicsTable;
-use Qobo\Social\Provider\ProviderRegistry;
 use Qobo\Social\Provider\Twitter\TwitterResponse;
 use Qobo\Social\Provider\Twitter\TwitterUserTimelineProvider;
 use Webmozart\Assert\Assert;
@@ -28,20 +25,6 @@ class TwitterUserTimelineProviderTest extends TestCase
      * @var \Qobo\Social\Model\Table\NetworksTable
      */
     public $Networks;
-
-    /**
-     * Topics table
-     *
-     * @var \Qobo\Social\Model\Table\TopicsTable
-     */
-    public $Topics;
-
-    /**
-     * Posts table
-     *
-     * @var \Qobo\Social\Model\Table\PostsTable
-     */
-    public $Posts;
 
     /**
      * Accounts table
@@ -79,33 +62,16 @@ class TwitterUserTimelineProviderTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
+
         $config = TableRegistry::getTableLocator()->exists('Networks') ? [] : ['className' => NetworksTable::class];
         /** @var \Qobo\Social\Model\Table\NetworksTable $table */
         $table = TableRegistry::getTableLocator()->get('Networks', $config);
         $this->Networks = $table;
 
-        $config = TableRegistry::getTableLocator()->exists('Topics') ? [] : ['className' => TopicsTable::class];
-        /** @var \Qobo\Social\Model\Table\TopicsTable $table */
-        $table = TableRegistry::getTableLocator()->get('Topics', $config);
-        $this->Topics = $table;
-
-        $config = TableRegistry::getTableLocator()->exists('Posts') ? [] : ['className' => PostsTable::class];
-        /** @var \Qobo\Social\Model\Table\PostsTable $table */
-        $table = TableRegistry::getTableLocator()->get('Posts', $config);
-        $this->Posts = $table;
-
         $config = TableRegistry::getTableLocator()->exists('Accounts') ? [] : ['className' => AccountsTable::class];
         /** @var \Qobo\Social\Model\Table\AccountsTable $table */
         $table = TableRegistry::getTableLocator()->get('Accounts', $config);
         $this->Accounts = $table;
-
-        $this->Registry = ProviderRegistry::getInstance();
-        $this->Registry->set('twitter', '30day-dev', [
-            'className' => TwitterUserTimelineProvider::class,
-            'config' => [
-                'filename' => 'twitter_response'
-            ],
-        ]);
     }
 
     /**
@@ -115,10 +81,7 @@ class TwitterUserTimelineProviderTest extends TestCase
      */
     public function tearDown(): void
     {
-        $this->Registry->clear();
-        unset($this->Networks);
-        unset($this->Topics);
-        unset($this->Registry);
+        unset($this->Accounts);
 
         parent::tearDown();
     }
@@ -130,10 +93,7 @@ class TwitterUserTimelineProviderTest extends TestCase
      */
     public function testGetClient(): void
     {
-        /** @var \Qobo\Social\Model\Entity\Network $network */
-        $network = $this->Networks->find('all')->where(['name' => 'twitter'])->first();
-        /** @var \Qobo\Social\Provider\Twitter\TwitterPremiumSearchProvider $provider */
-        $provider = $network->getSocialProvider('30day-dev');
+        $provider = $this->getProviderMock();
         $client = $provider->getClient();
         $this->assertInstanceOf(TwitterOAuth::class, $client);
     }
