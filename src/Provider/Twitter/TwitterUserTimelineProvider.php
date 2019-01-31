@@ -49,6 +49,9 @@ class TwitterUserTimelineProvider extends AbstractTwitterProvider
     protected function getAccountCredentials(Account $account): array
     {
         $credentials = json_decode($account->get('credentials'));
+        if ($credentials === null && json_last_error() !== JSON_ERROR_NONE) {
+            throw new InvalidArgumentException('Account is missing credentials');
+        }
         $oauthToken = $credentials->oauth_token ?? null;
         $oauthTokenSecret = $credentials->oauth_token_secret ?? null;
         $userId = $credentials->user_id ?? null;
