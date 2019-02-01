@@ -15,14 +15,18 @@ use Qobo\Social\Utility\ClassUtility;
 /**
  * Provider Registry singleton class
  *
- * Providers should be loaded using the {@link self::set()} method using lazy loading
- * by hooking into a special event, like so:
+ * Providers should be loaded using the {@link self::set()} method during bootstrapping
+ * using lazy loading by hooking into a special event, like so:
  *
  * ```php
  *  $event = new Event((string)EventName::QOBO_SOCIAL_PROVIDER_LOAD(), function ($event, $registry) {
  *      $registry->set('twitter', 'foo', TestProvider::class);
  *  });
  * ```
+ *
+ * This event will be fired only once during the first call to the provider registry,
+ * so if you need to add providers on the application level (in controllers for example)
+ * you may use the {@link self::set()} method directly.
  */
 class ProviderRegistry
 {
