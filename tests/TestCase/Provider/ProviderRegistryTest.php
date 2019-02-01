@@ -2,9 +2,13 @@
 namespace Qobo\Social\Test\TestCase\Provider;
 
 use Cake\Datasource\Exception\RecordNotFoundException;
+use Cake\Event\Event;
+use Cake\Event\EventList;
+use Cake\Event\EventManager;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use InvalidArgumentException;
+use Qobo\Social\Event\EventName;
 use Qobo\Social\Model\Table\NetworksTable;
 use Qobo\Social\Provider\ProviderInterface;
 use Qobo\Social\Provider\ProviderRegistry;
@@ -31,6 +35,13 @@ class ProviderRegistryTest extends TestCase
     public $Registry;
 
     /**
+     * Test subject
+     *
+     * @var \Cake\Event\EventManager
+     */
+    public $EventManager;
+
+    /**
      * Fixtures
      *
      * @var array
@@ -55,6 +66,7 @@ class ProviderRegistryTest extends TestCase
         $this->Networks = $table;
 
         $this->Registry = ProviderRegistry::getInstance();
+        $this->EventManager = EventManager::instance()->setEventList(new EventList());
     }
 
     /**
@@ -267,5 +279,19 @@ class ProviderRegistryTest extends TestCase
         $this->assertInstanceOf('Cake\Collection\Collection', $collection);
         $this->assertCount(1, $collection);
         $this->assertCount(2, $collection->first());
+    }
+
+    /**
+     * Test that providers are lazily loaded.
+     *
+     * @return void
+     */
+    public function testLazyLoadingOfProviders(): void
+    {
+        $event = new Event((string)EventName::QOBO_SOCIAL_PROVIDER_LOAD(), function (Event $event, ProviderRegistry $registry) {
+            $registry->set('twitter', 'foo', TestProvider::class);
+        });
+        $collection = $this->Registry->getCollection();
+        $this->assertEventFired((string)EventName::QOBO_SOCIAL_PROVIDER_LOAD());
     }
 }
