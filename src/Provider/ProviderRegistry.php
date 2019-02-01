@@ -3,13 +3,26 @@ namespace Qobo\Social\Provider;
 
 use Cake\Collection\Collection;
 use Cake\Datasource\Exception\RecordNotFoundException;
+use Cake\Event\Event;
+use Cake\Event\EventManager;
 use Cake\ORM\TableRegistry;
 use InvalidArgumentException;
+use Qobo\Social\Event\EventName;
+
 use Qobo\Social\Model\Entity\Network;
 use Qobo\Social\Utility\ClassUtility;
 
 /**
  * Provider Registry singleton class
+ *
+ * Providers should be loaded using the {@link self::set()} method using lazy loading
+ * by hooking into a special event, like so:
+ *
+ * ```php
+ *  $event = new Event((string)EventName::QOBO_SOCIAL_PROVIDER_LOAD(), function ($event, $registry) {
+ *      $registry->set('twitter', 'foo', TestProvider::class);
+ *  });
+ * ```
  */
 class ProviderRegistry
 {
@@ -18,6 +31,12 @@ class ProviderRegistry
      * @var \Qobo\Social\Provider\ProviderRegistry|null
      */
     private static $instance;
+
+    /**
+     * Loaded flag.
+     * @var bool
+     */
+    private static $loaded = false;
 
     /**
      * Registered providers
@@ -89,8 +108,24 @@ class ProviderRegistry
      */
     public function clear(): void
     {
+        self::$loaded = false;
         $this->providers = [];
         $this->providerInstances = [];
+    }
+
+    /**
+     * Reloads the registred providers.
+     *
+     * @return void
+     */
+    public function reload(): void
+    {
+        if (!self::$loaded) {
+            self::$loaded = true;
+            $eventManager = EventManager::instance();
+            $event = new Event((string)EventName::QOBO_SOCIAL_PROVIDER_LOAD(), $this, ['registry' => $this]);
+            $eventManager->dispatch($event);
+        }
     }
 
     /**
@@ -105,6 +140,7 @@ class ProviderRegistry
      */
     public function set($network, string $name, $provider, bool $overwrite = false): void
     {
+        self::reload();
         $network = $this->getNetwork($network);
         if ($overwrite === false && isset($this->providers[$network->name][$name])) {
             throw new InvalidArgumentException("Provider `{$name}` for network `{$network->name}` has already been registered. Set `overwrite` to ignore.");
@@ -185,6 +221,7 @@ class ProviderRegistry
      */
     public function get(string $network, string $name): ProviderInterface
     {
+        self::reload();
         if (!isset($this->providers[$network][$name])) {
             throw new InvalidArgumentException("Provider `{$name}` for network `{$network}` is not registered.");
         }
@@ -228,6 +265,7 @@ class ProviderRegistry
      */
     public function remove(string $network, string $name): void
     {
+        self::reload();
         unset($this->providers[$network][$name]);
         unset($this->providerInstances[$network][$name]);
     }
@@ -241,6 +279,7 @@ class ProviderRegistry
      */
     public function exists(string $network, string $name): bool
     {
+        self::reload();
         return isset($this->providers[$network][$name]);
     }
 
@@ -251,6 +290,7 @@ class ProviderRegistry
      */
     public function getCollection(): Collection
     {
+        self::reload();
         return new Collection($this->providers);
     }
 }
