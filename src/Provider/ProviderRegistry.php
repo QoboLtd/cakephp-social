@@ -122,7 +122,7 @@ class ProviderRegistry
      *
      * @return void
      */
-    public function reload(): void
+    protected function reload(): void
     {
         if (!self::$loaded) {
             self::$loaded = true;
