@@ -284,6 +284,7 @@ class ProviderRegistry
     public function exists(string $network, string $name): bool
     {
         self::reload();
+
         return isset($this->providers[$network][$name]);
     }
 
@@ -295,6 +296,7 @@ class ProviderRegistry
     public function getCollection(): Collection
     {
         self::reload();
+
         return new Collection($this->providers);
     }
 }
