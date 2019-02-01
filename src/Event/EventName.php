@@ -18,5 +18,6 @@ use MyCLabs\Enum\Enum;
  */
 class EventName extends Enum
 {
+    const QOBO_SOCIAL_PROVIDER_LOAD = 'Qobo/Social.providerRegistry.load';
     const QOBO_SOCIAL_CONNECT_TWITTER = 'Qobo/Social.connectAccount.twitter';
 }
