@@ -1,8 +1,10 @@
 <?php
 namespace Qobo\Social\Test\TestCase\Model\Table;
 
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 use Qobo\Social\Model\Table\AccountsTable;
 
 /**
@@ -72,7 +74,9 @@ class AccountsTableTest extends TestCase
      */
     public function testValidationDefault(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $validator = new Validator();
+        $result = $this->Accounts->validationDefault($validator);
+        $this->assertInstanceOf(Validator::class, $result);
     }
 
     /**
@@ -82,6 +86,8 @@ class AccountsTableTest extends TestCase
      */
     public function testBuildRules(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $rules = new RulesChecker();
+        $result = $this->Accounts->buildRules($rules);
+        $this->assertInstanceOf(RulesChecker::class, $result);
     }
 }
