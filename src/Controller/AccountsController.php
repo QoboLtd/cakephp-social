@@ -59,7 +59,8 @@ class AccountsController extends AppController
     {
         $account = $this->Accounts->newEntity();
         if ($this->request->is('post')) {
-            $account = $this->Accounts->patchEntity($account, $this->request->getData());
+            $data = is_array($this->request->getData()) ? $this->request->getData() : [];
+            $account = $this->Accounts->patchEntity($account, $data);
             if ($this->Accounts->save($account)) {
                 $this->Flash->success((string)__('The account has been saved.'));
 
@@ -84,7 +85,8 @@ class AccountsController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $account = $this->Accounts->patchEntity($account, $this->request->getData());
+            $data = is_array($this->request->getData()) ? $this->request->getData() : [];
+            $account = $this->Accounts->patchEntity($account, $data);
             if ($this->Accounts->save($account)) {
                 $this->Flash->success((string)__('The account has been saved.'));
 
