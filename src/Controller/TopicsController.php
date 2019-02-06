@@ -50,7 +50,8 @@ class TopicsController extends AppController
     {
         $topic = $this->Topics->newEntity();
         if ($this->request->is('post')) {
-            $topic = $this->Topics->patchEntity($topic, $this->request->getData());
+            $data = is_array($this->request->getData()) ? $this->request->getData() : [];
+            $topic = $this->Topics->patchEntity($topic, $data);
             if ($this->Topics->save($topic)) {
                 $this->Flash->success((string)__('The topic has been saved.'));
 
@@ -75,7 +76,8 @@ class TopicsController extends AppController
             'contain' => ['Posts']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $topic = $this->Topics->patchEntity($topic, $this->request->getData());
+            $data = is_array($this->request->getData()) ? $this->request->getData() : [];
+            $topic = $this->Topics->patchEntity($topic, $data);
             if ($this->Topics->save($topic)) {
                 $this->Flash->success((string)__('The topic has been saved.'));
 
