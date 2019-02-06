@@ -50,8 +50,8 @@ class NetworksController extends AppController
     public function add()
     {
         $network = $this->Networks->newEntity();
+        $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is('post')) {
-            $data = is_array($this->request->getData()) ? $this->request->getData() : [];
             $network = $this->Networks->patchEntity($network, $data);
             if ($this->Networks->save($network)) {
                 $this->Flash->success((string)__('The network has been saved.'));
@@ -76,8 +76,8 @@ class NetworksController extends AppController
             'finder' => 'decrypt',
             'contain' => []
         ]);
+        $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $data = is_array($this->request->getData()) ? $this->request->getData() : [];
             $network = $this->Networks->patchEntity($network, $data);
             if ($this->Networks->save($network)) {
                 $this->Flash->success((string)__('The network has been saved.'));

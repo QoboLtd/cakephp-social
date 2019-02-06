@@ -49,8 +49,8 @@ class TopicsController extends AppController
     public function add()
     {
         $topic = $this->Topics->newEntity();
+        $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is('post')) {
-            $data = is_array($this->request->getData()) ? $this->request->getData() : [];
             $topic = $this->Topics->patchEntity($topic, $data);
             if ($this->Topics->save($topic)) {
                 $this->Flash->success((string)__('The topic has been saved.'));
@@ -75,8 +75,8 @@ class TopicsController extends AppController
         $topic = $this->Topics->get($id, [
             'contain' => ['Posts']
         ]);
+        $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $data = is_array($this->request->getData()) ? $this->request->getData() : [];
             $topic = $this->Topics->patchEntity($topic, $data);
             if ($this->Topics->save($topic)) {
                 $this->Flash->success((string)__('The topic has been saved.'));
