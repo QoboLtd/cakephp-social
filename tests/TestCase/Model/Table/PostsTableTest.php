@@ -38,7 +38,9 @@ class PostsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::getTableLocator()->exists('Posts') ? [] : ['className' => PostsTable::class];
-        $this->Posts = TableRegistry::getTableLocator()->get('Posts', $config);
+        /** @var \Qobo\Social\Model\Table\PostsTable $table */
+        $table = TableRegistry::getTableLocator()->get('Posts', $config);
+        $this->Posts = $table;
     }
 
     /**
