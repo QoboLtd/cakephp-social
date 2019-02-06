@@ -1,8 +1,10 @@
 <?php
 namespace Qobo\Social\Test\TestCase\Model\Table;
 
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 use Qobo\Social\Model\Table\PostInteractionsTable;
 
 /**
@@ -58,7 +60,7 @@ class PostInteractionsTableTest extends TestCase
      *
      * @return void
      */
-    public function testInitialize()
+    public function testInitialize(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
@@ -68,9 +70,11 @@ class PostInteractionsTableTest extends TestCase
      *
      * @return void
      */
-    public function testValidationDefault()
+    public function testValidationDefault(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $validator = new Validator();
+        $result = $this->PostInteractions->validationDefault($validator);
+        $this->assertInstanceOf(Validator::class, $result);
     }
 
     /**
@@ -78,8 +82,10 @@ class PostInteractionsTableTest extends TestCase
      *
      * @return void
      */
-    public function testBuildRules()
+    public function testBuildRules(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $rules = new RulesChecker();
+        $result = $this->PostInteractions->buildRules($rules);
+        $this->assertInstanceOf(RulesChecker::class, $result);
     }
 }
