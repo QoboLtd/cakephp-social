@@ -52,8 +52,9 @@ class KeywordsController extends AppController
     public function add()
     {
         $keyword = $this->Keywords->newEntity();
+        $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is('post')) {
-            $keyword = $this->Keywords->patchEntity($keyword, $this->request->getData());
+            $keyword = $this->Keywords->patchEntity($keyword, $data);
             if ($this->Keywords->save($keyword)) {
                 $this->Flash->success((string)__('The keyword has been saved.'));
 
@@ -77,8 +78,9 @@ class KeywordsController extends AppController
         $keyword = $this->Keywords->get($id, [
             'contain' => []
         ]);
+        $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $keyword = $this->Keywords->patchEntity($keyword, $this->request->getData());
+            $keyword = $this->Keywords->patchEntity($keyword, $data);
             if ($this->Keywords->save($keyword)) {
                 $this->Flash->success((string)__('The keyword has been saved.'));
 

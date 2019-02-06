@@ -1,8 +1,10 @@
 <?php
 namespace Qobo\Social\Test\TestCase\Model\Table;
 
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 use Qobo\Social\Model\Table\PostsTopicsTable;
 
 /**
@@ -38,7 +40,9 @@ class PostsTopicsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::getTableLocator()->exists('PostsTopics') ? [] : ['className' => PostsTopicsTable::class];
-        $this->PostsTopics = TableRegistry::getTableLocator()->get('PostsTopics', $config);
+        /** @var \Qobo\Social\Model\Table\PostsTopicsTable $table */
+        $table = TableRegistry::getTableLocator()->get('PostsTopics', $config);
+        $this->PostsTopics = $table;
     }
 
     /**
@@ -70,7 +74,9 @@ class PostsTopicsTableTest extends TestCase
      */
     public function testValidationDefault(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $validator = new Validator();
+        $result = $this->PostsTopics->validationDefault($validator);
+        $this->assertInstanceOf(Validator::class, $result);
     }
 
     /**
@@ -80,6 +86,8 @@ class PostsTopicsTableTest extends TestCase
      */
     public function testBuildRules(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $rules = new RulesChecker();
+        $result = $this->PostsTopics->buildRules($rules);
+        $this->assertInstanceOf(RulesChecker::class, $result);
     }
 }

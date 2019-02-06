@@ -1,8 +1,10 @@
 <?php
 namespace Qobo\Social\Test\TestCase\Model\Table;
 
+use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
+use Cake\Validation\Validator;
 use Qobo\Social\Model\Table\TopicsTable;
 
 /**
@@ -72,6 +74,20 @@ class TopicsTableTest extends TestCase
      */
     public function testValidationDefault(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $validator = new Validator();
+        $result = $this->Topics->validationDefault($validator);
+        $this->assertInstanceOf(Validator::class, $result);
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules(): void
+    {
+        $rules = new RulesChecker();
+        $result = $this->Topics->buildRules($rules);
+        $this->assertInstanceOf(RulesChecker::class, $result);
     }
 }

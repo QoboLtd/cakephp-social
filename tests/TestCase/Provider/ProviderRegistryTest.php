@@ -288,9 +288,11 @@ class ProviderRegistryTest extends TestCase
      */
     public function testLazyLoadingOfProviders(): void
     {
-        $event = new Event((string)EventName::QOBO_SOCIAL_PROVIDER_LOAD(), function (Event $event, ProviderRegistry $registry) {
+        /** @var object $callable */
+        $callable = function (Event $event, ProviderRegistry $registry) {
             $registry->set('twitter', 'foo', TestProvider::class);
-        });
+        };
+        $event = new Event((string)EventName::QOBO_SOCIAL_PROVIDER_LOAD(), $callable);
         $collection = $this->Registry->getCollection();
         $this->assertEventFired((string)EventName::QOBO_SOCIAL_PROVIDER_LOAD());
     }
