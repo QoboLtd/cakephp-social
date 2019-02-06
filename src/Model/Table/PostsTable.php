@@ -63,6 +63,10 @@ class PostsTable extends Table
             'through' => 'Qobo/Social.PostsTopics',
             'className' => 'Qobo/Social.Topics'
         ]);
+        $this->hasMany('PostInteractions', [
+            'foreignKey' => 'post_id',
+            'className' => 'Qobo/Social.PostInteractions'
+        ]);
     }
 
     /**
