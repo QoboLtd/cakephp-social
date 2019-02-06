@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  * @property \Qobo\Social\Model\Table\PostsTable|\Cake\ORM\Association\BelongsTo $Posts
  * @property \Qobo\Social\Model\Table\PostsTable|\Cake\ORM\Association\HasMany $Posts
  * @property \Qobo\Social\Model\Table\TopicsTable|\Cake\ORM\Association\BelongsToMany $Topics
+ * @property \Qobo\Social\Model\Table\PostInteractionsTable|\Cake\ORM\Association\HasMany $PostInteractions
  *
  * @method \Qobo\Social\Model\Entity\Post get($primaryKey, $options = [])
  * @method \Qobo\Social\Model\Entity\Post newEntity($data = null, array $options = [])
@@ -65,6 +66,7 @@ class PostsTable extends Table
         ]);
         $this->hasMany('PostInteractions', [
             'foreignKey' => 'post_id',
+            'dependent' => true,
             'className' => 'Qobo/Social.PostInteractions'
         ]);
     }

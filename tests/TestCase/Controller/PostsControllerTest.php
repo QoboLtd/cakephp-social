@@ -17,6 +17,7 @@ class PostsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'plugin.qobo/social.accounts',
+        'plugin.qobo/social.post_interactions',
         'plugin.qobo/social.posts',
         'plugin.qobo/social.posts_topics',
         'plugin.qobo/social.topics',
