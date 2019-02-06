@@ -35,12 +35,12 @@ class TwitterResponse extends AbstractResponse
     }
 
     /**
-     * Array of interactions.
+     * Create an array of interactions based on twitter payload.
      *
      * @param \stdClass $payload Incoming twitter payload
      * @return mixed[] Array of interactions
      */
-    protected function getInteractions(stdClass $payload): array
+    protected function createInteractions(stdClass $payload): array
     {
         $result = [];
         $importDate = FrozenTime::now();
@@ -102,7 +102,7 @@ class TwitterResponse extends AbstractResponse
             'content' => $payload->text,
             'extra' => json_encode($payload),
             'publish_date' => new FrozenTime($payload->created_at),
-            'post_interactions' => $this->getInteractions($payload),
+            'post_interactions' => $this->createInteractions($payload),
         ], ['validate' => false]);
 
         return $post;
