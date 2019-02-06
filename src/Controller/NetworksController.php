@@ -51,7 +51,8 @@ class NetworksController extends AppController
     {
         $network = $this->Networks->newEntity();
         if ($this->request->is('post')) {
-            $network = $this->Networks->patchEntity($network, $this->request->getData());
+            $data = is_array($this->request->getData()) ? $this->request->getData() : [];
+            $network = $this->Networks->patchEntity($network, $data);
             if ($this->Networks->save($network)) {
                 $this->Flash->success((string)__('The network has been saved.'));
 
@@ -76,7 +77,8 @@ class NetworksController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $network = $this->Networks->patchEntity($network, $this->request->getData());
+            $data = is_array($this->request->getData()) ? $this->request->getData() : [];
+            $network = $this->Networks->patchEntity($network, $data);
             if ($this->Networks->save($network)) {
                 $this->Flash->success((string)__('The network has been saved.'));
 
