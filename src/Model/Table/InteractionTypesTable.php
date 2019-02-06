@@ -86,6 +86,10 @@ class InteractionTypesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['network_id'], 'Networks'));
+        $rules->add($rules->isUnique(
+            ['network_id', 'slug'],
+            __('This network and slug combination has already been used.')
+        ));
 
         return $rules;
     }
