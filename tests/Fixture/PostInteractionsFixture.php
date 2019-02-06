@@ -49,10 +49,17 @@ class PostInteractionsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => 'e0aec133-75de-4e3b-9d84-6ba5da822983',
-                'post_id' => '82c6dd7e-ee7c-4651-9456-2ab4511da45a',
-                'interaction_type_id' => 'dee7c92e-5508-41d6-beea-cf554864d6f2',
-                'value_int' => 1,
+                'id' => '00000000-0000-0000-0000-000000000001',
+                'post_id' => '00000000-0000-0000-0000-000000000001',
+                'interaction_type_id' => '00000000-0000-0000-0000-000000000001',
+                'value_int' => 5,
+                'import_date' => '2019-02-06 10:29:42'
+            ],
+            [
+                'id' => '00000000-0000-0000-0000-000000000002',
+                'post_id' => '00000000-0000-0000-0000-000000000001',
+                'interaction_type_id' => '00000000-0000-0000-0000-000000000002',
+                'value_int' => 10,
                 'import_date' => '2019-02-06 10:29:42'
             ],
         ];

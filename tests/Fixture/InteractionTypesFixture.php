@@ -49,11 +49,18 @@ class InteractionTypesFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '208a162e-38dc-4843-bf20-ac14838ef972',
-                'network_id' => 'fcf220b3-7152-454d-bb09-7d18926ba103',
-                'slug' => 'Lorem ipsum dolor sit amet',
-                'value_type' => 'Lorem ipsum dolor sit a',
-                'label' => 'Lorem ipsum dolor sit amet'
+                'id' => '00000000-0000-0000-0000-000000000001',
+                'network_id' => '00000000-0000-0000-0000-000000000001',
+                'slug' => 'retweet_count',
+                'value_type' => 'int',
+                'label' => 'Retweets'
+            ],
+            [
+                'id' => '00000000-0000-0000-0000-000000000002',
+                'network_id' => '00000000-0000-0000-0000-000000000001',
+                'slug' => 'favorite_count',
+                'value_type' => 'int',
+                'label' => 'Favorites'
             ],
         ];
         parent::init();
