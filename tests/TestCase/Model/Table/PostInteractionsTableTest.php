@@ -40,7 +40,9 @@ class PostInteractionsTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::getTableLocator()->exists('PostInteractions') ? [] : ['className' => PostInteractionsTable::class];
-        $this->PostInteractions = TableRegistry::getTableLocator()->get('PostInteractions', $config);
+        /** @var \Qobo\Social\Model\Table\PostInteractionsTable $table */
+        $table = TableRegistry::getTableLocator()->get('PostInteractions', $config);
+        $this->PostInteractions = $table;
     }
 
     /**

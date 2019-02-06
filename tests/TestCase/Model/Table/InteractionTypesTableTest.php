@@ -39,7 +39,9 @@ class InteractionTypesTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::getTableLocator()->exists('InteractionTypes') ? [] : ['className' => InteractionTypesTable::class];
-        $this->InteractionTypes = TableRegistry::getTableLocator()->get('InteractionTypes', $config);
+        /** @var \Qobo\Social\Model\Table\InteractionTypesTable $table */
+        $table = TableRegistry::getTableLocator()->get('InteractionTypes', $config);
+        $this->InteractionTypes = $table;
     }
 
     /**
