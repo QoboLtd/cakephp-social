@@ -25,54 +25,87 @@ class TwitterResponse extends AbstractResponse
         }
 
         $posts = TableRegistry::getTableLocator()->get('Qobo/Social.Posts');
-        $accounts = TableRegistry::getTableLocator()->get('Qobo/Social.Accounts');
-        $networks = TableRegistry::getTableLocator()->get('Qobo/Social.Networks');
-
         foreach ($this->payload->results as $result) {
             /** @var \Qobo\Social\Model\Entity\Post $post */
             $post = $this->getPostEntity($result->id_str);
-
-            if (!$post->isNew()) {
-                /** @var \Qobo\Social\Model\Entity\Post $post */
-                $post = $posts->patchEntity($post, [
-                    'content' => $result->text,
-                    'extra' => json_encode($result),
-                ], ['validate' => false]);
-                $results[] = $post;
-
-                continue;
-            }
-
-            /** @var \Qobo\Social\Model\Entity\Account $account */
-            $account = $this->getAccountEntity($result->user);
-            if ($account->isNew()) {
-                $account = $accounts->patchEntity($account, [
-                    'network_id' => $this->getNetwork()->id,
-                    'handle' => $result->user->screen_name,
-                    'is_ours' => false,
-                ]);
-
-                if (!$accounts->save($account)) {
-                    throw new ProviderException('cannot save account');
-                }
-            }
-
-            /** @var \Qobo\Social\Model\Entity\Post $post */
-            $post = $posts->patchEntity($post, [
-                'account_id' => $account->id,
-                'external_post_id' => $result->id_str,
-                'type' => 'tweet',
-                'url' => sprintf('https://twitter.com/%s/status/%s', $account->get('handle'), $result->id_str),
-                'subject' => 'Tweet from ' . $account->get('handle'),
-                'content' => $result->text,
-                'extra' => json_encode($result),
-                'publish_date' => new FrozenTime($result->created_at),
-            ]);
-
-            $results[] = $post;
+            $results[] = $this->patchPostEntity($post, $result);
         }
 
         return $results;
+    }
+
+    /**
+     * Array of interactions.
+     *
+     * @param \stdClass $payload Incoming twitter payload
+     * @return mixed[] Array of interactions
+     */
+    protected function getInteractions(stdClass $payload): array
+    {
+        $result = [];
+        $importDate = FrozenTime::now();
+        $interactionTypes = TableRegistry::getTableLocator()->get('Qobo/Social.InteractionTypes');
+        $postInteractions = TableRegistry::getTableLocator()->get('Qobo/Social.PostInteractions');
+
+        foreach (['retweet_count', 'favorite_count'] as $field) {
+            /** @var null|\Qobo\Social\Model\Entity\InteractionType $type */
+            $type = $interactionTypes->find('all')->where([
+                'network_id' => $this->getNetwork()->id,
+                'slug' => $field,
+            ])->first();
+            if ($type === null) {
+                continue;
+            }
+            $result[] = [
+                'interaction_type_id' => $type->id,
+                'value_int' => $payload->$field ?? 0,
+                'import_date' => $importDate,
+            ];
+        }
+
+        return $result;
+    }
+
+    /**
+     * Patches a post entity with twitter payload.
+     *
+     * @param \Qobo\Social\Model\Entity\Post $post Post entity.
+     * @param \stdClass $payload Incoming twitter payload.
+     * @return \Qobo\Social\Model\Entity\Post Patched Post entity
+     */
+    protected function patchPostEntity(Post $post, stdClass $payload): Post
+    {
+        $posts = TableRegistry::getTableLocator()->get('Qobo/Social.Posts');
+        $accounts = TableRegistry::getTableLocator()->get('Qobo/Social.Accounts');
+
+        /** @var \Qobo\Social\Model\Entity\Account $account */
+        $account = $this->getAccountEntity($payload->user);
+        if ($account->isNew()) {
+            $account = $accounts->patchEntity($account, [
+                'network_id' => $this->getNetwork()->id,
+                'handle' => $payload->user->screen_name,
+                'is_ours' => false,
+            ]);
+
+            if (!$accounts->save($account)) {
+                throw new ProviderException('cannot save account');
+            }
+        }
+
+        /** @var \Qobo\Social\Model\Entity\Post $post */
+        $post = $posts->patchEntity($post, [
+            'account_id' => $account->id,
+            'external_post_id' => $payload->id_str,
+            'type' => 'tweet',
+            'url' => sprintf('https://twitter.com/%s/status/%s', $account->get('handle'), $payload->id_str),
+            'subject' => 'Tweet from ' . $account->get('handle'),
+            'content' => $payload->text,
+            'extra' => json_encode($payload),
+            'publish_date' => new FrozenTime($payload->created_at),
+            'post_interactions' => $this->getInteractions($payload),
+        ], ['validate' => false]);
+
+        return $post;
     }
 
     /**
