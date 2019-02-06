@@ -29,9 +29,11 @@ class TwitterResponse extends AbstractResponse
         $networks = TableRegistry::getTableLocator()->get('Qobo/Social.Networks');
 
         foreach ($this->payload->results as $result) {
+            /** @var \Qobo\Social\Model\Entity\Post $post */
             $post = $this->getPostEntity($result->id_str);
 
             if (!$post->isNew()) {
+                /** @var \Qobo\Social\Model\Entity\Post $post */
                 $post = $posts->patchEntity($post, [
                     'content' => $result->text,
                     'extra' => json_encode($result),
