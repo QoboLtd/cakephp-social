@@ -18,6 +18,11 @@ class CreatePostInteractionsTable extends AbstractMigration
                 'limit' => null,
                 'null' => false,
             ])
+            ->addColumn('import_date', 'datetime', [
+                'default' => null,
+                'limit' => null,
+                'null' => false,
+            ])
             ->addColumn('interaction_type_id', 'uuid', [
                 'default' => null,
                 'limit' => null,
@@ -28,18 +33,14 @@ class CreatePostInteractionsTable extends AbstractMigration
                 'limit' => 11,
                 'null' => false,
             ])
-            ->addColumn('import_date', 'datetime', [
-                'default' => null,
-                'limit' => null,
-                'null' => false,
-            ])
             ->addIndex(
                 [
                     'post_id',
+                    'import_date',
                     'interaction_type_id',
                 ],
                 [
-                    'name' => 'post_id_interaction_type_id',
+                    'name' => 'post_interaction',
                     'unique' => true,
                 ]
             )
