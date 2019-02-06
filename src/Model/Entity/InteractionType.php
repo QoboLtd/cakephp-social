@@ -27,10 +27,7 @@ class InteractionType extends Entity
      * @var array
      */
     protected $_accessible = [
-        'network_id' => true,
-        'slug' => true,
-        'value_type' => true,
-        'label' => true,
-        'network' => true
+        '*' => true,
+        'id' => false,
     ];
 }

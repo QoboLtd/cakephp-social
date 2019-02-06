@@ -28,11 +28,7 @@ class PostInteraction extends Entity
      * @var array
      */
     protected $_accessible = [
-        'post_id' => true,
-        'interaction_type_id' => true,
-        'value_int' => true,
-        'import_date' => true,
-        'post' => true,
-        'interaction_type' => true
+        '*' => true,
+        'id' => false,
     ];
 }
