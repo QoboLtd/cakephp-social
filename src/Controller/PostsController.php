@@ -54,7 +54,7 @@ class PostsController extends AppController
         $post = $this->Posts->newEntity();
         $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is('post')) {
-            $post = $this->Posts->patchEntity($post, $data);
+            $post = $this->Posts->patchEntity($post, $data, ['validate' => 'canAccountPost']);
             if ($this->Posts->save($post)) {
                 $this->Flash->success((string)__('The post has been saved.'));
 
@@ -62,7 +62,7 @@ class PostsController extends AppController
             }
             $this->Flash->error((string)__('The post could not be saved. Please, try again.'));
         }
-        $accounts = $this->Posts->Accounts->find('list', ['limit' => 200]);
+        $accounts = $this->Posts->Accounts->find('list', ['limit' => 200, 'conditions' => ['is_ours' => true]]);
         $topics = $this->Posts->Topics->find('list', ['limit' => 200]);
         $this->set(compact('post', 'accounts', 'topics'));
     }
