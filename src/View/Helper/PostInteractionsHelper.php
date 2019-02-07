@@ -20,7 +20,7 @@ class PostInteractionsHelper extends Helper
     ];
 
     /**
-     * Parses the incoming post interaction(s) and returns an array of procesed elements.
+     * Takes the incoming post interaction(s) and returns a string of processed elements.
      *
      * @param \Qobo\Social\Model\Entity\PostInteraction|\Qobo\Social\Model\Entity\PostInteraction[] $interactions Interactions
      * @return string Output
