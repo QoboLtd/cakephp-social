@@ -57,7 +57,7 @@ class TwitterResponse extends AbstractResponse
                 continue;
             }
             $result[] = [
-                'interaction_type_id' => $type->id,
+                'interaction_type_id' => $type->get('id'),
                 'value_int' => $payload->$field ?? 0,
                 'import_date' => $importDate,
             ];
