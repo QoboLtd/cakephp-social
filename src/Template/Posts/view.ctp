@@ -73,7 +73,7 @@
     </div>
     <div class="row">
         <h4><?= __('Post Interactions') ?></h4>
-        <?= $this->PostInteractions->parse($post->latest_post_interactions) ?>
+        <?= $this->PostInteractions->render($post->latest_post_interactions) ?>
     </div>
     <div class="related">
         <h4><?= __('Related Topics') ?></h4>
