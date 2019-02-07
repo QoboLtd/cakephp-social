@@ -13,5 +13,5 @@ $value = $interaction->get('value_' . $valueType);
 ?>
 <div class="post-interaction">
     <span class="post-interaction-label"><?= $label ?></span>
-    <span class="post-interaction-value"><?= $interaction->value_int ?></span>
+    <span class="post-interaction-value"><?= $value ?></span>
 </div>
