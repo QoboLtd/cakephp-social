@@ -85,7 +85,7 @@ class PostInteractionsHelperTest extends TestCase
             'contain' => ['LatestPostInteractions']
         ]);
         /** @var \Qobo\Social\Model\Entity\PostInteraction[] $interactions */
-        $interactions = $post->latest_post_interactions;
+        $interactions = $post->get('latest_post_interactions');
         $output = $this->PostInteractions->render($interactions);
         $this->assertContains('Retweets', $output);
         $this->assertContains('>5</', $output);
@@ -105,7 +105,7 @@ class PostInteractionsHelperTest extends TestCase
             'contain' => ['LatestPostInteractions']
         ]);
         /** @var \Qobo\Social\Model\Entity\PostInteraction $interaction */
-        $interaction = $post->latest_post_interactions[0];
+        $interaction = $post->get('latest_post_interactions')[0];
         $output = $this->PostInteractions->render($interaction);
         $this->assertNotEmpty($output);
     }
