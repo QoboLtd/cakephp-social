@@ -23,6 +23,7 @@ use Cake\ORM\Entity;
  * @property \Qobo\Social\Model\Entity\Account $account
  * @property \Qobo\Social\Model\Entity\Post[] $posts
  * @property \Qobo\Social\Model\Entity\Topic[] $topics
+ * @property \Qobo\Social\Model\Entity\PostInteraction[] $post_interactions
  */
 class Post extends Entity
 {

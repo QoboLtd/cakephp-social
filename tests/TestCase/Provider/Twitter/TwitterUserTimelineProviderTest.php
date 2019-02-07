@@ -47,11 +47,13 @@ class TwitterUserTimelineProviderTest extends TestCase
      */
     public $fixtures = [
         'plugin.qobo/social.accounts',
+        'plugin.qobo/social.interaction_types',
+        'plugin.qobo/social.keywords',
         'plugin.qobo/social.networks',
+        'plugin.qobo/social.post_interactions',
         'plugin.qobo/social.posts',
         'plugin.qobo/social.posts_topics',
         'plugin.qobo/social.topics',
-        'plugin.qobo/social.keywords',
     ];
 
     /**
