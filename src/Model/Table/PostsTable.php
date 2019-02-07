@@ -64,10 +64,25 @@ class PostsTable extends Table
             'through' => 'Qobo/Social.PostsTopics',
             'className' => 'Qobo/Social.Topics'
         ]);
+        $this->hasMany('LatestPostInteractions', [
+            'foreignKey' => 'post_id',
+            'className' => 'Qobo/Social.PostInteractions',
+            'finder' => [
+                'latest' => [
+                    'contain' => ['InteractionTypes']
+                ]
+            ],
+        ]);
         $this->hasMany('PostInteractions', [
             'foreignKey' => 'post_id',
             'dependent' => true,
-            'className' => 'Qobo/Social.PostInteractions'
+            'className' => 'Qobo/Social.PostInteractions',
+            'finder' => [
+                'all' => [
+                    'order' => ['import_date' => 'DESC'],
+                    'contain' => ['InteractionTypes']
+                ]
+            ],
         ]);
     }
 
