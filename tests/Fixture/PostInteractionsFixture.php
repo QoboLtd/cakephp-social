@@ -31,7 +31,7 @@ class PostInteractionsFixture extends TestFixture
         'import_date' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'post_id_interaction_type_id' => ['type' => 'unique', 'columns' => ['post_id', 'interaction_type_id'], 'length' => []],
+            'post_interaction' => ['type' => 'unique', 'columns' => ['post_id', 'import_date', 'interaction_type_id'], 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',
@@ -49,18 +49,32 @@ class PostInteractionsFixture extends TestFixture
     {
         $this->records = [
             [
-                'id' => '00000000-0000-0000-0000-000000000001',
+                'id' => '00000000-0000-0000-0000-000000000004',
                 'post_id' => '00000000-0000-0000-0000-000000000001',
                 'interaction_type_id' => '00000000-0000-0000-0000-000000000001',
                 'value_int' => 5,
                 'import_date' => '2019-02-06 10:29:42'
             ],
             [
-                'id' => '00000000-0000-0000-0000-000000000002',
+                'id' => '00000000-0000-0000-0000-000000000003',
                 'post_id' => '00000000-0000-0000-0000-000000000001',
                 'interaction_type_id' => '00000000-0000-0000-0000-000000000002',
                 'value_int' => 10,
                 'import_date' => '2019-02-06 10:29:42'
+            ],
+            [
+                'id' => '00000000-0000-0000-0000-000000000002',
+                'post_id' => '00000000-0000-0000-0000-000000000001',
+                'interaction_type_id' => '00000000-0000-0000-0000-000000000001',
+                'value_int' => 4,
+                'import_date' => '2019-02-05 10:29:42'
+            ],
+            [
+                'id' => '00000000-0000-0000-0000-000000000001',
+                'post_id' => '00000000-0000-0000-0000-000000000001',
+                'interaction_type_id' => '00000000-0000-0000-0000-000000000002',
+                'value_int' => 9,
+                'import_date' => '2019-02-05 10:29:42'
             ],
         ];
         parent::init();
