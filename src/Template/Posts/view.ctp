@@ -44,7 +44,7 @@
         </tr>
         <tr>
             <th scope="row"><?= __('Url') ?></th>
-            <td><?= h($post->url) ?></td>
+            <td><?= $this->Html->link($post->url, null, ['target' => '_blank']) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Subject') ?></th>
@@ -72,8 +72,8 @@
         <?= $this->Text->autoParagraph(h($post->content)); ?>
     </div>
     <div class="row">
-        <h4><?= __('Extra') ?></h4>
-        <?= $this->Text->autoParagraph(h($post->extra)); ?>
+        <h4><?= __('Post Interactions') ?></h4>
+        <?= $this->PostInteractions->parse($post->latest_post_interactions) ?>
     </div>
     <div class="related">
         <h4><?= __('Related Topics') ?></h4>
