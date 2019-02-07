@@ -93,4 +93,28 @@ class PostInteractionsTable extends Table
 
         return $rules;
     }
+
+    /**
+     * Find the most recent post interaction(s).
+     *
+     * @param \Cake\ORM\Query $query Query object.
+     * @param mixed[] $params Optional params.
+     * @return \Cake\ORM\Query Query object.
+     */
+    public function findLatest(Query $query, array $params = []): Query
+    {
+        $subQuery = $this->query()
+            ->select([
+                $this->aliasField('post_id'),
+                $this->aliasField('interaction_type_id'),
+                'max_import_date' => $query->func()->max('import_date')
+            ])
+            ->group([$this->aliasField('post_id'), $this->aliasField('interaction_type_id')]);
+
+        $whereFields = ['post_id', 'interaction_type_id', 'import_date'];
+        $whereClause = implode(', ', $whereFields);
+        $query->where(['(' . $whereClause . ') IN' => $subQuery]);
+
+        return $query;
+    }
 }

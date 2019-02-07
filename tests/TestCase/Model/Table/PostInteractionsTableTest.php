@@ -1,6 +1,7 @@
 <?php
 namespace Qobo\Social\Test\TestCase\Model\Table;
 
+use Cake\I18n\FrozenTime;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
@@ -89,5 +90,21 @@ class PostInteractionsTableTest extends TestCase
         $rules = new RulesChecker();
         $result = $this->PostInteractions->buildRules($rules);
         $this->assertInstanceOf(RulesChecker::class, $result);
+    }
+
+    /**
+     * Test find latest
+     *
+     * @return void
+     */
+    public function testFindLatest(): void
+    {
+        $all = $this->PostInteractions->find('all');
+        $latest = $this->PostInteractions->find('latest');
+        $this->assertNotEquals($latest->count(), $all->count());
+        $this->assertCount(2, $latest);
+        foreach ($latest as $interaction) {
+            $this->assertEquals(new FrozenTime('2019-02-06 10:29:42'), $interaction->import_date);
+        }
     }
 }
