@@ -2,8 +2,6 @@
 namespace Qobo\Social\View\Helper;
 
 use Cake\View\Helper;
-use Cake\View\View;
-
 use Qobo\Social\Model\Entity\PostInteraction;
 
 /**
@@ -27,7 +25,7 @@ class PostInteractionsHelper extends Helper
      * @param \Qobo\Social\Model\Entity\PostInteraction|\Qobo\Social\Model\Entity\PostInteraction[] $interactions Interactions
      * @return string Output
      */
-    public function parse($interactions): string
+    public function render($interactions): string
     {
         $output = '';
         if (!is_array($interactions)) {
