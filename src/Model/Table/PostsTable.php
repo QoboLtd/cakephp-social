@@ -156,4 +156,40 @@ class PostsTable extends Table
 
         return $rules;
     }
+
+    /**
+     * Account validation rules for posting to a social network.
+     *
+     * @param \Cake\Validation\Validator $validator Validator instance.
+     * @return \Cake\Validation\Validator
+     */
+    public function validationCanAccountPost(Validator $validator): Validator
+    {
+        $validator = $this->validationDefault($validator);
+
+        $validator->add('account_id', 'can-post', [
+            'rule' => 'canAccountPost',
+            'message' => __('Only accounts marked as ours can post to social networks.'),
+            'provider' => 'table',
+        ]);
+
+        return $validator;
+    }
+
+    /**
+     * Validation rule which checks whether the account is marked as ours.
+     *
+     * @param string $accountId Account ID.
+     * @param mixed[] $context Validation context.
+     * @return bool True if account can post.
+     */
+    public function canAccountPost(string $accountId, array $context): bool
+    {
+        $account = $this->Accounts->find()->where([
+            'id' => $accountId,
+            'is_ours' => true,
+        ]);
+
+        return (bool)$account->count();
+    }
 }
