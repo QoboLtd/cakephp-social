@@ -55,7 +55,7 @@ class PostsController extends AppController
         $post = $this->Posts->newEntity();
         $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is('post')) {
-            $post = $this->Posts->patchEntity($post, $data, ['validate' => 'canAccountPost']);
+            $post = $this->Posts->patchEntity($post, $data, ['validate' => 'publish']);
             if ($this->Posts->save($post)) {
                 $this->Flash->success((string)__('The post has been saved.'));
 

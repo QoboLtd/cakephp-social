@@ -1,10 +1,15 @@
 <?php
 namespace Qobo\Social\Model\Table;
 
-use Cake\ORM\Query;
+use ArrayObject;
+use Cake\Core\Configure;
+use Cake\Event\Event;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
+use Qobo\Social\Model\Entity\Post;
+use Qobo\Social\Publisher\PublisherException;
 
 /**
  * Posts Model
@@ -163,7 +168,7 @@ class PostsTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationCanAccountPost(Validator $validator): Validator
+    public function validationPublish(Validator $validator): Validator
     {
         $validator = $this->validationDefault($validator);
 
@@ -191,5 +196,70 @@ class PostsTable extends Table
         ]);
 
         return (bool)$account->count();
+    }
+
+    /**
+     * After save event.
+     *
+     * @param \Cake\Event\Event $event [description]
+     * @param \Qobo\Social\Model\Entity\Post $entity [description]
+     * @param \ArrayObject $options [description]
+     * @return void
+     */
+    public function afterSave(Event $event, Post $entity, ArrayObject $options): void
+    {
+        // If entity is not new or has the external id already set we should exit.
+        $externalId = $entity->get('external_post_id');
+        $enabled = Configure::read('Qobo/Social.publishEnabled', false);
+        if ($enabled === true && $entity->isNew() && empty($externalId)) {
+            $this->runPublisher($entity);
+        }
+    }
+
+    /**
+     * Run a social publisher based on account and network.
+     *
+     * @param \Qobo\Social\Model\Entity\Post $entity Post entity.
+     * @return void
+     */
+    protected function runPublisher(Post $entity): void
+    {
+        /** @var \Qobo\Social\Model\Table\AccountsTable $accounts */
+        $accounts = $this->Accounts;
+        /** @var \Qobo\Social\Model\Entity\Account $account */
+        $account = $accounts->get($entity->get('account_id'), [
+            'finder' => 'decrypt',
+        ]);
+        // If the associated account is not found or is not ours we should exit.
+        if ($account->get('is_ours') === false) {
+            return;
+        }
+
+        /** @var \Qobo\Social\Model\Table\NetworksTable $networks */
+        $networks = TableRegistry::getTableLocator()->get('Qobo/Social.Networks');
+        /** @var \Qobo\Social\Model\Entity\Network $network */
+        $network = $networks->get($account->get('network_id'), [
+            'finder' => 'decrypt',
+        ]);
+
+        // Find the publisher and exit if not found.
+        $class = Configure::read(sprintf('Qobo/Social.publisher.%s', $network->get('name')));
+        if (empty($class) || !class_exists($class)) {
+            return;
+        }
+
+        // Run the publisher and update the entity.
+        /** @var \Qobo\Social\Publisher\PublisherInterface $publisher */
+        $publisher = new $class();
+        $publisher->setAccount($account);
+        $publisher->setNetwork($network);
+        /** @var \Qobo\Social\Publisher\PublisherResponseInterface $response */
+        try {
+            $response = $publisher->publish($entity);
+            $entity = $this->patchEntity($entity, ['external_post_id' => $response->getExternalPostId()], ['validate' => false]);
+            $this->save($entity);
+        } catch (PublisherException $e) {
+            // @ignoreException
+        }
     }
 }
