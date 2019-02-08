@@ -1,6 +1,7 @@
 <?php
 namespace Qobo\Social\Controller;
 
+use Cake\Core\Configure;
 use Qobo\Social\Controller\AppController;
 
 /**
@@ -51,6 +52,7 @@ class PostsController extends AppController
      */
     public function add()
     {
+        Configure::write('Qobo/Social.publishEnabled', true);
         $post = $this->Posts->newEntity();
         $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is('post')) {

@@ -1,6 +1,7 @@
 <?php
 namespace Qobo\Social\Test\TestCase\Model\Table;
 
+use Cake\Core\Configure;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
@@ -40,6 +41,10 @@ class PostsTableTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
+
+        Configure::write('Qobo/Social.publishEnabled', true);
+        Configure::write('Qobo/Social.publisher.twitter', TestPublisher::class);
+
         $config = TableRegistry::getTableLocator()->exists('Posts') ? [] : ['className' => PostsTable::class];
         /** @var \Qobo\Social\Model\Table\PostsTable $table */
         $table = TableRegistry::getTableLocator()->get('Posts', $config);

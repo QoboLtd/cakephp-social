@@ -2,7 +2,7 @@
 
 return [
     'Qobo/Social' => [
-        'publishEnabled' => true,
+        'publishEnabled' => false,
         'publisher' => [
             'twitter' => 'Qobo\Social\Publisher\Twitter\TwitterPublisher',
         ],
