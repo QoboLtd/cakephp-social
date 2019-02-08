@@ -1,8 +1,6 @@
 <?php
 namespace Qobo\Social\Test\App\Publisher\Twitter;
 
-use stdClass;
-
 use Qobo\Social\Publisher\Twitter\TwitterPublisher as BaseTwitterPublisher;
 
 class TwitterPublisher extends BaseTwitterPublisher
