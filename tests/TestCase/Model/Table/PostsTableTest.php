@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
 use Qobo\Social\Model\Entity\Post;
 use Qobo\Social\Model\Table\AccountsTable;
 use Qobo\Social\Model\Table\PostsTable;
+use Qobo\Social\Test\App\Publisher\BadPublisher;
 use Qobo\Social\Test\App\Publisher\PublisherThrows;
 use Qobo\Social\Test\App\Publisher\Twitter\TwitterPublisher;
 
@@ -234,6 +235,22 @@ class PostsTableTest extends TestCase
     public function testPublisherNotFoundGracefulExit(): void
     {
         Configure::write('Qobo/Social.publisher.twitter', 'Some\Bad\Class');
+        $post = $this->createPost(['account_id' => '00000000-0000-0000-0000-000000000001']);
+        $expected = clone $post;
+        $options = new ArrayObject;
+        $event = new Event('Model.afterSave', $this->Posts, compact('post', 'options'));
+        $this->Posts->afterSave($event, $post, $options);
+        $this->assertEquals($expected, $post);
+    }
+
+    /**
+     * Test when publisher class is not a valid publisher
+     *
+     * @return void
+     */
+    public function testPublisherBadInterface(): void
+    {
+        Configure::write('Qobo/Social.publisher.twitter', BadPublisher::class);
         $post = $this->createPost(['account_id' => '00000000-0000-0000-0000-000000000001']);
         $expected = clone $post;
         $options = new ArrayObject;

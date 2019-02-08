@@ -10,6 +10,7 @@ use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 use Qobo\Social\Model\Entity\Post;
 use Qobo\Social\Publisher\PublisherException;
+use Qobo\Social\Publisher\PublisherInterface;
 
 /**
  * Posts Model
@@ -251,6 +252,9 @@ class PostsTable extends Table
         // Run the publisher and update the entity.
         /** @var \Qobo\Social\Publisher\PublisherInterface $publisher */
         $publisher = new $class();
+        if (!is_a($publisher, PubisherInterface::class)) {
+            return;
+        }
         $publisher->setAccount($account);
         $publisher->setNetwork($network);
         /** @var \Qobo\Social\Publisher\PublisherResponseInterface $response */
