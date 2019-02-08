@@ -260,7 +260,10 @@ class PostsTable extends Table
         /** @var \Qobo\Social\Publisher\PublisherResponseInterface $response */
         try {
             $response = $publisher->publish($entity);
-            $entity = $this->patchEntity($entity, ['external_post_id' => $response->getExternalPostId()], ['validate' => false]);
+            $entity = $this->patchEntity($entity, [
+                'external_post_id' => $response->getExternalPostId(),
+                'extra' => json_encode($response->getResponsePayload()),
+            ], ['validate' => false]);
             $this->save($entity);
         } catch (PublisherException $e) {
             // @ignoreException
