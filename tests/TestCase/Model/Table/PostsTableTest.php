@@ -8,6 +8,7 @@ use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
 use Qobo\Social\Model\Entity\Post;
 use Qobo\Social\Model\Table\PostsTable;
+use Qobo\Social\Test\App\Publisher\TestPublisher;
 
 /**
  * Qobo\Social\Model\Table\PostsTable Test Case
