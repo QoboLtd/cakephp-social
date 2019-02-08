@@ -32,7 +32,6 @@ class TwitterPublisher extends AbstractPublisher
             $credentials = json_decode($this->getAccount()->get('credentials'));
             $oauthToken = $credentials->oauth_token ?? '';
             $oauthSecret = $credentials->oauth_token_secret ?? '';
-            // $oauthSecret = 'bad';
             $this->client = new TwitterOAuth($consumerKey, $consumerSecret, $oauthToken, $oauthSecret);
         }
 
