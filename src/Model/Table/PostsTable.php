@@ -252,7 +252,7 @@ class PostsTable extends Table
         // Run the publisher and update the entity.
         /** @var \Qobo\Social\Publisher\PublisherInterface $publisher */
         $publisher = new $class();
-        if (!is_a($publisher, PubisherInterface::class)) {
+        if (!is_a($publisher, PublisherInterface::class)) {
             return;
         }
         $publisher->setAccount($account);
