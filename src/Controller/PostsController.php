@@ -63,7 +63,7 @@ class PostsController extends AppController
             }
             $this->Flash->error((string)__('The post could not be saved. Please, try again.'));
         }
-        $accounts = $this->Posts->Accounts->find('list', ['limit' => 200, 'conditions' => ['is_ours' => true]]);
+        $accounts = $this->Posts->Accounts->find('ours')->find('list', ['limit' => 200]);
         $topics = $this->Posts->Topics->find('list', ['limit' => 200]);
         $this->set(compact('post', 'accounts', 'topics'));
     }

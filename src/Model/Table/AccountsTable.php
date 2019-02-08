@@ -2,6 +2,7 @@
 namespace Qobo\Social\Model\Table;
 
 use Cake\Core\Configure;
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -119,5 +120,17 @@ class AccountsTable extends Table
         $rules->add($rules->existsIn(['network_id'], 'Networks'));
 
         return $rules;
+    }
+
+    /**
+     * Custom finder method which returns accounts marked as `ours`.
+     *
+     * @param \Cake\ORM\Query $query Query object.
+     * @param mixed[] $options Options
+     * @return \Cake\ORM\Query Query object.
+     */
+    public function findOurs(Query $query, array $options = []): Query
+    {
+        return $query->find('all', $options)->where(['is_ours' => true]);
     }
 }
