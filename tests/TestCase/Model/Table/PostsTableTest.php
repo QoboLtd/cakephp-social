@@ -80,6 +80,27 @@ class PostsTableTest extends TestCase
     }
 
     /**
+     * Test validationCanAccountPost method
+     *
+     * @return void
+     */
+    public function testValidationCanAccountPost(): void
+    {
+        $validator = new Validator();
+        $result = $this->Posts->validationCanAccountPost($validator);
+        $this->assertInstanceOf(Validator::class, $result);
+
+        $post = $this->Posts->newEntity();
+        $data = [
+            'account_id' => '00000000-0000-0000-0000-000000000002',
+        ];
+        $post = $this->Posts->patchEntity($post, $data, ['validate' => 'canAccountPost']);
+        $errors = $post->getError('account_id');
+        $this->assertNotEmpty($errors);
+        $this->assertArrayHasKey('can-post', $errors);
+    }
+
+    /**
      * Test buildRules method
      *
      * @return void
@@ -89,5 +110,23 @@ class PostsTableTest extends TestCase
         $rules = new RulesChecker();
         $result = $this->Posts->buildRules($rules);
         $this->assertInstanceOf(RulesChecker::class, $result);
+    }
+    /**
+     * Helper function which creates a Post entity.
+     *
+     * @param mixed[] $fields Fields.
+     * @return \Qobo\Social\Model\Entity\Post Post entity.
+     */
+    protected function createPost(array $fields = []): Post
+    {
+        $post = $this->Posts->newEntity($fields + [
+            'account_id' => '00000000-0000-0000-0000-000000000001',
+            'type' => 'foobar',
+            'url' => 'https://google.com',
+            'subject' => 'Foo',
+            'content' => 'Bar',
+        ]);
+
+        return $post;
     }
 }
