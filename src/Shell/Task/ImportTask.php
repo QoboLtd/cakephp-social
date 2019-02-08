@@ -3,6 +3,8 @@ namespace Qobo\Social\Shell\Task;
 
 use Cake\Console\ConsoleOptionParser;
 use Cake\Console\Shell;
+use Cake\Core\Configure;
+
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Log\LogTrait;
 use Cake\ORM\TableRegistry;
@@ -34,6 +36,9 @@ class ImportTask extends Shell
     public function initialize()
     {
         parent::initialize();
+
+        // Disable publishing to avoid duplicating posts back to social network
+        Configure::write('Qobo/Social.publishEnabled', false);
 
         $this->loadModel('Qobo/Social.Networks');
         $this->loadModel('Qobo/Social.Topics');
