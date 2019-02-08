@@ -5,6 +5,7 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 use Cake\Validation\Validator;
+use Qobo\Social\Model\Entity\Post;
 use Qobo\Social\Model\Table\PostsTable;
 
 /**
