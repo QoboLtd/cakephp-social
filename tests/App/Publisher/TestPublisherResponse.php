@@ -33,14 +33,6 @@ class TestPublisherResponse extends AbstractPublisherResponse
     /**
      * {@inheritDoc}
      */
-    public function getResponsePayload()
-    {
-        return $this->payload;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getExternalPostId(): string
     {
         return $this->payload['external_id'] ?? '';
