@@ -14,9 +14,18 @@ abstract class AbstractPublisherResponse implements PublisherResponseInterface
     protected $errors = [];
 
     /**
+     * Payload.
+     * @var mixed
+     */
+    protected $payload;
+
+    /**
      * {@inheritDoc}
      */
-    abstract public function getResponsePayload();
+    public function getResponsePayload()
+    {
+        return $this->payload;
+    }
 
     /**
      * {@inheritDoc}
