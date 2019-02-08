@@ -1,0 +1,8 @@
+{
+    "errors": [
+        {
+            "code":86,
+            "message":"This method requires a POST."
+        }
+    ]
+}
