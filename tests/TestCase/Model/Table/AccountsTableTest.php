@@ -90,4 +90,19 @@ class AccountsTableTest extends TestCase
         $result = $this->Accounts->buildRules($rules);
         $this->assertInstanceOf(RulesChecker::class, $result);
     }
+
+    /**
+     * Test findOurs method
+     *
+     * @return void
+     */
+    public function testFindOurs(): void
+    {
+        $accounts = $this->Accounts->find('ours');
+        $count = $accounts->count();
+        $this->assertGreaterThan(0, $count);
+        foreach ($accounts as $account) {
+            $this->assertTrue($account->get('is_ours'));
+        }
+    }
 }
