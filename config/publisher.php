@@ -1,4 +1,5 @@
 <?php
+use Qobo\Social\Publisher\Twitter\TwitterPublisher;
 
 return [
     'Qobo/Social' => [
@@ -6,7 +7,7 @@ return [
         'publishEnabled' => true,
         // List of registered publishers per social network name
         'publisher' => [
-            'twitter' => 'Qobo\Social\Publisher\Twitter\TwitterPublisher',
+            'twitter' => TwitterPublisher::class,
         ],
     ]
 ];
