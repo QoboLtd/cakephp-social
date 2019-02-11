@@ -4,6 +4,7 @@ namespace Qobo\Social\Model\Table;
 use ArrayObject;
 use Cake\Core\Configure;
 use Cake\Event\Event;
+use Cake\Log\LogTrait;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\ORM\TableRegistry;
@@ -34,6 +35,7 @@ use Qobo\Social\Publisher\PublisherInterface;
  */
 class PostsTable extends Table
 {
+    use LogTrait;
 
     /**
      * Initialize method
@@ -244,8 +246,11 @@ class PostsTable extends Table
         ]);
 
         // Find the publisher and exit if not found.
-        $class = Configure::read(sprintf('Qobo/Social.publisher.%s', $network->get('name')));
+        $className = sprintf('Qobo/Social.publisher.%s', $network->get('name'));
+        $class = Configure::read($className);
         if (empty($class) || !class_exists($class)) {
+            $this->log("Publisher is not defined: {$className}");
+
             return;
         }
 
@@ -267,6 +272,7 @@ class PostsTable extends Table
             $this->save($entity);
         } catch (PublisherException $e) {
             // @ignoreException
+            $this->log("Publisher error: {$e->getTraceAsString()}");
         }
     }
 }
