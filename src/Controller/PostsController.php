@@ -22,7 +22,7 @@ class PostsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Accounts']
+            'contain' => ['Accounts', 'LatestPostInteractions']
         ];
         $posts = $this->paginate($this->Posts);
 
