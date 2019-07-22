@@ -83,7 +83,7 @@ class ImportTask extends Shell
      * @param string $networkName Network name.
      * @param string $providerName Provider name.
      * @param null|string $topicUuid Optional topic.
-     * @return void
+     * @return bool|int|null
      */
     public function main(string $networkName, string $providerName, ?string $topicUuid = null)
     {
@@ -131,6 +131,8 @@ class ImportTask extends Shell
 
         $this->out('');
         $this->out('Complete!');
+
+        return true;
     }
 
     /**
