@@ -40,7 +40,7 @@ class SocialProviderShellTest extends ConsoleIntegrationTestCase
     public function setUp()
     {
         parent::setUp();
-        /** @var \Cake\Console\ConsoleIo|\PHPUnit\Framework\MockObject\MockObject $mock */
+        /** @var \Cake\Console\ConsoleIo $mock */
         $mock = $this->getMockBuilder('Cake\Console\ConsoleIo')->getMock();
         $this->io = $mock;
         $this->SocialProvider = new SocialProviderShell($this->io);
@@ -81,7 +81,10 @@ class SocialProviderShellTest extends ConsoleIntegrationTestCase
      */
     public function testMain(): void
     {
-        $this->io->expects($this->any())
+        /** @var \PHPUnit\Framework\MockObject\MockObject */
+        $mock = $this->io;
+
+        $mock->expects($this->any())
             ->method('out')
             ->will($this->returnCallback([$this, 'setOutput']));
 

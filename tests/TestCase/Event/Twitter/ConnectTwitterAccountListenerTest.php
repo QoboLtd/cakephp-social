@@ -157,7 +157,7 @@ class ConnectTwitterAccountListenerTest extends TestCase
         $response = $this->Listener->connect($event, $request);
         $this->assertInstanceOf('Cake\Http\Response', $response);
 
-        $session = $request->getSession()->read('Twitter.connectAccount');
+        $session = (array)$request->getSession()->read('Twitter.connectAccount');
         $this->assertEquals($token['oauth_token'], $session['oauthToken']);
         $this->assertEquals($token['oauth_token_secret'], $session['oauthTokenSecret']);
 

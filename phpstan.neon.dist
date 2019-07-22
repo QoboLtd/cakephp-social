@@ -9,6 +9,9 @@ parameters:
     earlyTerminatingMethodCalls:
         Cake\Console\Shell:
             - abort
+    ignoreErrors:
+        # This rule is ignored until we revise our support for string|array as the provider
+        - '#Result of && is always false.#'
 includes:
     - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
     - vendor/timeweb/phpstan-enum/extension.neon

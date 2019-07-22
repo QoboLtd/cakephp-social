@@ -180,7 +180,7 @@ class ProviderRegistry
         }
         $providerConfig['className'] = $className;
 
-        if (!empty($provider['config'])) {
+        if (is_array($provider) && !empty($provider['config'])) {
             $providerConfig['config'] = $provider['config'];
         }
 
