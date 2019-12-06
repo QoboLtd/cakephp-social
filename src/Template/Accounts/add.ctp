@@ -6,18 +6,18 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Accounts'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Networks'), ['controller' => 'Networks', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Network'), ['controller' => 'Networks', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __d('Qobo/Social', 'Actions') ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'List Accounts'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'List Networks'), ['controller' => 'Networks', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'New Network'), ['controller' => 'Networks', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'List Posts'), ['controller' => 'Posts', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'New Post'), ['controller' => 'Posts', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="accounts form large-9 medium-8 columns content">
     <?= $this->Form->create($account) ?>
     <fieldset>
-        <legend><?= __('Add Account') ?></legend>
+        <legend><?= __d('Qobo/Social', 'Add Account') ?></legend>
         <?php
             echo $this->Form->control('network_id', ['options' => $networks]);
             echo $this->Form->control('handle');
@@ -27,6 +27,6 @@
             echo $this->Form->control('trashed', ['empty' => true]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__d('Qobo/Social', 'Submit')) ?>
     <?= $this->Form->end() ?>
 </div>

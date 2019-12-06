@@ -88,7 +88,7 @@ class InteractionTypesTable extends Table
         $rules->add($rules->existsIn(['network_id'], 'Networks'));
         $rules->add($rules->isUnique(
             ['network_id', 'slug'],
-            __('This network and slug combination has already been used.')
+            __d('Qobo/Social', 'This network and slug combination has already been used.')
         ));
 
         return $rules;

@@ -54,11 +54,11 @@ class NetworksController extends AppController
         if ($this->request->is('post')) {
             $network = $this->Networks->patchEntity($network, $data);
             if ($this->Networks->save($network)) {
-                $this->Flash->success((string)__('The network has been saved.'));
+                $this->Flash->success((string)__d('Qobo/Social', 'The network has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error((string)__('The network could not be saved. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The network could not be saved. Please, try again.'));
         }
         $this->set(compact('network'));
     }
@@ -80,11 +80,11 @@ class NetworksController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $network = $this->Networks->patchEntity($network, $data);
             if ($this->Networks->save($network)) {
-                $this->Flash->success((string)__('The network has been saved.'));
+                $this->Flash->success((string)__d('Qobo/Social', 'The network has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error((string)__('The network could not be saved. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The network could not be saved. Please, try again.'));
         }
         $this->set(compact('network'));
     }
@@ -101,9 +101,9 @@ class NetworksController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $network = $this->Networks->get($id);
         if ($this->Networks->delete($network)) {
-            $this->Flash->success((string)__('The network has been deleted.'));
+            $this->Flash->success((string)__d('Qobo/Social', 'The network has been deleted.'));
         } else {
-            $this->Flash->error((string)__('The network could not be deleted. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The network could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

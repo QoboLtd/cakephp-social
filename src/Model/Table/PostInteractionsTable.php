@@ -88,7 +88,7 @@ class PostInteractionsTable extends Table
         $rules->add($rules->existsIn(['interaction_type_id'], 'InteractionTypes'));
         $rules->add($rules->isUnique(
             ['post_id', 'import_date', 'interaction_type_id'],
-            __('This post, import date and interaction type combination has already been used.')
+            __d('Qobo/Social', 'This post, import date and interaction type combination has already been used.')
         ));
 
         return $rules;

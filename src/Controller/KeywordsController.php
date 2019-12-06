@@ -56,11 +56,11 @@ class KeywordsController extends AppController
         if ($this->request->is('post')) {
             $keyword = $this->Keywords->patchEntity($keyword, $data);
             if ($this->Keywords->save($keyword)) {
-                $this->Flash->success((string)__('The keyword has been saved.'));
+                $this->Flash->success((string)__d('Qobo/Social', 'The keyword has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error((string)__('The keyword could not be saved. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The keyword could not be saved. Please, try again.'));
         }
         $topics = $this->Keywords->Topics->find('list', ['limit' => 200]);
         $this->set(compact('keyword', 'topics'));
@@ -82,11 +82,11 @@ class KeywordsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $keyword = $this->Keywords->patchEntity($keyword, $data);
             if ($this->Keywords->save($keyword)) {
-                $this->Flash->success((string)__('The keyword has been saved.'));
+                $this->Flash->success((string)__d('Qobo/Social', 'The keyword has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error((string)__('The keyword could not be saved. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The keyword could not be saved. Please, try again.'));
         }
         $topics = $this->Keywords->Topics->find('list', ['limit' => 200]);
         $this->set(compact('keyword', 'topics'));
@@ -104,9 +104,9 @@ class KeywordsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $keyword = $this->Keywords->get($id);
         if ($this->Keywords->delete($keyword)) {
-            $this->Flash->success((string)__('The keyword has been deleted.'));
+            $this->Flash->success((string)__d('Qobo/Social', 'The keyword has been deleted.'));
         } else {
-            $this->Flash->error((string)__('The keyword could not be deleted. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The keyword could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
