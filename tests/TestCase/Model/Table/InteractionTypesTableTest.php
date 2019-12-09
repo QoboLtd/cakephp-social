@@ -27,7 +27,7 @@ class InteractionTypesTableTest extends TestCase
      */
     public $fixtures = [
         'plugin.qobo/social.interaction_types',
-        'plugin.qobo/social.networks'
+        'plugin.qobo/social.networks',
     ];
 
     /**

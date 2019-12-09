@@ -90,7 +90,7 @@ class ConnectTwitterAccountListenerTest extends TestCase
     public function testImplementedEvents(): void
     {
         $expected = [
-            (string)EventName::QOBO_SOCIAL_CONNECT_TWITTER()
+            (string)EventName::QOBO_SOCIAL_CONNECT_TWITTER(),
         ];
         $actual = $this->Listener->implementedEvents();
         $this->assertEquals($expected, array_keys($actual));

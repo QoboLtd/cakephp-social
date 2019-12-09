@@ -45,12 +45,12 @@ class PostsTopicsTable extends Table
         $this->belongsTo('Posts', [
             'foreignKey' => 'post_id',
             'joinType' => 'INNER',
-            'className' => 'Qobo/Social.Posts'
+            'className' => 'Qobo/Social.Posts',
         ]);
         $this->belongsTo('Topics', [
             'foreignKey' => 'topic_id',
             'joinType' => 'INNER',
-            'className' => 'Qobo/Social.Topics'
+            'className' => 'Qobo/Social.Topics',
         ]);
     }
 

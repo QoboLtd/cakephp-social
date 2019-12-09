@@ -53,14 +53,14 @@ class InteractionTypesFixture extends TestFixture
                 'network_id' => '00000000-0000-0000-0000-000000000001',
                 'slug' => 'retweet_count',
                 'value_type' => 'int',
-                'label' => 'Retweets'
+                'label' => 'Retweets',
             ],
             [
                 'id' => '00000000-0000-0000-0000-000000000002',
                 'network_id' => '00000000-0000-0000-0000-000000000001',
                 'slug' => 'favorite_count',
                 'value_type' => 'int',
-                'label' => 'Favorites'
+                'label' => 'Favorites',
             ],
         ];
         parent::init();

@@ -44,13 +44,13 @@ class TopicsTable extends Table
 
         $this->hasMany('Keywords', [
             'foreignKey' => 'topic_id',
-            'className' => 'Qobo/Social.Keywords'
+            'className' => 'Qobo/Social.Keywords',
         ]);
         $this->belongsToMany('Posts', [
             'foreignKey' => 'topic_id',
             'targetForeignKey' => 'post_id',
             'through' => 'Qobo/Social.PostsTopics',
-            'className' => 'Qobo/Social.Posts'
+            'className' => 'Qobo/Social.Posts',
         ]);
     }
 

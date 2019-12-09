@@ -82,7 +82,7 @@ class PostInteractionsHelperTest extends TestCase
     {
         $table = TableRegistry::getTableLocator()->get('Qobo/Social.Posts');
         $post = $table->get('00000000-0000-0000-0000-000000000001', [
-            'contain' => ['LatestPostInteractions']
+            'contain' => ['LatestPostInteractions'],
         ]);
         /** @var \Qobo\Social\Model\Entity\PostInteraction[] $interactions */
         $interactions = $post->get('latest_post_interactions');
@@ -102,7 +102,7 @@ class PostInteractionsHelperTest extends TestCase
     {
         $table = TableRegistry::getTableLocator()->get('Qobo/Social.Posts');
         $post = $table->get('00000000-0000-0000-0000-000000000001', [
-            'contain' => ['LatestPostInteractions']
+            'contain' => ['LatestPostInteractions'],
         ]);
         /** @var \Qobo\Social\Model\Entity\PostInteraction $interaction */
         $interaction = $post->get('latest_post_interactions')[0];

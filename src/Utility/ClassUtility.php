@@ -20,7 +20,7 @@ class ClassUtility
 
         // Get all the traits of $class and its parent classes
         do {
-            $className = is_object($class)? get_class($class): $class;
+            $className = is_object($class) ? get_class($class) : $class;
             if (class_exists($className, $autoload)) {
                 $traits = array_merge(class_uses($class, $autoload), $traits);
             }

@@ -21,7 +21,7 @@ class KeywordsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Topics']
+            'contain' => ['Topics'],
         ];
         $keywords = $this->paginate($this->Keywords);
 
@@ -38,7 +38,7 @@ class KeywordsController extends AppController
     public function view(?string $id)
     {
         $keyword = $this->Keywords->get($id, [
-            'contain' => ['Topics']
+            'contain' => ['Topics'],
         ]);
 
         $this->set('keyword', $keyword);
@@ -76,7 +76,7 @@ class KeywordsController extends AppController
     public function edit(?string $id)
     {
         $keyword = $this->Keywords->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is(['patch', 'post', 'put'])) {
