@@ -58,7 +58,7 @@ class KeywordsFixture extends TestFixture
                 'priority' => 'Lorem ipsum dolor sit amet',
                 'trashed' => null,
                 'created' => '2019-01-17 12:39:13',
-                'modified' => '2019-01-17 12:39:13'
+                'modified' => '2019-01-17 12:39:13',
             ],
         ];
         parent::init();

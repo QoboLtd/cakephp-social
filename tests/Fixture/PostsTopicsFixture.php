@@ -55,7 +55,7 @@ class PostsTopicsFixture extends TestFixture
                 'modified' => '2019-01-17 12:39:15',
                 'post_id' => '17dcb0b0-46aa-4ec8-91a1-74ec48b1d5e6',
                 'topic_id' => '7aa61c8b-c28a-463d-bb69-df35ab268960',
-                'trashed' => null
+                'trashed' => null,
             ],
         ];
         parent::init();

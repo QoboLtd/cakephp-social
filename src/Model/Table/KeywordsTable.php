@@ -44,7 +44,7 @@ class KeywordsTable extends Table
         $this->belongsTo('Topics', [
             'foreignKey' => 'topic_id',
             'joinType' => 'INNER',
-            'className' => 'Qobo/Social.Topics'
+            'className' => 'Qobo/Social.Topics',
         ]);
     }
 

@@ -56,29 +56,29 @@ class PostsTable extends Table
         $this->belongsTo('Accounts', [
             'foreignKey' => 'account_id',
             'joinType' => 'INNER',
-            'className' => 'Qobo/Social.Accounts'
+            'className' => 'Qobo/Social.Accounts',
         ]);
         $this->belongsTo('Posts', [
             'foreignKey' => 'post_id',
-            'className' => 'Qobo/Social.Posts'
+            'className' => 'Qobo/Social.Posts',
         ]);
         $this->hasMany('Posts', [
             'foreignKey' => 'post_id',
-            'className' => 'Qobo/Social.Posts'
+            'className' => 'Qobo/Social.Posts',
         ]);
         $this->belongsToMany('Topics', [
             'foreignKey' => 'post_id',
             'targetForeignKey' => 'topic_id',
             'through' => 'Qobo/Social.PostsTopics',
-            'className' => 'Qobo/Social.Topics'
+            'className' => 'Qobo/Social.Topics',
         ]);
         $this->hasMany('LatestPostInteractions', [
             'foreignKey' => 'post_id',
             'className' => 'Qobo/Social.PostInteractions',
             'finder' => [
                 'latest' => [
-                    'contain' => ['InteractionTypes']
-                ]
+                    'contain' => ['InteractionTypes'],
+                ],
             ],
         ]);
         $this->hasMany('PostInteractions', [
@@ -88,8 +88,8 @@ class PostsTable extends Table
             'finder' => [
                 'all' => [
                     'order' => ['import_date' => 'DESC'],
-                    'contain' => ['InteractionTypes']
-                ]
+                    'contain' => ['InteractionTypes'],
+                ],
             ],
         ]);
     }

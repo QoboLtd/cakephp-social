@@ -31,7 +31,7 @@ class NetworksTableTest extends TestCase
      */
     public $fixtures = [
         'plugin.qobo/social.networks',
-        'plugin.qobo/social.accounts'
+        'plugin.qobo/social.accounts',
     ];
 
     /**

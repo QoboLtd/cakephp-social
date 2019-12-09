@@ -92,7 +92,7 @@ class TwitterPremiumSearchProviderTest extends TestCase
             'className' => TwitterPremiumSearchProvider::class,
             'config' => [
                 'env' => 'dev',
-                'filename' => 'twitter_response'
+                'filename' => 'twitter_response',
             ],
         ]);
     }

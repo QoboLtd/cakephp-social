@@ -42,7 +42,7 @@ class ConnectTwitterAccountListener implements EventListenerInterface
     public function implementedEvents()
     {
         return [
-            (string)EventName::QOBO_SOCIAL_CONNECT_TWITTER() => 'connect'
+            (string)EventName::QOBO_SOCIAL_CONNECT_TWITTER() => 'connect',
         ];
     }
 
@@ -163,7 +163,7 @@ class ConnectTwitterAccountListener implements EventListenerInterface
                 'plugin' => 'Qobo/Social',
                 'controller' => 'Accounts',
                 'action' => 'connect',
-                self::NETWORK_NAME
+                self::NETWORK_NAME,
             ],
             true
         );

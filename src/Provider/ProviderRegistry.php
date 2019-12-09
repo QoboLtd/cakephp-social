@@ -8,7 +8,6 @@ use Cake\Event\EventManager;
 use Cake\ORM\TableRegistry;
 use InvalidArgumentException;
 use Qobo\Social\Event\EventName;
-
 use Qobo\Social\Model\Entity\Network;
 use Qobo\Social\Utility\ClassUtility;
 

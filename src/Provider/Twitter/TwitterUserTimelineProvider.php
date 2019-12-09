@@ -30,7 +30,7 @@ class TwitterUserTimelineProvider extends AbstractTwitterProvider
         $config = $this->parseOptions($options);
 
         $response = $this->callApi($credentials['oauthToken'], $credentials['oauthTokenSecret'], $config);
-        $payload = new stdClass;
+        $payload = new stdClass();
         $payload->results = $response;
 
         $response = new TwitterResponse();

@@ -48,7 +48,7 @@ class AccountsTable extends Table
             'enabled' => function (Account $entity) {
                 $enabled = Configure::read('Qobo/Social.encrypt.enabled', true);
 
-                return ($enabled === false)? $enabled : $entity->is_ours;
+                return ($enabled === false) ? $enabled : $entity->is_ours;
             },
             'encryptionKey' => Configure::readOrFail('Qobo/Social.encrypt.key'),
             'fields' => [
@@ -59,11 +59,11 @@ class AccountsTable extends Table
         $this->belongsTo('Networks', [
             'foreignKey' => 'network_id',
             'joinType' => 'INNER',
-            'className' => 'Qobo/Social.Networks'
+            'className' => 'Qobo/Social.Networks',
         ]);
         $this->hasMany('Posts', [
             'foreignKey' => 'account_id',
-            'className' => 'Qobo/Social.Posts'
+            'className' => 'Qobo/Social.Posts',
         ]);
     }
 

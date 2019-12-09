@@ -166,7 +166,7 @@ class PostsControllerTest extends IntegrationTestCase
                 $data,
                 false,
                 'The post could not be saved. Please, try again.',
-            ]
+            ],
         ];
     }
 

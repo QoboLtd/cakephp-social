@@ -40,7 +40,7 @@ class InteractionTypesTable extends Table
         $this->belongsTo('Networks', [
             'foreignKey' => 'network_id',
             'joinType' => 'INNER',
-            'className' => 'Qobo/Social.Networks'
+            'className' => 'Qobo/Social.Networks',
         ]);
     }
 

@@ -54,7 +54,7 @@ class NetworksTable extends Table
 
         $this->hasMany('Accounts', [
             'foreignKey' => 'network_id',
-            'className' => 'Qobo/Social.Accounts'
+            'className' => 'Qobo/Social.Accounts',
         ]);
     }
 

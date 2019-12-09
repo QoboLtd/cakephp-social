@@ -27,7 +27,7 @@ class KeywordsTableTest extends TestCase
      */
     public $fixtures = [
         'plugin.qobo/social.keywords',
-        'plugin.qobo/social.topics'
+        'plugin.qobo/social.topics',
     ];
 
     /**

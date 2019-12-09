@@ -45,7 +45,7 @@ class PostsTableTest extends TestCase
         'plugin.qobo/social.accounts',
         'plugin.qobo/social.networks',
         'plugin.qobo/social.posts',
-        'plugin.qobo/social.topics'
+        'plugin.qobo/social.topics',
     ];
 
     /**
@@ -147,7 +147,7 @@ class PostsTableTest extends TestCase
             ->method('runPublisher')
             ->will($this->returnValue(true));
         $post = $this->createPost();
-        $options = new ArrayObject;
+        $options = new ArrayObject();
         $event = new Event('Model.afterSave', $mock, compact('post', 'options'));
         $mock->afterSave($event, $post, $options);
     }
@@ -166,7 +166,7 @@ class PostsTableTest extends TestCase
             ->method('runPublisher')
             ->will($this->returnValue(true));
         $post = $this->createPost();
-        $options = new ArrayObject;
+        $options = new ArrayObject();
         $event = new Event('Model.afterSave', $mock, compact('post', 'options'));
         $mock->afterSave($event, $post, $options);
     }
@@ -180,7 +180,7 @@ class PostsTableTest extends TestCase
     {
         $this->expectException(RecordNotFoundException::class);
         $post = $this->createPost(['account_id' => 'bad_id']);
-        $options = new ArrayObject;
+        $options = new ArrayObject();
         $event = new Event('Model.afterSave', $this->Posts, compact('post', 'options'));
         try {
             $this->Posts->afterSave($event, $post, $options);
@@ -200,7 +200,7 @@ class PostsTableTest extends TestCase
     {
         $post = $this->createPost(['account_id' => '00000000-0000-0000-0000-000000000002']);
         $expected = clone $post;
-        $options = new ArrayObject;
+        $options = new ArrayObject();
         $event = new Event('Model.afterSave', $this->Posts, compact('post', 'options'));
         $this->Posts->afterSave($event, $post, $options);
         $this->assertEquals($expected, $post);
@@ -216,7 +216,7 @@ class PostsTableTest extends TestCase
         $this->expectException(RecordNotFoundException::class);
         $post = $this->createPost(['account_id' => '00000000-0000-0000-0000-000000000003']);
         $expected = clone $post;
-        $options = new ArrayObject;
+        $options = new ArrayObject();
         $event = new Event('Model.afterSave', $this->Posts, compact('post', 'options'));
         try {
             $this->Posts->afterSave($event, $post, $options);
@@ -237,7 +237,7 @@ class PostsTableTest extends TestCase
         Configure::write('Qobo/Social.publisher.twitter', 'Some\Bad\Class');
         $post = $this->createPost(['account_id' => '00000000-0000-0000-0000-000000000001']);
         $expected = clone $post;
-        $options = new ArrayObject;
+        $options = new ArrayObject();
         $event = new Event('Model.afterSave', $this->Posts, compact('post', 'options'));
         $this->Posts->afterSave($event, $post, $options);
         $this->assertEquals($expected, $post);
@@ -253,7 +253,7 @@ class PostsTableTest extends TestCase
         Configure::write('Qobo/Social.publisher.twitter', BadPublisher::class);
         $post = $this->createPost(['account_id' => '00000000-0000-0000-0000-000000000001']);
         $expected = clone $post;
-        $options = new ArrayObject;
+        $options = new ArrayObject();
         $event = new Event('Model.afterSave', $this->Posts, compact('post', 'options'));
         $this->Posts->afterSave($event, $post, $options);
         $this->assertEquals($expected, $post);
@@ -269,7 +269,7 @@ class PostsTableTest extends TestCase
         Configure::write('Qobo/Social.publisher.twitter', TwitterPublisher::class);
         $post = $this->createPost(['account_id' => '00000000-0000-0000-0000-000000000001']);
         $original = clone $post;
-        $options = new ArrayObject;
+        $options = new ArrayObject();
         $event = new Event('Model.afterSave', $this->Posts, compact('post', 'options'));
         $this->Posts->afterSave($event, $post, $options);
         $this->assertNotEquals($original, $post);
@@ -286,7 +286,7 @@ class PostsTableTest extends TestCase
         Configure::write('Qobo/Social.publisher.twitter', PublisherThrows::class);
         $post = $this->createPost(['account_id' => '00000000-0000-0000-0000-000000000001']);
         $expected = clone $post;
-        $options = new ArrayObject;
+        $options = new ArrayObject();
         $event = new Event('Model.afterSave', $this->Posts, compact('post', 'options'));
         $this->Posts->afterSave($event, $post, $options);
         $this->assertEquals($expected, $post);

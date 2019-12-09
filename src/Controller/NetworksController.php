@@ -36,7 +36,7 @@ class NetworksController extends AppController
     {
         $network = $this->Networks->get($id, [
             'finder' => 'decrypt',
-            'contain' => ['Accounts']
+            'contain' => ['Accounts'],
         ]);
 
         $this->set('network', $network);
@@ -74,7 +74,7 @@ class NetworksController extends AppController
     {
         $network = $this->Networks->get($id, [
             'finder' => 'decrypt',
-            'contain' => []
+            'contain' => [],
         ]);
         $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is(['patch', 'post', 'put'])) {
