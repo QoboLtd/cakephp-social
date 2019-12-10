@@ -57,11 +57,11 @@ class PostsController extends AppController
         if ($this->request->is('post')) {
             $post = $this->Posts->patchEntity($post, $data, ['validate' => 'publish']);
             if ($this->Posts->save($post)) {
-                $this->Flash->success((string)__('The post has been saved.'));
+                $this->Flash->success((string)__d('Qobo/Social', 'The post has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error((string)__('The post could not be saved. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The post could not be saved. Please, try again.'));
         }
         $accounts = $this->Posts->Accounts->find('ours')->find('list', ['limit' => 200]);
         $topics = $this->Posts->Topics->find('list', ['limit' => 200]);
@@ -84,11 +84,11 @@ class PostsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $post = $this->Posts->patchEntity($post, $data);
             if ($this->Posts->save($post)) {
-                $this->Flash->success((string)__('The post has been saved.'));
+                $this->Flash->success((string)__d('Qobo/Social', 'The post has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error((string)__('The post could not be saved. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The post could not be saved. Please, try again.'));
         }
         $accounts = $this->Posts->Accounts->find('list', ['limit' => 200]);
         $topics = $this->Posts->Topics->find('list', ['limit' => 200]);
@@ -107,9 +107,9 @@ class PostsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $post = $this->Posts->get($id);
         if ($this->Posts->delete($post)) {
-            $this->Flash->success((string)__('The post has been deleted.'));
+            $this->Flash->success((string)__d('Qobo/Social', 'The post has been deleted.'));
         } else {
-            $this->Flash->error((string)__('The post could not be deleted. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The post could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

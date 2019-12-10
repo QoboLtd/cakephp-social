@@ -6,14 +6,14 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Network'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Accounts'), ['controller' => 'Accounts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Account'), ['controller' => 'Accounts', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __d('Qobo/Social', 'Actions') ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'New Network'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'List Accounts'), ['controller' => 'Accounts', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'New Account'), ['controller' => 'Accounts', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="networks index large-9 medium-8 columns content">
-    <h3><?= __('Networks') ?></h3>
+    <h3><?= __d('Qobo/Social', 'Networks') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
@@ -25,7 +25,7 @@
                 <th scope="col"><?= $this->Paginator->sort('trashed') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th scope="col" class="actions"><?= __d('Qobo/Social', 'Actions') ?></th>
             </tr>
         </thead>
         <tbody>
@@ -40,9 +40,9 @@
                 <td><?= h($network->created) ?></td>
                 <td><?= h($network->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $network->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $network->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $network->id], ['confirm' => __('Are you sure you want to delete # {0}?', $network->id)]) ?>
+                    <?= $this->Html->link(__d('Qobo/Social', 'View'), ['action' => 'view', $network->id]) ?>
+                    <?= $this->Html->link(__d('Qobo/Social', 'Edit'), ['action' => 'edit', $network->id]) ?>
+                    <?= $this->Form->postLink(__d('Qobo/Social', 'Delete'), ['action' => 'delete', $network->id], ['confirm' => __d('Qobo/Social', 'Are you sure you want to delete # {0}?', $network->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -50,12 +50,12 @@
     </table>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->first('<< ' . __d('Qobo/Social', 'first')) ?>
+            <?= $this->Paginator->prev('< ' . __d('Qobo/Social', 'previous')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->next(__d('Qobo/Social', 'next') . ' >') ?>
+            <?= $this->Paginator->last(__d('Qobo/Social', 'last') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+        <p><?= $this->Paginator->counter(['format' => __d('Qobo/Social', 'Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
 </div>

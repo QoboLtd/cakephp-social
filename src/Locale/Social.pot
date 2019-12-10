@@ -1,0 +1,644 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2019-12-06 14:41+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/AccountsController.php:65;91;167
+msgid "The account has been saved."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/AccountsController.php:69;95
+msgid "The account could not be saved. Please, try again."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/AccountsController.php:113
+msgid "The account has been deleted."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/AccountsController.php:115
+msgid "The account could not be deleted. Please, try again."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/AccountsController.php:163
+msgid "Could not connect account."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/KeywordsController.php:59;85
+msgid "The keyword has been saved."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/KeywordsController.php:63;89
+msgid "The keyword could not be saved. Please, try again."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/KeywordsController.php:107
+msgid "The keyword has been deleted."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/KeywordsController.php:109
+msgid "The keyword could not be deleted. Please, try again."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/NetworksController.php:57;83
+msgid "The network has been saved."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/NetworksController.php:61;87
+msgid "The network could not be saved. Please, try again."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/NetworksController.php:104
+msgid "The network has been deleted."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/NetworksController.php:106
+msgid "The network could not be deleted. Please, try again."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/PostsController.php:60;87
+msgid "The post has been saved."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/PostsController.php:64;91
+msgid "The post could not be saved. Please, try again."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/PostsController.php:110
+msgid "The post has been deleted."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/PostsController.php:112
+msgid "The post could not be deleted. Please, try again."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/TopicsController.php:56;82
+msgid "The topic has been saved."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/TopicsController.php:60;86
+msgid "The topic could not be saved. Please, try again."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/TopicsController.php:104
+msgid "The topic has been deleted."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Controller/TopicsController.php:106
+msgid "The topic could not be deleted. Please, try again."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Model/Table/InteractionTypesTable.php:91
+msgid "This network and slug combination has already been used."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Model/Table/PostInteractionsTable.php:91
+msgid "This post, import date and interaction type combination has already been used."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Model/Table/PostsTable.php:180
+msgid "Only accounts marked as ours can post to social networks."
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/add.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/edit.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:9;30
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:9;77
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/add.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/edit.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:9;28
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/add.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/edit.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:9;28
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:9;76
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/add.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:9;33
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:9;90;129
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/add.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/edit.ctp:9
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:9;28
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:9;69;108
+msgid "Actions"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/add.ctp:10
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/edit.ctp:16
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/add.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/edit.ctp:17
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:14
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/add.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:17
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:14
+msgid "List Accounts"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/add.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/edit.ctp:17
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:14
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/add.ctp:10
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/edit.ctp:16
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:12
+msgid "List Networks"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/add.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/edit.ctp:18
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:15
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:10
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:13
+msgid "New Network"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/add.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/edit.ctp:19
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:16
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/add.ctp:10;13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:16;19
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:12;16
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/add.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/edit.ctp:19
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:16
+msgid "List Posts"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/add.ctp:14
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/edit.ctp:20
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:14
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:17
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/add.ctp:14
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:20
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:10
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:13;17
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/add.ctp:14
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/edit.ctp:20
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:14
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:17
+msgid "New Post"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/add.ctp:20
+msgid "Add Account"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/add.ctp:30
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/edit.ctp:36
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/add.ctp:27
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/edit.ctp:33
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/add.ctp:29
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/edit.ctp:35
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/add.ctp:36
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:42
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/add.ctp:29
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/edit.ctp:35
+msgid "Submit"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/edit.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:47
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:96
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/edit.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:45
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/edit.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:45
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:92
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:53
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:104;149
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/edit.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:43
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:88;123
+msgid "Delete"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/edit.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:47
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:11;96
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/edit.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:45
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/edit.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:45
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:11;92
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:53
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:11;104;149
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/edit.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:43
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:11;88;123
+msgid "Are you sure you want to delete # {0}?"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/edit.ctp:26
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:10
+msgid "Edit Account"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:10
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/add.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/edit.ctp:18
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:15
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/add.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:18
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:15
+msgid "New Account"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:18
+msgid "Accounts"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:45
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:94
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:43
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:43
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:90
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:51
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:102;147
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:41
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:86;121
+msgid "View"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:46
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:95
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:44
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:44
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:91
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:52
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:103;148
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:42
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:87;122
+msgid "Edit"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:55
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:53
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:53
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:61
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:51
+msgid "first"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:56
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:54
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:54
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:62
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:52
+msgid "previous"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:58
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:56
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:56
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:64
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:54
+msgid "next"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:59
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:57
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:57
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:65
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:55
+msgid "last"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/index.ctp:61
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:59
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:59
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:67
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:57
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:11
+msgid "Delete Account"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:24;65
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:22
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:22;67
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:26;83;116
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:24;57;100
+msgid "Id"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:28
+msgid "Network"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:32
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:69
+msgid "Handle"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:36;74
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:42
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:38;73
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:58;87;126
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:32;66;105
+msgid "Trashed"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:40;75
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:46
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:42;74
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:62;88;127
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:36;67;106
+msgid "Created"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:44;76
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:50
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:46;75
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:66;89;128
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:40;68;107
+msgid "Modified"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:48
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:50;70
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:86
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:44
+msgid "Active"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:49;53
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:51
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:45
+msgid "Yes"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:49;53
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:51
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:45
+msgid "No"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:52
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:71
+msgid "Is Ours"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:57
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:72
+msgid "Credentials"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:61
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:112
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:53
+msgid "Related Posts"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:66
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:117
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:58
+msgid "Account Id"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:67
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:38;119
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:59
+msgid "Post Id"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:68
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:30
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:42;120
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:60;102
+msgid "Type"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:69
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:34
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:46;121
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:61
+msgid "Url"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:70
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:50;122
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:62
+msgid "Subject"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:71
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:71;123
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:63
+msgid "Content"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:72
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:54;124
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:64
+msgid "Publish Date"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Accounts/view.ctp:73
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:125
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:65
+msgid "Extra"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/add.ctp:10
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/edit.ctp:16
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/add.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/edit.ctp:17
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:14
+msgid "List Keywords"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/add.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/edit.ctp:17
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:11
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:14
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/add.ctp:15
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:21
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:18
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/add.ctp:10
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/edit.ctp:16
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:12
+msgid "List Topics"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/add.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/edit.ctp:18
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:15
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/add.ctp:16
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:22
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:14
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:19
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:10
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:13
+msgid "New Topic"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/add.ctp:18
+msgid "Add Keyword"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/edit.ctp:24
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:10
+msgid "Edit Keyword"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:10
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:13
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/add.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/edit.ctp:18
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:12
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:15
+msgid "New Keyword"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/index.ctp:16
+msgid "Keywords"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:11
+msgid "Delete Keyword"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:26
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:30
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:84
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:28;101
+msgid "Name"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:34
+msgid "Topic"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Keywords/view.ctp:38
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:104
+msgid "Priority"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/add.ctp:18
+msgid "Add Network"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/edit.ctp:24
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:10
+msgid "Edit Network"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/index.ctp:16
+msgid "Networks"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:11
+msgid "Delete Network"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:26
+msgid "Title"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:55
+msgid "Oauth Consumer Key"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:59
+msgid "Oauth Consumer Secret"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:63
+msgid "Related Accounts"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Networks/view.ctp:68
+msgid "Network Id"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/add.ctp:22
+msgid "Add Post"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/edit.ctp:28
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:10
+msgid "Edit Post"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/index.ctp:18
+msgid "Posts"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:11
+msgid "Delete Post"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:30
+msgid "Account"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:34;118
+msgid "External Post Id"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:75
+msgid "Post Interactions"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:79
+msgid "Related Topics"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Posts/view.ctp:85
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:49
+msgid "Description"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/add.ctp:20
+msgid "Add Topic"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/edit.ctp:26
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:10
+msgid "Edit Topic"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/index.ctp:18
+msgid "Topics"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:11
+msgid "Delete Topic"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:96
+msgid "Related Keywords"
+msgstr ""
+
+#: /home/asiekkeris/Documents/code/cakephp-social/Template/Topics/view.ctp:103
+msgid "Topic Id"
+msgstr ""
+

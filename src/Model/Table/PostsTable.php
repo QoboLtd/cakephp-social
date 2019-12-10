@@ -177,7 +177,7 @@ class PostsTable extends Table
 
         $validator->add('account_id', 'can-post', [
             'rule' => 'canAccountPost',
-            'message' => __('Only accounts marked as ours can post to social networks.'),
+            'message' => __d('Qobo/Social', 'Only accounts marked as ours can post to social networks.'),
             'provider' => 'table',
         ]);
 

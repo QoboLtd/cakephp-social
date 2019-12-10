@@ -62,11 +62,11 @@ class AccountsController extends AppController
         if ($this->request->is('post')) {
             $account = $this->Accounts->patchEntity($account, $data);
             if ($this->Accounts->save($account)) {
-                $this->Flash->success((string)__('The account has been saved.'));
+                $this->Flash->success((string)__d('Qobo/Social', 'The account has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error((string)__('The account could not be saved. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The account could not be saved. Please, try again.'));
         }
         $networks = $this->Accounts->Networks->find('list', ['limit' => 200]);
         $this->set(compact('account', 'networks'));
@@ -88,11 +88,11 @@ class AccountsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $account = $this->Accounts->patchEntity($account, $data);
             if ($this->Accounts->save($account)) {
-                $this->Flash->success((string)__('The account has been saved.'));
+                $this->Flash->success((string)__d('Qobo/Social', 'The account has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error((string)__('The account could not be saved. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The account could not be saved. Please, try again.'));
         }
         $networks = $this->Accounts->Networks->find('list', ['limit' => 200]);
         $this->set(compact('account', 'networks'));
@@ -110,9 +110,9 @@ class AccountsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $account = $this->Accounts->get($id);
         if ($this->Accounts->delete($account)) {
-            $this->Flash->success((string)__('The account has been deleted.'));
+            $this->Flash->success((string)__d('Qobo/Social', 'The account has been deleted.'));
         } else {
-            $this->Flash->error((string)__('The account could not be deleted. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The account could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -160,11 +160,11 @@ class AccountsController extends AppController
     protected function connectAccount(Account $result): ?Response
     {
         if (!$this->Accounts->save($result)) {
-            $this->Flash->error((string)__('Could not connect account.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'Could not connect account.'));
 
             return $this->redirect(['action' => 'index']);
         }
-        $this->Flash->success((string)__('The account has been saved.'));
+        $this->Flash->success((string)__d('Qobo/Social', 'The account has been saved.'));
 
         return $this->redirect(['action' => 'view', $result->get('id')]);
     }

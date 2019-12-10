@@ -53,11 +53,11 @@ class TopicsController extends AppController
         if ($this->request->is('post')) {
             $topic = $this->Topics->patchEntity($topic, $data);
             if ($this->Topics->save($topic)) {
-                $this->Flash->success((string)__('The topic has been saved.'));
+                $this->Flash->success((string)__d('Qobo/Social', 'The topic has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error((string)__('The topic could not be saved. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The topic could not be saved. Please, try again.'));
         }
         $posts = $this->Topics->Posts->find('list', ['limit' => 200]);
         $this->set(compact('topic', 'posts'));
@@ -79,11 +79,11 @@ class TopicsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $topic = $this->Topics->patchEntity($topic, $data);
             if ($this->Topics->save($topic)) {
-                $this->Flash->success((string)__('The topic has been saved.'));
+                $this->Flash->success((string)__d('Qobo/Social', 'The topic has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error((string)__('The topic could not be saved. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The topic could not be saved. Please, try again.'));
         }
         $posts = $this->Topics->Posts->find('list', ['limit' => 200]);
         $this->set(compact('topic', 'posts'));
@@ -101,9 +101,9 @@ class TopicsController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $topic = $this->Topics->get($id);
         if ($this->Topics->delete($topic)) {
-            $this->Flash->success((string)__('The topic has been deleted.'));
+            $this->Flash->success((string)__d('Qobo/Social', 'The topic has been deleted.'));
         } else {
-            $this->Flash->error((string)__('The topic could not be deleted. Please, try again.'));
+            $this->Flash->error((string)__d('Qobo/Social', 'The topic could not be deleted. Please, try again.'));
         }
 
         return $this->redirect(['action' => 'index']);

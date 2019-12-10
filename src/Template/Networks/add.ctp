@@ -6,16 +6,16 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Networks'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Accounts'), ['controller' => 'Accounts', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Account'), ['controller' => 'Accounts', 'action' => 'add']) ?></li>
+        <li class="heading"><?= __d('Qobo/Social', 'Actions') ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'List Networks'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'List Accounts'), ['controller' => 'Accounts', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__d('Qobo/Social', 'New Account'), ['controller' => 'Accounts', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="networks form large-9 medium-8 columns content">
     <?= $this->Form->create($network) ?>
     <fieldset>
-        <legend><?= __('Add Network') ?></legend>
+        <legend><?= __d('Qobo/Social', 'Add Network') ?></legend>
         <?php
             echo $this->Form->control('title');
             echo $this->Form->control('name');
@@ -26,6 +26,6 @@
             echo $this->Form->control('trashed', ['empty' => true]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__d('Qobo/Social', 'Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
