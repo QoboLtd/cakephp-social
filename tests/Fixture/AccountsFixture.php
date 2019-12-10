@@ -60,7 +60,7 @@ class AccountsFixture extends TestFixture
                 'credentials' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
                 'trashed' => null,
                 'created' => '2019-01-17 12:39:13',
-                'modified' => '2019-01-17 12:39:13'
+                'modified' => '2019-01-17 12:39:13',
             ],
             [
                 'id' => '00000000-0000-0000-0000-000000000002',
@@ -71,7 +71,7 @@ class AccountsFixture extends TestFixture
                 'credentials' => '',
                 'trashed' => null,
                 'created' => '2019-01-17 12:39:13',
-                'modified' => '2019-01-17 12:39:13'
+                'modified' => '2019-01-17 12:39:13',
             ],
             [
                 'id' => '00000000-0000-0000-0000-000000000003',
@@ -82,7 +82,7 @@ class AccountsFixture extends TestFixture
                 'credentials' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
                 'trashed' => null,
                 'created' => '2019-01-17 12:39:13',
-                'modified' => '2019-01-17 12:39:13'
+                'modified' => '2019-01-17 12:39:13',
             ],
         ];
         parent::init();

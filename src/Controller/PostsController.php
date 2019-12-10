@@ -22,7 +22,7 @@ class PostsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Accounts', 'LatestPostInteractions']
+            'contain' => ['Accounts', 'LatestPostInteractions'],
         ];
         $posts = $this->paginate($this->Posts);
 
@@ -39,7 +39,7 @@ class PostsController extends AppController
     public function view(?string $id)
     {
         $post = $this->Posts->get($id, [
-            'contain' => ['Accounts', 'Topics', 'LatestPostInteractions']
+            'contain' => ['Accounts', 'Topics', 'LatestPostInteractions'],
         ]);
 
         $this->set('post', $post);
@@ -78,7 +78,7 @@ class PostsController extends AppController
     public function edit(?string $id)
     {
         $post = $this->Posts->get($id, [
-            'contain' => ['Topics']
+            'contain' => ['Topics'],
         ]);
         $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is(['patch', 'post', 'put'])) {

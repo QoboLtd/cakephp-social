@@ -90,7 +90,7 @@ class ImportTaskTest extends TestCase
         $this->Registry->set('twitter', 'my-provider', [
             'className' => TestProvider::class,
             'config' => [
-                'foo' => 'baz'
+                'foo' => 'baz',
             ],
         ]);
 

@@ -4,7 +4,6 @@ namespace Qobo\Social\Shell\Task;
 use Cake\Console\ConsoleOptionParser;
 use Cake\Console\Shell;
 use Cake\Core\Configure;
-
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Log\LogTrait;
 use Cake\ORM\TableRegistry;
@@ -58,13 +57,13 @@ class ImportTask extends Shell
         $parser->setDescription('Imports the social feed from a social provider.');
         $parser->addArgument('network', [
             'help' => 'Social network name.',
-            'required' => true
+            'required' => true,
         ])->addArgument('provider', [
             'help' => 'Provider name.',
-            'required' => true
+            'required' => true,
         ])->addArgument('topic', [
             'help' => 'Topic name.',
-            'required' => false
+            'required' => false,
         ])->addOption('config', [
             'short' => 'c',
             'help' => 'Parser config',
@@ -118,8 +117,8 @@ class ImportTask extends Shell
             if ($topic !== null) {
                 $post = $table->patchEntity($post, [
                     'topics' => [
-                        ['id' => $topic->get('id')]
-                    ]
+                        ['id' => $topic->get('id')],
+                    ],
                 ], ['validate' => false]);
             }
             if (!$table->save($post)) {

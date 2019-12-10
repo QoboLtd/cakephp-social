@@ -16,7 +16,7 @@ class PostInteractionsHelper extends Helper
      * @var array
      */
     protected $_defaultConfig = [
-        'element' => 'Qobo/Social.interactions/default'
+        'element' => 'Qobo/Social.interactions/default',
     ];
 
     /**

@@ -45,7 +45,7 @@ class TwitterPublisherTest extends TestCase
         'plugin.qobo/social.accounts',
         'plugin.qobo/social.networks',
         'plugin.qobo/social.posts',
-        'plugin.qobo/social.topics'
+        'plugin.qobo/social.topics',
     ];
 
     /**

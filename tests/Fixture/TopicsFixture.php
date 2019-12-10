@@ -53,7 +53,7 @@ class TopicsFixture extends TestFixture
                 'active' => 1,
                 'trashed' => null,
                 'created' => '2019-01-17 12:39:16',
-                'modified' => '2019-01-17 12:39:16'
+                'modified' => '2019-01-17 12:39:16',
             ],
         ];
         parent::init();

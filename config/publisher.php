@@ -9,5 +9,5 @@ return [
         'publisher' => [
             'twitter' => TwitterPublisher::class,
         ],
-    ]
+    ],
 ];

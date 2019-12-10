@@ -35,7 +35,7 @@ class TopicsController extends AppController
     public function view(?string $id)
     {
         $topic = $this->Topics->get($id, [
-            'contain' => ['Posts', 'Keywords']
+            'contain' => ['Posts', 'Keywords'],
         ]);
 
         $this->set('topic', $topic);
@@ -73,7 +73,7 @@ class TopicsController extends AppController
     public function edit(?string $id)
     {
         $topic = $this->Topics->get($id, [
-            'contain' => ['Posts']
+            'contain' => ['Posts'],
         ]);
         $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is(['patch', 'post', 'put'])) {

@@ -41,12 +41,12 @@ class PostInteractionsTable extends Table
         $this->belongsTo('Posts', [
             'foreignKey' => 'post_id',
             'joinType' => 'INNER',
-            'className' => 'Qobo/Social.Posts'
+            'className' => 'Qobo/Social.Posts',
         ]);
         $this->belongsTo('InteractionTypes', [
             'foreignKey' => 'interaction_type_id',
             'joinType' => 'INNER',
-            'className' => 'Qobo/Social.InteractionTypes'
+            'className' => 'Qobo/Social.InteractionTypes',
         ]);
     }
 
@@ -107,7 +107,7 @@ class PostInteractionsTable extends Table
             ->select([
                 $this->aliasField('post_id'),
                 $this->aliasField('interaction_type_id'),
-                'max_import_date' => $query->func()->max('import_date')
+                'max_import_date' => $query->func()->max('import_date'),
             ])
             ->group([$this->aliasField('post_id'), $this->aliasField('interaction_type_id')]);
 

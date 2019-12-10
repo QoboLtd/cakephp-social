@@ -27,7 +27,7 @@ class AccountsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Networks']
+            'contain' => ['Networks'],
         ];
         $accounts = $this->paginate($this->Accounts);
 
@@ -44,7 +44,7 @@ class AccountsController extends AppController
     public function view(?string $id)
     {
         $account = $this->Accounts->get($id, [
-            'contain' => ['Networks', 'Posts']
+            'contain' => ['Networks', 'Posts'],
         ]);
 
         $this->set('account', $account);
@@ -82,7 +82,7 @@ class AccountsController extends AppController
     public function edit(?string $id)
     {
         $account = $this->Accounts->get($id, [
-            'contain' => []
+            'contain' => [],
         ]);
         $data = is_array($this->request->getData()) ? $this->request->getData() : [];
         if ($this->request->is(['patch', 'post', 'put'])) {
