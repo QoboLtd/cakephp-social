@@ -16,10 +16,10 @@ class TopicsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/social.topics',
-        'plugin.qobo/social.keywords',
-        'plugin.qobo/social.posts',
-        'plugin.qobo/social.posts_topics',
+        'plugin.Qobo/Social.Topics',
+        'plugin.Qobo/Social.Keywords',
+        'plugin.Qobo/Social.Posts',
+        'plugin.Qobo/Social.PostsTopics',
     ];
 
     /**

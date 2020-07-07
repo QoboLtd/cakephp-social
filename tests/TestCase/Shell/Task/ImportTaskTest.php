@@ -50,12 +50,12 @@ class ImportTaskTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/social.accounts',
-        'plugin.qobo/social.keywords',
-        'plugin.qobo/social.networks',
-        'plugin.qobo/social.posts',
-        'plugin.qobo/social.posts_topics',
-        'plugin.qobo/social.topics',
+        'plugin.Qobo/Social.Accounts',
+        'plugin.Qobo/Social.Keywords',
+        'plugin.Qobo/Social.Networks',
+        'plugin.Qobo/Social.Posts',
+        'plugin.Qobo/Social.PostsTopics',
+        'plugin.Qobo/Social.Topics',
     ];
 
     /**
