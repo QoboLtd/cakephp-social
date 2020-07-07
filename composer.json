@@ -26,7 +26,7 @@
     },
     "require": {
         "abraham/twitteroauth": "^1.0",
-        "qobo/cakephp-utils": "dev-cakephp-v38a"
+        "qobo/cakephp-utils": "^13.0"
     },
     "require-dev": {
         "qobo/cakephp-composer-dev": "^v1.0"
