@@ -26,9 +26,9 @@ class PostsTopicsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/social.posts_topics',
-        'plugin.qobo/social.posts',
-        'plugin.qobo/social.topics',
+        'plugin.Qobo/Social.PostsTopics',
+        'plugin.Qobo/Social.Posts',
+        'plugin.Qobo/Social.Topics',
     ];
 
     /**

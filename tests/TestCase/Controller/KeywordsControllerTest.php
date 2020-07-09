@@ -16,8 +16,8 @@ class KeywordsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/social.keywords',
-        'plugin.qobo/social.topics',
+        'plugin.Qobo/Social.Keywords',
+        'plugin.Qobo/Social.Topics',
     ];
 
     /**

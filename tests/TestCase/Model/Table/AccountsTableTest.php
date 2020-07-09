@@ -26,9 +26,9 @@ class AccountsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/social.accounts',
-        'plugin.qobo/social.networks',
-        'plugin.qobo/social.posts',
+        'plugin.Qobo/Social.Accounts',
+        'plugin.Qobo/Social.Networks',
+        'plugin.Qobo/Social.Posts',
     ];
 
     /**

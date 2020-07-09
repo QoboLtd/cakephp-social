@@ -18,9 +18,9 @@ class PostInteractionsHelperTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.qobo/social.interaction_types',
-        'plugin.qobo/social.post_interactions',
-        'plugin.qobo/social.posts',
+        'plugin.Qobo/Social.InteractionTypes',
+        'plugin.Qobo/Social.PostInteractions',
+        'plugin.Qobo/Social.Posts',
     ];
 
     /**
